@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/assets/js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+	<style type="text/css">
+	li a:hover{
+		color: #4a4a4a;
+		text-decoration: none;
+	}
+	li a{
+		color: #4a4a4a;
+		text-decoration: none;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card" style="margin: 1em;">
+			<div class="card-header">
+				Facebook Page
+			</div>
+			<ul class="list-group list-group-flush" id="listOfPages">
+				
+			</ul>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var token = "{{token}}";
+		$.get( "https://graph.facebook.com/me/accounts?access_token="+token, function( pages ) {
+			for(var i in pages.data) {
+
+				$.get( "https://graph.facebook.com/"+pages.data[i].id+"/?fields=about,access_token,bio,picture.width(100){url},name&access_token="+token, function( data ) {
+					$('#listOfPages').append(
+						'<li class="list-group-item"><a href="/oauth/facebook/add-team-page/?token='+data.access_token+'&id='+data.id+'&username='+jQuery.parseJSON(localStorage.getItem('user')).username+'&name='+data.name+'"><div class="row"><img src="'+data.picture.data.url+'" height="50px" width="50px" style="border-radius: 0.3em; margin-left: 0.5em;"><div class="ml-2"><span><strong>'+data.name+'</strong></span><span><small class="text-muted d-block" style="width: 70vw;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">'+data.about+'</small></span></div></div></a></li>'
+						);
+				});
+			}
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<app-navbar></app-navbar>
+<div class="container-fluid">
+	<div class="row">
+		<app-sidebar></app-sidebar>
+		<div [ngClass]="{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}">
+			<ngx-flash-messages></ngx-flash-messages>
+			<router-outlet></router-outlet>
+		</div>
+	</div>
+</div>

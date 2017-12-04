@@ -1,0 +1,33 @@
+{
+  "name": "clirack",
+  "version": "1.0.0",
+  "description": "The best CRM for social media",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wgcv/clirack.git"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "*",
+    "cors": "*",
+    "express": "*",
+    "jsonwebtoken": "*",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-facebook": "^2.1.1",
+    "passport-jwt": "*",
+    "request": "^2.83.0",
+    "swig": "^1.4.2"
+  },
+  "author": "Gustavo Cevallos",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/wgcv/clirack/issues"
+  },
+  "homepage": "https://github.com/wgcv/clirack#readme"
+}
