@@ -2,13 +2,15 @@ const express = require('express');
 const router = express.Router();
 const config = require('../config/database');
 const passport = require('passport');
-const passportFacebook = require('passport-facebook').Strategy;
+const jwt = require('jsonwebtoken');
 const request = require('request');
 const Inbox = require('../models/inbox');
 const User = require('../models/user');
 const Company = require('../models/company');
 
-const host = 'https://6c736ad3.ngrok.io';
+const host = 'https://2f1892be.ngrok.io';
+// I need to implement JWT and Token authentication
+
 
 // Get token and Select Page for team
 router.get('/login-team-add-page/',
@@ -46,23 +48,24 @@ router.get('/add-team-page/', function (req, res){
 							});
 							Inbox.addInbox(newPage, (err, page)=>{
 								if(err){
-									res.json({success: false, msg:'Faild to register the facebook page for the team'});
+									return res.json({success: false, msg:'Faild to register the facebook page for the team'});
 								}
 								else{
 									company.inboxes.push(newPage);
-									Company.addInbox(company, (err, company)=>{
+									Company.updateCompany(company, (err, company)=>{
 										if(err){
-									res.json({success: false, msg:'Faild to register the facebook page for the team'});
+									return res.json({success: false, msg:'Faild to register the facebook page for the team'});
 								}
 								else{
-									res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
+									return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 									}
 								});
 								}
 							});
 						}
 						else{
-							return res.json({success:false, msg: "Inbox really exist in the company"});
+							newPage = '{success:false, msg: "Inbox really exist in the company"}';
+							return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 						}
 					});
 				}
@@ -107,23 +110,24 @@ router.get('/add-personal-page/', function (req, res){
 							});
 							Inbox.addInbox(newPage, (err, page)=>{
 								if(err){
-									res.json({success: false, msg:'Faild to register the facebook page for the team'});
+									return res.json({success: false, msg:'Faild to register the facebook page for the team'});
 								}
 								else{
 									company.inboxes.push(newPage);
-									Company.addInbox(company, (err, company)=>{
+									Company.updateCompany(company, (err, company)=>{
 										if(err){
-									res.json({success: false, msg:'Faild to register the facebook page for the team'});
+									return res.json({success: false, msg:'Faild to register the facebook page for the team'});
 								}
 								else{
-									res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
+									return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 									}
 								});
 								}
 							});
 						}
 						else{
-							return res.json({success:false, msg: "Inbox really exist in the company"});
+							newPage = '{success:false, msg: "Inbox really exist in the company"}';
+							return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 						}
 					});
 				}

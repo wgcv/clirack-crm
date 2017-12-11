@@ -94,20 +94,27 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_add_facebook_page_team_add_facebook_page_team_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_add_facebook_page_personal_add_facebook_page_personal_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__("../../../../angular2-moment/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__ = __webpack_require__("../../../../../src/app/pipe/truncate.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_infinite_scroll__ = __webpack_require__("../../../../ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__ = __webpack_require__("../../../../../src/app/components/inbox/inbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__ = __webpack_require__("../../../../../src/app/components/conversation/conversation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -136,14 +143,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
+
+
+
+
+
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_8__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_14__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_15__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/:slug', component: __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -151,31 +165,37 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__components_navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__components_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */]
+                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__["a" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__["a" /* ConversationComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__["a" /* TruncatePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
-                __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* RouterModule */].forRoot(appRoutes),
-                __WEBPACK_IMPORTED_MODULE_5_ngx_flash_messages__["a" /* FlashMessagesModule */]
+                __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
+                __WEBPACK_IMPORTED_MODULE_5_ngx_flash_messages__["a" /* FlashMessagesModule */],
+                __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"],
+                __WEBPACK_IMPORTED_MODULE_8_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_17__services_validate_service__["a" /* ValidateService */],
-                __WEBPACK_IMPORTED_MODULE_18__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_19__services_sidebar_service__["a" /* SidebarService */],
-                __WEBPACK_IMPORTED_MODULE_16__guards_auth_guards__["a" /* AuthGuard */]
+                __WEBPACK_IMPORTED_MODULE_22__services_validate_service__["a" /* ValidateService */],
+                __WEBPACK_IMPORTED_MODULE_23__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__["a" /* SidebarService */],
+                __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__["a" /* LoadConversationService */],
+                __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -206,7 +226,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://6c736ad3.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -233,6 +253,7 @@ var AddFacebookPagePersonalComponent = (function () {
     };
     AddFacebookPagePersonalComponent.prototype.update = function (value) {
         this.fbPage = value;
+        console.log(this.fbPage);
     };
     AddFacebookPagePersonalComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -270,7 +291,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://6c736ad3.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -297,6 +318,7 @@ var AddFacebookPageTeamComponent = (function () {
     };
     AddFacebookPageTeamComponent.prototype.update = function (value) {
         this.fbPage = value;
+        console.log(this.fbPage);
     };
     AddFacebookPageTeamComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -307,6 +329,100 @@ var AddFacebookPageTeamComponent = (function () {
         __metadata("design:paramtypes", [])
     ], AddFacebookPageTeamComponent);
     return AddFacebookPageTeamComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/conversation/conversation.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n  \toverflow: hidden;\n  \ttext-overflow: ellipsis;\n\n}\n.row {\n\tpadding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n\tpadding: 0 0 0 0;\n\toverflow: hidden;\n\n}\n.time {\n\tpadding: 0;\n\toverflow: hidden;\n}\n.small, small {\n\tfloat: right;\n\tvertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.full-content {\n\t font-size: 1rem;\n    margin-top: 0;\n\n\theight: calc(100vh - 60px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: 98%;\n    overflow-y: scroll;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/conversation/conversation.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-scrollable search-results\" infiniteScroll\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollThrottle]=\"1\"\n        [scrollWindow]=\"false\"\n        (scrolled)=\"onScrollDown()\"\n>\n   <div class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <h5 class=\"mb-1\">Conversaciones </h5>\n    </div>\n  </div>\n  <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\" *ngFor=\"let conversation of conversations.docs\">\n   <div class=\"d-flex w-100 justify-content-between\">\n    <div class=\"row\">\n      <div class=\"col-8 name\">\n        <h5 class=\"mb-1\">{{conversation.name}}</h5>\n      </div>\n      <div class=\"col-4 time\">\n        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>\n      </div>\n    </div>\n  </div>\n  <p class=\"mb-1\">{{conversation.preview | truncate :75 : true}}</p>\n  <small *ngIf=\"conversation.assigned\">Asignado a: {{conversation.assigned}}</small>\n</a>\n</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/conversation/conversation.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConversationComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var ConversationComponent = (function () {
+    function ConversationComponent(loadConversationService) {
+        this.loadConversationService = loadConversationService;
+        this.conversations = { page: 0, docs: [] };
+    }
+    ConversationComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.loadConversationService.getInbox(this.slug).subscribe(function (inbox) {
+            _this.inbox = inbox;
+            _this.loadConversationService.getConversations(_this.inbox, _this.conversations).subscribe(function (conversations) {
+                _this.conversations = conversations;
+                _this.loadConversationService.loadConversationsFacebook(_this.inbox, conversations, { next: '', docs: [] }).subscribe(function (mixed) {
+                    console.log(mixed);
+                }, function (err) {
+                    console.log(err);
+                });
+            }, function (err) {
+                console.log(err);
+            });
+        }, function (err) {
+            console.log(err);
+        });
+    };
+    ConversationComponent.prototype.onScrollDown = function (ev) {
+        console.log('scrolled down!!', ev);
+    };
+    ConversationComponent.prototype.onUp = function (ev) {
+        console.log('scrolled up!!', ev);
+    };
+    ConversationComponent.prototype.onScroll = function () {
+        console.log('scrolled!!');
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", String)
+    ], ConversationComponent.prototype, "slug", void 0);
+    ConversationComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-conversation',
+            template: __webpack_require__("../../../../../src/app/components/conversation/conversation.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/conversation/conversation.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_conversation_service__["a" /* LoadConversationService */]])
+    ], ConversationComponent);
+    return ConversationComponent;
 }());
 
 
@@ -435,6 +551,72 @@ var HomeComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/components/inbox/inbox.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/inbox/inbox.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"row\">\n  <div class=\"col-12 col-sm-5 col-md-4 col-xl-3\">\n\t<app-conversation  [slug]=\"slug\"></app-conversation>\n\t</div>\n  <div class=\"col-12 col-sm-7 col-md-8 col-lx-9\">.col-6 .col-md-4</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/inbox/inbox.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InboxComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var InboxComponent = (function () {
+    function InboxComponent(route, router) {
+        this.route = route;
+        this.router = router;
+    }
+    InboxComponent.prototype.ngOnInit = function () {
+        this.slug = this.route.snapshot.paramMap.get('slug');
+    };
+    InboxComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-inbox',
+            template: __webpack_require__("../../../../../src/app/components/inbox/inbox.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/inbox/inbox.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
+    ], InboxComponent);
+    return InboxComponent;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/components/login/login.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -520,7 +702,7 @@ var LoginComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -591,7 +773,7 @@ var NavbarComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/navbar/navbar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/navbar/navbar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */]])
     ], NavbarComponent);
     return NavbarComponent;
 }());
@@ -665,7 +847,7 @@ var ProfileComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/profile/profile.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/profile/profile.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */]])
     ], ProfileComponent);
     return ProfileComponent;
 }());
@@ -781,7 +963,7 @@ var RegisterComponent = (function () {
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */],
             __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
-            __WEBPACK_IMPORTED_MODULE_4__angular_router__["a" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
             __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
     ], RegisterComponent);
     return RegisterComponent;
@@ -861,7 +1043,7 @@ var SidebarComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["a" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4_ngx_flash_messages__["b" /* FlashMessagesService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4_ngx_flash_messages__["b" /* FlashMessagesService */]])
     ], SidebarComponent);
     return SidebarComponent;
 }());
@@ -906,9 +1088,51 @@ var AuthGuard = (function () {
     };
     AuthGuard = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* Router */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_1__angular_router__["b" /* Router */]])
     ], AuthGuard);
     return AuthGuard;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/pipe/truncate.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TruncatePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var TruncatePipe = (function () {
+    function TruncatePipe() {
+    }
+    TruncatePipe.prototype.transform = function (value, limit, completeWords, ellipsis) {
+        if (limit === void 0) { limit = 75; }
+        if (completeWords === void 0) { completeWords = false; }
+        if (ellipsis === void 0) { ellipsis = '...'; }
+        if (value.length > limit) {
+            if (completeWords) {
+                limit = value.substr(0, limit).lastIndexOf(' ');
+            }
+            return value.substr(0, limit) + ellipsis;
+        }
+        else {
+            return value;
+        }
+    };
+    TruncatePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'truncate'
+        })
+    ], TruncatePipe);
+    return TruncatePipe;
 }());
 
 
@@ -972,6 +1196,9 @@ var AuthService = (function () {
         var token = localStorage.getItem('id_token');
         this.authToken = token;
     };
+    AuthService.prototype.getToken = function () {
+        return this.authToken;
+    };
     AuthService.prototype.logout = function () {
         this.authToken = null;
         this.user = null;
@@ -982,6 +1209,177 @@ var AuthService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
     ], AuthService);
     return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/load-conversation.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadConversationService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_expand__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/expand.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/take.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_empty__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/empty.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+
+
+var LoadConversationService = (function () {
+    function LoadConversationService(http, authService) {
+        this.http = http;
+        this.authService = authService;
+    }
+    LoadConversationService.prototype.getInbox = function (slug) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/inbox/' + slug, { headers: headers }).map(function (data) { return data.json()[0]; });
+    };
+    LoadConversationService.prototype.getConversations = function (inbox, conversations) {
+        var page = conversations.page + 1;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/' + inbox._id + '/conversations?page=' + page, { headers: headers }).map(function (data) {
+            if (data.json().pages > conversations.page) {
+                conversations.page = page;
+                conversations.docs = conversations.docs.concat(data.json().docs);
+                return conversations;
+            }
+            else {
+                return conversations;
+            }
+        });
+    };
+    LoadConversationService.prototype.getInboxes = function () {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        this.http.get('/api/communication/inboxes', { headers: headers }).subscribe(function (data) {
+            _this.inboxes = data.json();
+        });
+    };
+    LoadConversationService.prototype.mixConversationFacebook = function (inbox, conversations, conversationsFB) {
+        var wasUpdate = false;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        for (var i = 0; i < conversationsFB.docs.length; i++) {
+            var exist = false;
+            for (var j = 0; j < conversations.docs.length; j++) {
+                if (conversationsFB.docs[i].api.id === conversations.docs[j].api.id) {
+                    exist = true;
+                }
+            }
+            if (!exist) {
+                wasUpdate = true;
+                var converstaionfb = conversationsFB.docs[i];
+                this.http.post('/api/communication/' + inbox._id + '/conversations', converstaionfb, { headers: headers }).subscribe({ error: function (e) { return console.error(e); } });
+            }
+        }
+        return wasUpdate;
+    };
+    LoadConversationService.prototype.loadConversationsFacebook = function (inbox, conversations, conversationsfb) {
+        var _this = this;
+        return this.getConversationsFacebook(inbox, conversationsfb).map(function (conversationsfb) {
+            return _this.getConversations(inbox, conversations).subscribe(function (conversations) {
+                var mixed = _this.mixConversationFacebook(inbox, conversations, conversationsfb);
+                if (conversationsfb.next != '' && mixed) {
+                    return _this.loadConversationsFacebook(inbox, conversations, conversationsfb).subscribe(function (data) { return data; });
+                }
+                else {
+                    return __WEBPACK_IMPORTED_MODULE_5_rxjs_Observable__["Observable"].empty();
+                }
+            });
+        });
+    };
+    LoadConversationService.prototype.getConversationsFacebook = function (inbox, conversations) {
+        if (conversations.next == '') {
+            return this.http.get('https://graph.facebook.com/' + inbox.user + '/conversations?fields=id,participants,link,unread_count,messages.limit(1){message,created_time}&limit=10&access_token=' + inbox.token).map(function (data) {
+                conversations.docs = [];
+                data.json().data.forEach(function (element) {
+                    var conversation = {
+                        inbox: inbox._id,
+                        name: element.participants.data[0].name,
+                        unread: element.unread_count,
+                        preview: element.messages.data[0].message,
+                        lastTime: element.messages.data[0].created_time,
+                        api: {
+                            id: element.id,
+                            participantId: element.participants.data[0].id,
+                            link: 'https://facebook.com' + element.link
+                        }
+                    };
+                    conversations.docs.push(conversation);
+                    if (data.json().paging.next) {
+                        conversations.next = data.json().paging.next;
+                    }
+                    else {
+                        conversations.next = '';
+                    }
+                });
+                return conversations;
+            });
+        }
+        else {
+            return this.http.get(conversations.next).map(function (data) {
+                conversations.docs = [];
+                data.json().data.forEach(function (element) {
+                    var conversation = {
+                        inbox: inbox._id,
+                        name: element.participants.data[0].name,
+                        unread: element.unread_count,
+                        preview: element.messages.data[0].message,
+                        lastTime: element.messages.data[0].created_time,
+                        api: {
+                            id: element.id,
+                            participantId: element.participants.data[0].id,
+                            link: 'https://facebook.com' + element.link
+                        }
+                    };
+                    conversations.docs.push(conversation);
+                    if (data.json().paging.next) {
+                        conversations.next = data.json().paging.next;
+                    }
+                    else {
+                        conversations.next = '';
+                    }
+                });
+                return conversations;
+            });
+        }
+    };
+    LoadConversationService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], __WEBPACK_IMPORTED_MODULE_7__auth_service__["a" /* AuthService */]])
+    ], LoadConversationService);
+    return LoadConversationService;
 }());
 
 
@@ -1115,6 +1513,265 @@ if (__WEBPACK_IMPORTED_MODULE_3__environments_environment__["a" /* environment *
 Object(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__app_app_module__["a" /* AppModule */])
     .catch(function (err) { return console.log(err); });
 
+
+/***/ }),
+
+/***/ "../../../../moment/locale recursive ^\\.\\/.*$":
+/***/ (function(module, exports, __webpack_require__) {
+
+var map = {
+	"./af": "../../../../moment/locale/af.js",
+	"./af.js": "../../../../moment/locale/af.js",
+	"./ar": "../../../../moment/locale/ar.js",
+	"./ar-dz": "../../../../moment/locale/ar-dz.js",
+	"./ar-dz.js": "../../../../moment/locale/ar-dz.js",
+	"./ar-kw": "../../../../moment/locale/ar-kw.js",
+	"./ar-kw.js": "../../../../moment/locale/ar-kw.js",
+	"./ar-ly": "../../../../moment/locale/ar-ly.js",
+	"./ar-ly.js": "../../../../moment/locale/ar-ly.js",
+	"./ar-ma": "../../../../moment/locale/ar-ma.js",
+	"./ar-ma.js": "../../../../moment/locale/ar-ma.js",
+	"./ar-sa": "../../../../moment/locale/ar-sa.js",
+	"./ar-sa.js": "../../../../moment/locale/ar-sa.js",
+	"./ar-tn": "../../../../moment/locale/ar-tn.js",
+	"./ar-tn.js": "../../../../moment/locale/ar-tn.js",
+	"./ar.js": "../../../../moment/locale/ar.js",
+	"./az": "../../../../moment/locale/az.js",
+	"./az.js": "../../../../moment/locale/az.js",
+	"./be": "../../../../moment/locale/be.js",
+	"./be.js": "../../../../moment/locale/be.js",
+	"./bg": "../../../../moment/locale/bg.js",
+	"./bg.js": "../../../../moment/locale/bg.js",
+	"./bm": "../../../../moment/locale/bm.js",
+	"./bm.js": "../../../../moment/locale/bm.js",
+	"./bn": "../../../../moment/locale/bn.js",
+	"./bn.js": "../../../../moment/locale/bn.js",
+	"./bo": "../../../../moment/locale/bo.js",
+	"./bo.js": "../../../../moment/locale/bo.js",
+	"./br": "../../../../moment/locale/br.js",
+	"./br.js": "../../../../moment/locale/br.js",
+	"./bs": "../../../../moment/locale/bs.js",
+	"./bs.js": "../../../../moment/locale/bs.js",
+	"./ca": "../../../../moment/locale/ca.js",
+	"./ca.js": "../../../../moment/locale/ca.js",
+	"./cs": "../../../../moment/locale/cs.js",
+	"./cs.js": "../../../../moment/locale/cs.js",
+	"./cv": "../../../../moment/locale/cv.js",
+	"./cv.js": "../../../../moment/locale/cv.js",
+	"./cy": "../../../../moment/locale/cy.js",
+	"./cy.js": "../../../../moment/locale/cy.js",
+	"./da": "../../../../moment/locale/da.js",
+	"./da.js": "../../../../moment/locale/da.js",
+	"./de": "../../../../moment/locale/de.js",
+	"./de-at": "../../../../moment/locale/de-at.js",
+	"./de-at.js": "../../../../moment/locale/de-at.js",
+	"./de-ch": "../../../../moment/locale/de-ch.js",
+	"./de-ch.js": "../../../../moment/locale/de-ch.js",
+	"./de.js": "../../../../moment/locale/de.js",
+	"./dv": "../../../../moment/locale/dv.js",
+	"./dv.js": "../../../../moment/locale/dv.js",
+	"./el": "../../../../moment/locale/el.js",
+	"./el.js": "../../../../moment/locale/el.js",
+	"./en-au": "../../../../moment/locale/en-au.js",
+	"./en-au.js": "../../../../moment/locale/en-au.js",
+	"./en-ca": "../../../../moment/locale/en-ca.js",
+	"./en-ca.js": "../../../../moment/locale/en-ca.js",
+	"./en-gb": "../../../../moment/locale/en-gb.js",
+	"./en-gb.js": "../../../../moment/locale/en-gb.js",
+	"./en-ie": "../../../../moment/locale/en-ie.js",
+	"./en-ie.js": "../../../../moment/locale/en-ie.js",
+	"./en-nz": "../../../../moment/locale/en-nz.js",
+	"./en-nz.js": "../../../../moment/locale/en-nz.js",
+	"./eo": "../../../../moment/locale/eo.js",
+	"./eo.js": "../../../../moment/locale/eo.js",
+	"./es": "../../../../moment/locale/es.js",
+	"./es-do": "../../../../moment/locale/es-do.js",
+	"./es-do.js": "../../../../moment/locale/es-do.js",
+	"./es-us": "../../../../moment/locale/es-us.js",
+	"./es-us.js": "../../../../moment/locale/es-us.js",
+	"./es.js": "../../../../moment/locale/es.js",
+	"./et": "../../../../moment/locale/et.js",
+	"./et.js": "../../../../moment/locale/et.js",
+	"./eu": "../../../../moment/locale/eu.js",
+	"./eu.js": "../../../../moment/locale/eu.js",
+	"./fa": "../../../../moment/locale/fa.js",
+	"./fa.js": "../../../../moment/locale/fa.js",
+	"./fi": "../../../../moment/locale/fi.js",
+	"./fi.js": "../../../../moment/locale/fi.js",
+	"./fo": "../../../../moment/locale/fo.js",
+	"./fo.js": "../../../../moment/locale/fo.js",
+	"./fr": "../../../../moment/locale/fr.js",
+	"./fr-ca": "../../../../moment/locale/fr-ca.js",
+	"./fr-ca.js": "../../../../moment/locale/fr-ca.js",
+	"./fr-ch": "../../../../moment/locale/fr-ch.js",
+	"./fr-ch.js": "../../../../moment/locale/fr-ch.js",
+	"./fr.js": "../../../../moment/locale/fr.js",
+	"./fy": "../../../../moment/locale/fy.js",
+	"./fy.js": "../../../../moment/locale/fy.js",
+	"./gd": "../../../../moment/locale/gd.js",
+	"./gd.js": "../../../../moment/locale/gd.js",
+	"./gl": "../../../../moment/locale/gl.js",
+	"./gl.js": "../../../../moment/locale/gl.js",
+	"./gom-latn": "../../../../moment/locale/gom-latn.js",
+	"./gom-latn.js": "../../../../moment/locale/gom-latn.js",
+	"./gu": "../../../../moment/locale/gu.js",
+	"./gu.js": "../../../../moment/locale/gu.js",
+	"./he": "../../../../moment/locale/he.js",
+	"./he.js": "../../../../moment/locale/he.js",
+	"./hi": "../../../../moment/locale/hi.js",
+	"./hi.js": "../../../../moment/locale/hi.js",
+	"./hr": "../../../../moment/locale/hr.js",
+	"./hr.js": "../../../../moment/locale/hr.js",
+	"./hu": "../../../../moment/locale/hu.js",
+	"./hu.js": "../../../../moment/locale/hu.js",
+	"./hy-am": "../../../../moment/locale/hy-am.js",
+	"./hy-am.js": "../../../../moment/locale/hy-am.js",
+	"./id": "../../../../moment/locale/id.js",
+	"./id.js": "../../../../moment/locale/id.js",
+	"./is": "../../../../moment/locale/is.js",
+	"./is.js": "../../../../moment/locale/is.js",
+	"./it": "../../../../moment/locale/it.js",
+	"./it.js": "../../../../moment/locale/it.js",
+	"./ja": "../../../../moment/locale/ja.js",
+	"./ja.js": "../../../../moment/locale/ja.js",
+	"./jv": "../../../../moment/locale/jv.js",
+	"./jv.js": "../../../../moment/locale/jv.js",
+	"./ka": "../../../../moment/locale/ka.js",
+	"./ka.js": "../../../../moment/locale/ka.js",
+	"./kk": "../../../../moment/locale/kk.js",
+	"./kk.js": "../../../../moment/locale/kk.js",
+	"./km": "../../../../moment/locale/km.js",
+	"./km.js": "../../../../moment/locale/km.js",
+	"./kn": "../../../../moment/locale/kn.js",
+	"./kn.js": "../../../../moment/locale/kn.js",
+	"./ko": "../../../../moment/locale/ko.js",
+	"./ko.js": "../../../../moment/locale/ko.js",
+	"./ky": "../../../../moment/locale/ky.js",
+	"./ky.js": "../../../../moment/locale/ky.js",
+	"./lb": "../../../../moment/locale/lb.js",
+	"./lb.js": "../../../../moment/locale/lb.js",
+	"./lo": "../../../../moment/locale/lo.js",
+	"./lo.js": "../../../../moment/locale/lo.js",
+	"./lt": "../../../../moment/locale/lt.js",
+	"./lt.js": "../../../../moment/locale/lt.js",
+	"./lv": "../../../../moment/locale/lv.js",
+	"./lv.js": "../../../../moment/locale/lv.js",
+	"./me": "../../../../moment/locale/me.js",
+	"./me.js": "../../../../moment/locale/me.js",
+	"./mi": "../../../../moment/locale/mi.js",
+	"./mi.js": "../../../../moment/locale/mi.js",
+	"./mk": "../../../../moment/locale/mk.js",
+	"./mk.js": "../../../../moment/locale/mk.js",
+	"./ml": "../../../../moment/locale/ml.js",
+	"./ml.js": "../../../../moment/locale/ml.js",
+	"./mr": "../../../../moment/locale/mr.js",
+	"./mr.js": "../../../../moment/locale/mr.js",
+	"./ms": "../../../../moment/locale/ms.js",
+	"./ms-my": "../../../../moment/locale/ms-my.js",
+	"./ms-my.js": "../../../../moment/locale/ms-my.js",
+	"./ms.js": "../../../../moment/locale/ms.js",
+	"./my": "../../../../moment/locale/my.js",
+	"./my.js": "../../../../moment/locale/my.js",
+	"./nb": "../../../../moment/locale/nb.js",
+	"./nb.js": "../../../../moment/locale/nb.js",
+	"./ne": "../../../../moment/locale/ne.js",
+	"./ne.js": "../../../../moment/locale/ne.js",
+	"./nl": "../../../../moment/locale/nl.js",
+	"./nl-be": "../../../../moment/locale/nl-be.js",
+	"./nl-be.js": "../../../../moment/locale/nl-be.js",
+	"./nl.js": "../../../../moment/locale/nl.js",
+	"./nn": "../../../../moment/locale/nn.js",
+	"./nn.js": "../../../../moment/locale/nn.js",
+	"./pa-in": "../../../../moment/locale/pa-in.js",
+	"./pa-in.js": "../../../../moment/locale/pa-in.js",
+	"./pl": "../../../../moment/locale/pl.js",
+	"./pl.js": "../../../../moment/locale/pl.js",
+	"./pt": "../../../../moment/locale/pt.js",
+	"./pt-br": "../../../../moment/locale/pt-br.js",
+	"./pt-br.js": "../../../../moment/locale/pt-br.js",
+	"./pt.js": "../../../../moment/locale/pt.js",
+	"./ro": "../../../../moment/locale/ro.js",
+	"./ro.js": "../../../../moment/locale/ro.js",
+	"./ru": "../../../../moment/locale/ru.js",
+	"./ru.js": "../../../../moment/locale/ru.js",
+	"./sd": "../../../../moment/locale/sd.js",
+	"./sd.js": "../../../../moment/locale/sd.js",
+	"./se": "../../../../moment/locale/se.js",
+	"./se.js": "../../../../moment/locale/se.js",
+	"./si": "../../../../moment/locale/si.js",
+	"./si.js": "../../../../moment/locale/si.js",
+	"./sk": "../../../../moment/locale/sk.js",
+	"./sk.js": "../../../../moment/locale/sk.js",
+	"./sl": "../../../../moment/locale/sl.js",
+	"./sl.js": "../../../../moment/locale/sl.js",
+	"./sq": "../../../../moment/locale/sq.js",
+	"./sq.js": "../../../../moment/locale/sq.js",
+	"./sr": "../../../../moment/locale/sr.js",
+	"./sr-cyrl": "../../../../moment/locale/sr-cyrl.js",
+	"./sr-cyrl.js": "../../../../moment/locale/sr-cyrl.js",
+	"./sr.js": "../../../../moment/locale/sr.js",
+	"./ss": "../../../../moment/locale/ss.js",
+	"./ss.js": "../../../../moment/locale/ss.js",
+	"./sv": "../../../../moment/locale/sv.js",
+	"./sv.js": "../../../../moment/locale/sv.js",
+	"./sw": "../../../../moment/locale/sw.js",
+	"./sw.js": "../../../../moment/locale/sw.js",
+	"./ta": "../../../../moment/locale/ta.js",
+	"./ta.js": "../../../../moment/locale/ta.js",
+	"./te": "../../../../moment/locale/te.js",
+	"./te.js": "../../../../moment/locale/te.js",
+	"./tet": "../../../../moment/locale/tet.js",
+	"./tet.js": "../../../../moment/locale/tet.js",
+	"./th": "../../../../moment/locale/th.js",
+	"./th.js": "../../../../moment/locale/th.js",
+	"./tl-ph": "../../../../moment/locale/tl-ph.js",
+	"./tl-ph.js": "../../../../moment/locale/tl-ph.js",
+	"./tlh": "../../../../moment/locale/tlh.js",
+	"./tlh.js": "../../../../moment/locale/tlh.js",
+	"./tr": "../../../../moment/locale/tr.js",
+	"./tr.js": "../../../../moment/locale/tr.js",
+	"./tzl": "../../../../moment/locale/tzl.js",
+	"./tzl.js": "../../../../moment/locale/tzl.js",
+	"./tzm": "../../../../moment/locale/tzm.js",
+	"./tzm-latn": "../../../../moment/locale/tzm-latn.js",
+	"./tzm-latn.js": "../../../../moment/locale/tzm-latn.js",
+	"./tzm.js": "../../../../moment/locale/tzm.js",
+	"./uk": "../../../../moment/locale/uk.js",
+	"./uk.js": "../../../../moment/locale/uk.js",
+	"./ur": "../../../../moment/locale/ur.js",
+	"./ur.js": "../../../../moment/locale/ur.js",
+	"./uz": "../../../../moment/locale/uz.js",
+	"./uz-latn": "../../../../moment/locale/uz-latn.js",
+	"./uz-latn.js": "../../../../moment/locale/uz-latn.js",
+	"./uz.js": "../../../../moment/locale/uz.js",
+	"./vi": "../../../../moment/locale/vi.js",
+	"./vi.js": "../../../../moment/locale/vi.js",
+	"./x-pseudo": "../../../../moment/locale/x-pseudo.js",
+	"./x-pseudo.js": "../../../../moment/locale/x-pseudo.js",
+	"./yo": "../../../../moment/locale/yo.js",
+	"./yo.js": "../../../../moment/locale/yo.js",
+	"./zh-cn": "../../../../moment/locale/zh-cn.js",
+	"./zh-cn.js": "../../../../moment/locale/zh-cn.js",
+	"./zh-hk": "../../../../moment/locale/zh-hk.js",
+	"./zh-hk.js": "../../../../moment/locale/zh-hk.js",
+	"./zh-tw": "../../../../moment/locale/zh-tw.js",
+	"./zh-tw.js": "../../../../moment/locale/zh-tw.js"
+};
+function webpackContext(req) {
+	return __webpack_require__(webpackContextResolve(req));
+};
+function webpackContextResolve(req) {
+	var id = map[req];
+	if(!(id + 1)) // check for number or string
+		throw new Error("Cannot find module '" + req + "'.");
+	return id;
+};
+webpackContext.keys = function webpackContextKeys() {
+	return Object.keys(map);
+};
+webpackContext.resolve = webpackContextResolve;
+module.exports = webpackContext;
+webpackContext.id = "../../../../moment/locale recursive ^\\.\\/.*$";
 
 /***/ }),
 

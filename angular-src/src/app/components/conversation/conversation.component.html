@@ -1,0 +1,28 @@
+<div class="full-content">
+  <div class="list-group pre-scrollable search-results" infiniteScroll
+        [infiniteScrollDistance]="1"
+        [infiniteScrollThrottle]="1"
+        [scrollWindow]="false"
+        (scrolled)="onScrollDown()"
+>
+   <div class="list-group-item flex-column align-items-start" >
+     <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Conversaciones </h5>
+    </div>
+  </div>
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let conversation of conversations.docs">
+   <div class="d-flex w-100 justify-content-between">
+    <div class="row">
+      <div class="col-8 name">
+        <h5 class="mb-1">{{conversation.name}}</h5>
+      </div>
+      <div class="col-4 time">
+        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>
+      </div>
+    </div>
+  </div>
+  <p class="mb-1">{{conversation.preview | truncate :75 : true}}</p>
+  <small *ngIf="conversation.assigned">Asignado a: {{conversation.assigned}}</small>
+</a>
+</div>
+</div>

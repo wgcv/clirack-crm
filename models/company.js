@@ -36,7 +36,7 @@ module.exports.getCompanyByname = function(name, callback){
 }
 
 
-module.exports.addInbox = function(company, callback){
+module.exports.updateCompany = function(company, callback){
 		let query = {_id:company._id};
 		Company.findOneAndUpdate(query, company, {upsert:false}, callback);  
 }

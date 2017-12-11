@@ -31,6 +31,7 @@ app.set('view engine', 'html');
 
 const users = require('./routes/users');
 const facebook = require('./routes/facebook');
+const communication = require('./routes/communication');
 
 // Port number
 const port = 3000;
@@ -49,14 +50,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require('./config/passport')(passport);
-
 app.use('/api/users',users);
 app.use('/oauth/facebook',facebook);
+app.use('/api/communication',communication);
 
-app.post('/webhook/', function (req, res){
-	console.log(JSON.stringify(req.body, null, 4));
-	res.status(200).send('EVENT_RECEIVED');
-});
 // Angular webs
 
 app.get('*', (req, res) =>{

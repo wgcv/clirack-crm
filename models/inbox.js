@@ -11,6 +11,10 @@ const InboxSchema = mongoose.Schema({
 		type: String,
 		require: true
 	},
+	slug:{
+		type: String,
+		require: true
+	},
 	team:{
 		type: Boolean,
 		require: true
@@ -34,6 +38,15 @@ module.exports.addInbox = function(newInbox, callback){
 
 module.exports.getInboxBySourceAndUser = function(source,user, callback){
 	const query = {source: source,user: user};
+	Inbox.find(query,callback);
+}
+module.exports.getInboxBySlug = function(slug, ids, userId, callback){
+	const query = {slug: slug, _id: {$in: ids}, assigned: userId};
+	Inbox.find(query,callback);
+}
+
+module.exports.getInboxes = function(ids,userId, callback){
+	const query = {_id: {$in: ids}, assigned: userId};
 	Inbox.find(query,callback);
 }
 

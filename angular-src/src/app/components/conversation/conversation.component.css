@@ -1,0 +1,44 @@
+.h5, h5 {
+    font-size: 1rem;
+    white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+
+}
+.row {
+	padding: 0;
+    margin: 0;
+    width: 100%;
+}
+.name {
+	padding: 0 0 0 0;
+	overflow: hidden;
+
+}
+.time {
+	padding: 0;
+	overflow: hidden;
+}
+.small, small {
+	float: right;
+	vertical-align: top;
+    font-size: 70%;
+    font-weight: 400;
+    white-space: nowrap;
+
+}
+.full-content {
+	 font-size: 1rem;
+    margin-top: 0;
+
+	height: calc(100vh - 60px);
+}
+p {
+    font-size: 0.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.pre-scrollable {
+    max-height: 98%;
+    overflow-y: scroll;
+}

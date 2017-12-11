@@ -13,6 +13,7 @@ export class AddFacebookPagePersonalComponent implements OnInit {
   }
  update(value) {
  	this.fbPage = value;
+ 	console.log(this.fbPage);
   }
  
 }
