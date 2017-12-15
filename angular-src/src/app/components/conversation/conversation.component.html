@@ -24,5 +24,10 @@
   <p class="mb-1">{{conversation.preview | truncate :75 : true}}</p>
   <small *ngIf="conversation.assigned">Asignado a: {{conversation.assigned}}</small>
 </a>
+   <div  [ngClass]="{ 'invisible': !loading }"  class="list-group-item flex-column align-items-start" >
+     <div class="d-flex w-100 justify-content-between">
+      <img src="/assets/img/loading.svg" height="45rem" class="mx-auto d-block" />
+    </div>
+  </div>
 </div>
 </div>

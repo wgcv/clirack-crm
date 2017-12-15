@@ -46,7 +46,7 @@ module.exports.addConversation = function(newConversation, callback){
 }
 module.exports.getConversations = function(inbox,page, callback){
 	const query = {inbox: inbox};
-	Conversation.paginate(query, {sort: { lastTime: -1 }, page: page, limit: 2 },callback);
+	Conversation.paginate(query, {sort: { lastTime: -1 }, page: page, limit: 20 },callback);
 }
 module.exports.updateConvesation = function(message, callback){
 		let query = {_id:message._id};

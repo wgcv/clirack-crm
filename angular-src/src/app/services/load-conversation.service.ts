@@ -55,42 +55,43 @@ export class LoadConversationService {
 
 	
 
-	mixConversationFacebook(inbox, conversations, conversationsFB){
+	mixConversationFacebook(inbox, conversations, conversationsOutside){
 		var wasUpdate = false;
 		let headers = new Headers();
 		this.authService.loadToken();
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
-			for (var i = 0; i < conversationsFB.docs.length; i++) {
+			for (var i = 0; i < conversationsOutside.docs.length; i++) {
 				var exist = false;
 				for (var j = 0; j < conversations.docs.length; j++) {
-					if( conversationsFB.docs[i].api.id === conversations.docs[j].api.id){
+					if( conversationsOutside.docs[i].api.id === conversations.docs[j].api.id){
 						exist = true;
 					}
 				}
 				if(!exist){
 					wasUpdate = true;
-					let converstaionfb = conversationsFB.docs[i];
-					this.http.post('/api/communication/'+inbox._id+'/conversations',converstaionfb ,{headers:headers}).subscribe({ error: e => console.error(e) });
+					let conversationOutside = conversationsOutside.docs[i];
+					this.http.post('/api/communication/'+inbox._id+'/conversations',conversationOutside ,{headers:headers}).subscribe({ error: e => console.error(e) });
 				}
 			}
 		
 		return wasUpdate;
-		
 	}
 	loadConversationsFacebook(inbox, conversations, conversationsfb){
 		return this.getConversationsFacebook(inbox, conversationsfb).map(conversationsfb => {
-			return this.getConversations(inbox,conversations).subscribe(conversations => {
+			return this.getConversations(inbox,conversations).map(conversations => {
 				var mixed = this.mixConversationFacebook(inbox, conversations, conversationsfb);
 				if(conversationsfb.next != '' &&  mixed) {
-					return this.loadConversationsFacebook(inbox, conversations, conversationsfb).subscribe(data=>data);
+					return this.loadConversationsFacebook(inbox, conversations, conversationsfb).map(data=>{return data});
 				} else {
-					return Observable.empty();
+					return conversationsfb;
 				}
 			});
 
 		});
 	}
+
+
 	getConversationsFacebook(inbox, conversations){
 		if( conversations.next == '' ){
 			return this.http.get('https://graph.facebook.com/'+inbox.user+'/conversations?fields=id,participants,link,unread_count,messages.limit(1){message,created_time}&limit=10&access_token='+inbox.token).map(data => {
