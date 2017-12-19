@@ -115,6 +115,9 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -128,6 +131,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Npm Install Modules
+
+
+
 
 
 
@@ -177,7 +183,9 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */],
                 __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__["a" /* ConversationComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__["a" /* TruncatePipe */]
+                __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__["a" /* TruncatePipe */],
+                __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__["a" /* MessageComponent */],
+                __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__["a" /* ShowtimePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -193,6 +201,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_23__services_auth_service__["a" /* AuthService */],
                 __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__["a" /* SidebarService */],
                 __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__["a" /* LoadConversationService */],
+                __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__["a" /* LoadMessageService */],
                 __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
@@ -226,7 +235,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,read_mailbox,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -291,7 +300,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,read_mailbox,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -343,7 +352,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n  \toverflow: hidden;\n  \ttext-overflow: ellipsis;\n\n}\n.row {\n\tpadding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n\tpadding: 0 0 0 0;\n\toverflow: hidden;\n\n}\n.time {\n\tpadding: 0;\n\toverflow: hidden;\n}\n.small, small {\n\tfloat: right;\n\tvertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.full-content {\n\t font-size: 1rem;\n    margin-top: 0;\n\n\theight: calc(100vh - 60px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: 98%;\n    overflow-y: scroll;\n}", ""]);
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n  \toverflow: hidden;\n  \ttext-overflow: ellipsis;\n\n}\n.row {\n\tpadding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n\tpadding: 0 0 0 0;\n\toverflow: hidden;\n\n}\n.time {\n\tpadding: 0;\n\toverflow: hidden;\n}\n.small, small {\n\tfloat: right;\n\tvertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.full-content {\n\t font-size: 1rem;\n    margin-top: 0;\n\n\theight: calc(100vh - 60px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: 100%;\n    overflow-y: scroll;\n}\n.pointer {\n    cursor: pointer;\n}\n.list-group-item:first-child{\n        border-top-left-radius: 0;\n    border-top-right-radius: 0;\n}\n.list-group-item:last-child {\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}", ""]);
 
 // exports
 
@@ -356,7 +365,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/conversation/conversation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-scrollable search-results\" infiniteScroll\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollThrottle]=\"1\"\n        [scrollWindow]=\"false\"\n        (scrolled)=\"onScrollDown()\"\n>\n   <div class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <h5 class=\"mb-1\">Conversaciones </h5>\n    </div>\n  </div>\n  <a href=\"#\" class=\"list-group-item list-group-item-action flex-column align-items-start\" *ngFor=\"let conversation of conversations.docs\">\n   <div class=\"d-flex w-100 justify-content-between\">\n    <div class=\"row\">\n      <div class=\"col-8 name\">\n        <h5 class=\"mb-1\">{{conversation.name}}</h5>\n      </div>\n      <div class=\"col-4 time\">\n        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>\n      </div>\n    </div>\n  </div>\n  <p class=\"mb-1\">{{conversation.preview | truncate :75 : true}}</p>\n  <small *ngIf=\"conversation.assigned\">Asignado a: {{conversation.assigned}}</small>\n</a>\n   <div  [ngClass]=\"{ 'invisible': !loading }\"  class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n    </div>\n  </div>\n</div>\n</div>"
+module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-scrollable search-results\" infiniteScroll\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollThrottle]=\"1\"\n        [scrollWindow]=\"false\"\n        (scrolled)=\"onScrollDown()\"\n>\n   <div class=\"list-group-item sticky-top flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <h5 class=\"mb-1\">Conversaciones </h5>\n    </div>\n  </div>\n  <div class=\"list-group-item list-group-item-action flex-column align-items-start pointer\" *ngFor=\"let conversation of conversations.docs\" (click)=\"click($event, conversation)\">\n   <div class=\"d-flex w-100 justify-content-between\">\n    <div class=\"row\">\n      <div class=\"col-8 name\">\n        <h5 class=\"mb-1\">{{conversation.name}}</h5>\n      </div>\n      <div class=\"col-4 time\">\n        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>\n      </div>\n    </div>\n  </div>\n  <p class=\"mb-1\">{{conversation.preview | truncate :75 : true}}</p>\n  <small *ngIf=\"conversation.assigned\">Asignado a: {{conversation.assigned}}</small>\n</div>\n   <div  [ngClass]=\"{ 'd-none': !loading }\"  class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n    </div>\n  </div>\n</div>\n</div>"
 
 /***/ }),
 
@@ -385,49 +394,47 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var ConversationComponent = (function () {
     function ConversationComponent(loadConversationService) {
         this.loadConversationService = loadConversationService;
+        this.conversation = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.conversations = { page: 0, docs: [] };
         this.loading = false;
+        this.firstTime = true;
     }
     ConversationComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.loadConversationService.getInbox(this.slug).subscribe(function (inbox) {
             _this.inbox = inbox;
-            _this.loadConversations({ page: 0, docs: [] }, { next: '', docs: [] });
+            _this.loadConversations();
         }, function (err) {
             console.log(err);
         });
     };
-    ConversationComponent.prototype.suscribeToConversations = function () {
+    ConversationComponent.prototype.checkConversations = function () {
         var _this = this;
-        this.timerSubscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].timer(5000).subscribe(function () { return _this.loadConversations({ page: 0, docs: [] }, { next: '', docs: [] }); });
-    };
-    ConversationComponent.prototype.loadConversations = function (conversations, fbConversation) {
-        var _this = this;
-        this.loading = true;
-        this.loadConversationService.getConversations(this.inbox, conversations).subscribe(function (conversations) {
-            _this.loadConversationService.getConversationsFacebook(_this.inbox, fbConversation).subscribe(function (fbConversation) {
-                var mixed = _this.loadConversationService.mixConversationFacebook(_this.inbox, conversations, fbConversation);
-                if (fbConversation.next != '' && mixed) {
-                    _this.loadConversations(conversations, fbConversation);
-                    _this.conversations = conversations;
-                }
-                else {
-                    _this.loading = false;
-                    _this.suscribeToConversations();
-                }
-            }, function (err) {
-                console.log(err);
-            });
-        }, function (err) {
-            console.log(err);
+        this.timerSubscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].timer(7000).subscribe(function () {
+            _this.loadConversations();
         });
+    };
+    ConversationComponent.prototype.loadConversations = function () {
+        var _this = this;
+        this.loadConversationService.getConversations(this.inbox, { page: 0, docs: [] }).subscribe(function (conversations) {
+            _this.conversations = _this.loadConversationService.updateConversations(_this.conversations, conversations);
+            if (_this.firstTime && (conversations.docs.length > 0)) {
+                _this.firstTime = false;
+                _this.conversation.emit(conversations.docs[0]);
+            }
+            _this.checkConversations();
+        }, function (error) {
+            _this.checkConversations();
+        });
+    };
+    ConversationComponent.prototype.click = function ($event, conversation) {
+        this.conversation.emit(conversation);
     };
     ConversationComponent.prototype.onScrollDown = function (ev) {
         var _this = this;
         if (this.loading == false) {
             this.loading = true;
             this.loadConversationService.getConversations(this.inbox, this.conversations).subscribe(function (conversations) {
-                console.log(conversations);
                 _this.conversations = conversations;
                 _this.loading = false;
             }, function (err) {
@@ -439,6 +446,10 @@ var ConversationComponent = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
         __metadata("design:type", String)
     ], ConversationComponent.prototype, "slug", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+        __metadata("design:type", Object)
+    ], ConversationComponent.prototype, "conversation", void 0);
     ConversationComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-conversation',
@@ -597,7 +608,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/inbox/inbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-12 col-sm-5 col-md-4 col-xl-3\">\n\t<app-conversation  [slug]=\"slug\"></app-conversation>\n\t</div>\n  <div class=\"col-12 col-sm-7 col-md-8 col-lx-9\">.col-6 .col-md-4</div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-12 col-sm-5 col-md-4 col-xl-3 p-0\">\n\t<app-conversation  [slug]=\"slug\" (conversation)=\"updateConversation($event)\"></app-conversation>\n\t</div>\n  <div class=\"col-12 col-sm-7 col-md-8 col-xl-9 p-0\">\n  \t<app-message [conversation]=\"conversation\"></app-message>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -626,6 +637,9 @@ var InboxComponent = (function () {
     }
     InboxComponent.prototype.ngOnInit = function () {
         this.slug = this.route.snapshot.paramMap.get('slug');
+    };
+    InboxComponent.prototype.updateConversation = function (conversation) {
+        this.conversation = conversation;
     };
     InboxComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
@@ -730,6 +744,122 @@ var LoginComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
     ], LoginComponent);
     return LoginComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/message/message.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n\n}\n.row {\n    padding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n    padding: 0 0 0 0;\n    overflow: hidden;\n\n}\n.time {\n    padding: 0;\n    overflow: hidden;\n}\n.small, small {\n    vertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.header {\n    max-height: 40px;\n    min-height: 40px;\n    z-index: 10;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0;\n\n}\n.footer {\n    max-height: 130px;\n    min-height: 130px;\n    z-index: 10;\n}\n.full-content {\n     font-size: 1rem;\n    margin-top: 0;\n\n    height: calc(100vh - 58px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: calc(100% - 170px);\n    min-height: calc(100% - 170px);\n    overflow-y: scroll;\n}\n\n.scroll::-webkit-scrollbar-track\n{\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    border-radius: 4px;\n    background-color: #F5F5F5;\n}\n.scroll::-webkit-scrollbar\n{\n    width: 8px;\n    background-color: #F5F5F5;\n}\n\n.scroll::-webkit-scrollbar-thumb\n{\n    border-radius: 2px;\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    background-color: #343a40;\n}\na.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}\n.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0.25rem;\n}\n.block-message {    \n    display: block;\n    padding: .1rem 1.25rem;\n    background-color: #fff;\n}\n.block-message:last-child{\n    margin-bottom: 1em;\n}\n.message {\n    display: inline-block;\n    background: #f1f0f0;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: #212529;\n}\n.loading{\n    border: 0px;\n\n\n}\n.message-response{\n    display: inline-block;\n    background: #407fff;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: white;\n}", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/message/message.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item header \">\n\t\t<h5 class=\"mb-1\">{{conversation.name}}</h5>\n\t</div>\n\t<div class=\"list-group pre-scrollable scroll\" infiniteScroll\n\tdebounce\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollUpDistance]=\"0\"\n        [infiniteScrollThrottle]=\"300\"\n        [scrollWindow]=\"false\"\n\t\t(scrolledUp)=\"onUp()\"\n\t\t#messageScroll\n\t>\n\t<div  [ngClass]=\"{ 'd-none': !loading }\"  class=\"list-group-item flex-column align-items-start loading\" >\n\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t<img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n\t\t</div>\n\t</div>\n\t<div class=\"block-message\" *ngFor=\"let message of messages.docs; let i = index;\">\n\t\t<div class=\"d-flex w-100 justify-content-between\" *ngIf=\"message.time | showtime : i>0?messages.docs[i-1].time:'1992-11-25T11:49:07.000Z'\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-12 time text-center\">\n\t\t\t\t\t\t<small>{{ message.time | amCalendar }}</small>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t<div  *ngIf=\"!message.response\">\n\t\t\t<div class=\"message\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t\t<div  *ngIf=\"message.response\">\n\t\t\t<div class=\"message-response float-right\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"list-group-item footer\">\n\t<textarea class=\"form-control\" placeholder=\"Escríbe un mensaje\"></textarea>\n\t<div>\n\t\t<button type=\"button\" class=\"btn btn-primary m-2\">Enviar</button>\n\t</div>\n</div>\n</div>"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/message/message.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+var MessageComponent = (function () {
+    function MessageComponent(loadMessageService) {
+        this.loadMessageService = loadMessageService;
+        this._conversation = { name: '' };
+        this.loading = false;
+        this.messages = { page: 0, docs: [] };
+    }
+    Object.defineProperty(MessageComponent.prototype, "conversation", {
+        get: function () { return this._conversation; },
+        set: function (conversation) {
+            if (conversation) {
+                this._conversation = conversation;
+                this.getMessage(conversation);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    MessageComponent.prototype.ngOnInit = function () {
+    };
+    MessageComponent.prototype.getMessage = function (conversation) {
+        var _this = this;
+        this.messages = { page: 0, docs: [] };
+        this.loadMessageService.getMoreMessages(conversation, this.messages).subscribe(function (messages) {
+            _this.messages = messages;
+            setTimeout(function () { return _this.scrollToBottom(); }, 300);
+        });
+    };
+    MessageComponent.prototype.scrollToBottom = function () {
+        try {
+            this.messageScroll.nativeElement.scrollTop = this.messageScroll.nativeElement.scrollHeight;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
+    MessageComponent.prototype.onUp = function (ev) {
+        var _this = this;
+        if (this.loading == false) {
+            console.log('get in');
+            this.loading = true;
+            this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(function (messages) {
+                _this.messages = messages;
+                _this.loading = false;
+            }, function (err) {
+                console.log(err);
+            });
+        }
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('messageScroll'),
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"])
+    ], MessageComponent.prototype, "messageScroll", void 0);
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], MessageComponent.prototype, "conversation", null);
+    MessageComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-message',
+            template: __webpack_require__("../../../../../src/app/components/message/message.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/message/message.component.css")]
+        }),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */]])
+    ], MessageComponent);
+    return MessageComponent;
 }());
 
 
@@ -1122,6 +1252,45 @@ var AuthGuard = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/pipe/showtime.pipe.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ShowtimePipe; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+
+var ShowtimePipe = (function () {
+    function ShowtimePipe() {
+    }
+    ShowtimePipe.prototype.transform = function (date1, date2, time, args) {
+        if (time === void 0) { time = 120; }
+        if (this.dateFromISO8601(date1).getTime() - this.dateFromISO8601(date2).getTime() > 300000) {
+            return true;
+        }
+        return false;
+    };
+    ShowtimePipe.prototype.dateFromISO8601 = function (isostr) {
+        var parts = isostr.match(/\d+/g);
+        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+    };
+    ShowtimePipe = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
+            name: 'showtime'
+        })
+    ], ShowtimePipe);
+    return ShowtimePipe;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/pipe/truncate.pipe.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1278,9 +1447,10 @@ var LoadConversationService = (function () {
         this.authService.loadToken();
         headers.append('Authorization', this.authService.getToken());
         headers.append('Content-Type', 'application/json');
-        return this.http.get('/api/communication/inbox/' + slug, { headers: headers }).map(function (data) { return data.json()[0]; });
+        return this.http.get('/api/communication/inbox/' + slug.toLowerCase(), { headers: headers }).map(function (data) { return data.json()[0]; });
     };
     LoadConversationService.prototype.getConversations = function (inbox, conversations) {
+        var _this = this;
         var page = conversations.page + 1;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.authService.loadToken();
@@ -1289,13 +1459,45 @@ var LoadConversationService = (function () {
         return this.http.get('/api/communication/' + inbox._id + '/conversations?page=' + page, { headers: headers }).map(function (data) {
             if (data.json().pages > conversations.page) {
                 conversations.page = page;
-                conversations.docs = conversations.docs.concat(data.json().docs);
-                return conversations;
+                return _this.updateConversations(conversations, data.json());
             }
             else {
                 return conversations;
             }
         });
+    };
+    LoadConversationService.prototype.updateConversations = function (conversations, conversationUpdate) {
+        for (var i = 0; i < conversationUpdate.docs.length; i++) {
+            if (conversations.docs.length < 1) {
+                conversations.docs.push(conversationUpdate.docs[i]);
+            }
+            else {
+                var exist = false;
+                var position = 0;
+                for (var j = 0; j < conversations.docs.length; j++) {
+                    if (conversationUpdate.docs[i].api.id === conversations.docs[j].api.id) {
+                        position = j;
+                        exist = true;
+                    }
+                }
+                if (this.dateFromISO8601(conversations.docs[0].lastTime).getTime() <= this.dateFromISO8601(conversationUpdate.docs[i].lastTime).getTime()) {
+                    if (exist) {
+                        conversations.docs.splice(position, 1);
+                    }
+                    conversations.docs.unshift(conversationUpdate.docs[i]);
+                }
+                else {
+                    if (exist) {
+                        conversations.docs.splice(position, 1);
+                    }
+                    conversations.docs.push(conversationUpdate.docs[i]);
+                }
+            }
+        }
+        if (conversations.page < conversationUpdate.page) {
+            conversations.page = conversationUpdate.page;
+        }
+        return conversations;
     };
     LoadConversationService.prototype.getInboxes = function () {
         var _this = this;
@@ -1307,102 +1509,118 @@ var LoadConversationService = (function () {
             _this.inboxes = data.json();
         });
     };
-    LoadConversationService.prototype.mixConversationFacebook = function (inbox, conversations, conversationsOutside) {
-        var wasUpdate = false;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        this.authService.loadToken();
-        headers.append('Authorization', this.authService.getToken());
-        headers.append('Content-Type', 'application/json');
-        for (var i = 0; i < conversationsOutside.docs.length; i++) {
-            var exist = false;
-            for (var j = 0; j < conversations.docs.length; j++) {
-                if (conversationsOutside.docs[i].api.id === conversations.docs[j].api.id) {
-                    exist = true;
-                }
-            }
-            if (!exist) {
-                wasUpdate = true;
-                var conversationOutside = conversationsOutside.docs[i];
-                this.http.post('/api/communication/' + inbox._id + '/conversations', conversationOutside, { headers: headers }).subscribe({ error: function (e) { return console.error(e); } });
-            }
-        }
-        return wasUpdate;
-    };
-    LoadConversationService.prototype.loadConversationsFacebook = function (inbox, conversations, conversationsfb) {
-        var _this = this;
-        return this.getConversationsFacebook(inbox, conversationsfb).map(function (conversationsfb) {
-            return _this.getConversations(inbox, conversations).map(function (conversations) {
-                var mixed = _this.mixConversationFacebook(inbox, conversations, conversationsfb);
-                if (conversationsfb.next != '' && mixed) {
-                    return _this.loadConversationsFacebook(inbox, conversations, conversationsfb).map(function (data) { return data; });
-                }
-                else {
-                    return conversationsfb;
-                }
-            });
-        });
-    };
-    LoadConversationService.prototype.getConversationsFacebook = function (inbox, conversations) {
-        if (conversations.next == '') {
-            return this.http.get('https://graph.facebook.com/' + inbox.user + '/conversations?fields=id,participants,link,unread_count,messages.limit(1){message,created_time}&limit=10&access_token=' + inbox.token).map(function (data) {
-                conversations.docs = [];
-                data.json().data.forEach(function (element) {
-                    var conversation = {
-                        inbox: inbox._id,
-                        name: element.participants.data[0].name,
-                        unread: element.unread_count,
-                        preview: element.messages.data[0].message,
-                        lastTime: element.messages.data[0].created_time,
-                        api: {
-                            id: element.id,
-                            participantId: element.participants.data[0].id,
-                            link: 'https://facebook.com' + element.link
-                        }
-                    };
-                    conversations.docs.push(conversation);
-                    if (data.json().paging.next) {
-                        conversations.next = data.json().paging.next;
-                    }
-                    else {
-                        conversations.next = '';
-                    }
-                });
-                return conversations;
-            });
-        }
-        else {
-            return this.http.get(conversations.next).map(function (data) {
-                conversations.docs = [];
-                data.json().data.forEach(function (element) {
-                    var conversation = {
-                        inbox: inbox._id,
-                        name: element.participants.data[0].name,
-                        unread: element.unread_count,
-                        preview: element.messages.data[0].message,
-                        lastTime: element.messages.data[0].created_time,
-                        api: {
-                            id: element.id,
-                            participantId: element.participants.data[0].id,
-                            link: 'https://facebook.com' + element.link
-                        }
-                    };
-                    conversations.docs.push(conversation);
-                    if (data.json().paging.next) {
-                        conversations.next = data.json().paging.next;
-                    }
-                    else {
-                        conversations.next = '';
-                    }
-                });
-                return conversations;
-            });
-        }
+    LoadConversationService.prototype.dateFromISO8601 = function (isostr) {
+        var parts = isostr.match(/\d+/g);
+        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
     };
     LoadConversationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], __WEBPACK_IMPORTED_MODULE_6__auth_service__["a" /* AuthService */]])
     ], LoadConversationService);
     return LoadConversationService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/load-message.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoadMessageService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var LoadMessageService = (function () {
+    function LoadMessageService(http, authService) {
+        this.http = http;
+        this.authService = authService;
+    }
+    LoadMessageService.prototype.getMessages = function (conversations, messages) {
+        var page = 1;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/' + conversations._id + '/messages?page=' + page, { headers: headers }).map(function (data) {
+            messages = data.json();
+            messages.page = page;
+            messages.docs = messages.docs.reverse();
+            return messages;
+        });
+    };
+    LoadMessageService.prototype.getMoreMessages = function (conversations, messages) {
+        var _this = this;
+        var page = messages.page + 1;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/' + conversations._id + '/messages?page=' + page, { headers: headers }).map(function (data) {
+            if (data.json().pages > messages.page) {
+                messages.page = page;
+                return _this.updateConversations(messages, data.json());
+            }
+            else {
+                return messages;
+            }
+        });
+    };
+    LoadMessageService.prototype.updateConversations = function (messages, messagesUpdate) {
+        for (var i = 0; i < messagesUpdate.docs.length; i++) {
+            if (messages.docs.length < 1) {
+                messages.docs.push(messagesUpdate.docs[i]);
+            }
+            else {
+                var exist = false;
+                var position = 0;
+                for (var j = 0; j < messages.docs.length; j++) {
+                    if (messagesUpdate.docs[i].id === messages.docs[j].id) {
+                        position = j;
+                        exist = true;
+                    }
+                }
+                if (this.dateFromISO8601(messages.docs[0].time).getTime() >= this.dateFromISO8601(messagesUpdate.docs[i].time).getTime()) {
+                    if (exist) {
+                        messages.docs.splice(position, 1);
+                    }
+                    messages.docs.unshift(messagesUpdate.docs[i]);
+                }
+                else {
+                    if (exist) {
+                        messages.docs.splice(position, 1);
+                    }
+                    messages.docs.push(messagesUpdate.docs[i]);
+                }
+            }
+        }
+        if (messages.page < messagesUpdate.page) {
+            messages.page = messagesUpdate.page;
+        }
+        return messages;
+    };
+    LoadMessageService.prototype.dateFromISO8601 = function (isostr) {
+        var parts = isostr.match(/\d+/g);
+        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+    };
+    LoadMessageService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]])
+    ], LoadMessageService);
+    return LoadMessageService;
 }());
 
 

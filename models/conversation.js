@@ -11,7 +11,6 @@ const ConversationSchema = mongoose.Schema({
 	name:{
 		type: String,
 		require: true
-
 	},
 	contact:{
 		type: mongoose.Schema.ObjectId
@@ -49,6 +48,6 @@ module.exports.getConversations = function(inbox,page, callback){
 	Conversation.paginate(query, {sort: { lastTime: -1 }, page: page, limit: 20 },callback);
 }
 module.exports.updateConvesation = function(message, callback){
-		let query = {_id:message._id};
-		Conversation.findOneAndUpdate(query, message, {upsert:false}, callback);  
+		let query = {'api.id' : message.api.id};
+		Conversation.findOneAndUpdate(query, message, {upsert:true, new: true}, callback);  
 }

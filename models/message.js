@@ -28,6 +28,10 @@ const MessageSchema = mongoose.Schema({
 	comment:{
 		type: Boolean,
 		require: true
+	},
+	id:{
+		type: String,
+		require: true
 	}
 });
 
@@ -40,9 +44,9 @@ module.exports.addMessage = function(newMessage, callback){
 }
 module.exports.getMessage = function(conversation, page, callback){
 	const query = {conversation: conversation};
-	Message.paginate(query, {sort: { time: -1 }, page: page, limit: 10 },callback);
+	Message.paginate(query, {sort: { time: -1 }, page: page, limit: 20 },callback);
 }
 module.exports.updateMessage = function(message, callback){
-		let query = {_id:message._id};
-		Message.findOneAndUpdate(query, message, {upsert:false}, callback);  
+		let query = {id:message.id};
+		Message.findOneAndUpdate(query, message, {upsert:true}, callback);  
 }

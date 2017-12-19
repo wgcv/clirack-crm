@@ -21,7 +21,7 @@ export class LoadConversationService {
 		this.authService.loadToken();
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
-		return this.http.get('/api/communication/inbox/'+slug, {headers:headers}).map(data => data.json()[0])
+		return this.http.get('/api/communication/inbox/'+slug.toLowerCase(), {headers:headers}).map(data => data.json()[0])
 
 	}
 
@@ -34,12 +34,44 @@ export class LoadConversationService {
 		return this.http.get('/api/communication/'+inbox._id+'/conversations?page='+page,{headers:headers}).map(data => {
 			if(data.json().pages > conversations.page){
 				conversations.page = page;
-				conversations.docs = conversations.docs.concat(data.json().docs);
-				return conversations;
+				return this.updateConversations(conversations,data.json());
 			}else{
 				return conversations;
 			}
 		});
+
+	}
+	updateConversations(conversations, conversationUpdate){
+		for (var i =0; i< conversationUpdate.docs.length; i++) {
+			if(conversations.docs.length < 1){
+				conversations.docs.push(conversationUpdate.docs[i]);
+			}else{
+				var exist = false;
+				var position = 0;
+				for (var j = 0; j < conversations.docs.length; j++) {
+					if(conversationUpdate.docs[i].api.id === conversations.docs[j].api.id ){
+						position = j;
+						exist = true;
+					}
+				}
+				if(this.dateFromISO8601(conversations.docs[0].lastTime).getTime() <= this.dateFromISO8601(conversationUpdate.docs[i].lastTime).getTime() ){
+					if(exist){
+						conversations.docs.splice(position, 1);
+					}
+					conversations.docs.unshift(conversationUpdate.docs[i]);
+				}else{
+					if(exist){
+						conversations.docs.splice(position, 1);
+					}
+					conversations.docs.push(conversationUpdate.docs[i]);
+				}
+
+			}
+		}
+		if(conversations.page < conversationUpdate.page ){
+			conversations.page = conversationUpdate.page;
+		}
+		return conversations;
 
 	}
 
@@ -53,100 +85,8 @@ export class LoadConversationService {
 		});
 	}
 
-	
-
-	mixConversationFacebook(inbox, conversations, conversationsOutside){
-		var wasUpdate = false;
-		let headers = new Headers();
-		this.authService.loadToken();
-		headers.append('Authorization', this.authService.getToken());
-		headers.append('Content-Type','application/json');
-			for (var i = 0; i < conversationsOutside.docs.length; i++) {
-				var exist = false;
-				for (var j = 0; j < conversations.docs.length; j++) {
-					if( conversationsOutside.docs[i].api.id === conversations.docs[j].api.id){
-						exist = true;
-					}
-				}
-				if(!exist){
-					wasUpdate = true;
-					let conversationOutside = conversationsOutside.docs[i];
-					this.http.post('/api/communication/'+inbox._id+'/conversations',conversationOutside ,{headers:headers}).subscribe({ error: e => console.error(e) });
-				}
-			}
-		
-		return wasUpdate;
+	dateFromISO8601(isostr) {
+    var parts = isostr.match(/\d+/g);
+    return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
 	}
-	loadConversationsFacebook(inbox, conversations, conversationsfb){
-		return this.getConversationsFacebook(inbox, conversationsfb).map(conversationsfb => {
-			return this.getConversations(inbox,conversations).map(conversations => {
-				var mixed = this.mixConversationFacebook(inbox, conversations, conversationsfb);
-				if(conversationsfb.next != '' &&  mixed) {
-					return this.loadConversationsFacebook(inbox, conversations, conversationsfb).map(data=>{return data});
-				} else {
-					return conversationsfb;
-				}
-			});
-
-		});
-	}
-
-
-	getConversationsFacebook(inbox, conversations){
-		if( conversations.next == '' ){
-			return this.http.get('https://graph.facebook.com/'+inbox.user+'/conversations?fields=id,participants,link,unread_count,messages.limit(1){message,created_time}&limit=10&access_token='+inbox.token).map(data => {
-				conversations.docs = [];
-				data.json().data.forEach(function(element){
-					var conversation = {
-						inbox: inbox._id,
-						name: element.participants.data[0].name,
-						unread: element.unread_count,
-						preview: element.messages.data[0].message,
-						lastTime: element.messages.data[0].created_time,
-						api:{
-							id: element.id,
-							participantId: element.participants.data[0].id,
-							link: 'https://facebook.com'+ element.link
-						}
-					};
-					conversations.docs.push(conversation);
-					if(data.json().paging.next){
-						conversations.next = data.json().paging.next;
-					}else{
-						conversations.next = '';
-					}
-				});
-				return conversations;
-			});	
-		}else{
-			return this.http.get(conversations.next).map(data => {
-				conversations.docs = [];
-				data.json().data.forEach(function(element){
-					var conversation = {
-						inbox: inbox._id,
-						name: element.participants.data[0].name,
-						unread: element.unread_count,
-						preview: element.messages.data[0].message,
-						lastTime: element.messages.data[0].created_time,
-						api:{
-							id: element.id,
-							participantId: element.participants.data[0].id,
-							link: 'https://facebook.com'+ element.link
-						}
-					};
-					conversations.docs.push(conversation);
-					if(data.json().paging.next){
-						conversations.next = data.json().paging.next;
-					}else{
-						conversations.next = '';
-					}
-
-				});
-
-				return conversations;
-			});	
-
-		}
-	}
-
 }

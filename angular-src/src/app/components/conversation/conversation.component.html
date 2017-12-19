@@ -5,12 +5,12 @@
         [scrollWindow]="false"
         (scrolled)="onScrollDown()"
 >
-   <div class="list-group-item flex-column align-items-start" >
+   <div class="list-group-item sticky-top flex-column align-items-start" >
      <div class="d-flex w-100 justify-content-between">
       <h5 class="mb-1">Conversaciones </h5>
     </div>
   </div>
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start" *ngFor="let conversation of conversations.docs">
+  <div class="list-group-item list-group-item-action flex-column align-items-start pointer" *ngFor="let conversation of conversations.docs" (click)="click($event, conversation)">
    <div class="d-flex w-100 justify-content-between">
     <div class="row">
       <div class="col-8 name">
@@ -23,8 +23,8 @@
   </div>
   <p class="mb-1">{{conversation.preview | truncate :75 : true}}</p>
   <small *ngIf="conversation.assigned">Asignado a: {{conversation.assigned}}</small>
-</a>
-   <div  [ngClass]="{ 'invisible': !loading }"  class="list-group-item flex-column align-items-start" >
+</div>
+   <div  [ngClass]="{ 'd-none': !loading }"  class="list-group-item flex-column align-items-start" >
      <div class="d-flex w-100 justify-content-between">
       <img src="/assets/img/loading.svg" height="45rem" class="mx-auto d-block" />
     </div>
