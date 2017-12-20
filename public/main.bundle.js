@@ -758,7 +758,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n\n}\n.row {\n    padding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n    padding: 0 0 0 0;\n    overflow: hidden;\n\n}\n.time {\n    padding: 0;\n    overflow: hidden;\n}\n.small, small {\n    vertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.header {\n    max-height: 40px;\n    min-height: 40px;\n    z-index: 10;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0;\n\n}\n.footer {\n    max-height: 130px;\n    min-height: 130px;\n    z-index: 10;\n}\n.full-content {\n     font-size: 1rem;\n    margin-top: 0;\n\n    height: calc(100vh - 58px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: calc(100% - 170px);\n    min-height: calc(100% - 170px);\n    overflow-y: scroll;\n}\n\n.scroll::-webkit-scrollbar-track\n{\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    border-radius: 4px;\n    background-color: #F5F5F5;\n}\n.scroll::-webkit-scrollbar\n{\n    width: 8px;\n    background-color: #F5F5F5;\n}\n\n.scroll::-webkit-scrollbar-thumb\n{\n    border-radius: 2px;\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    background-color: #343a40;\n}\na.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}\n.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0.25rem;\n}\n.block-message {    \n    display: block;\n    padding: .1rem 1.25rem;\n    background-color: #fff;\n}\n.block-message:last-child{\n    margin-bottom: 1em;\n}\n.message {\n    display: inline-block;\n    background: #f1f0f0;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: #212529;\n}\n.loading{\n    border: 0px;\n\n\n}\n.message-response{\n    display: inline-block;\n    background: #407fff;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: white;\n}", ""]);
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n\n}\n.row {\n    padding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n    padding: 0 0 0 0;\n    overflow: hidden;\n\n}\n.time {\n    padding: 0;\n    overflow: hidden;\n}\n.small, small {\n    vertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.header {\n    max-height: 40px;\n    min-height: 40px;\n    z-index: 10;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0;\n\n}\n.footer {\n    max-height: 130px;\n    min-height: 130px;\n    z-index: 10;\n}\n.full-content {\n     font-size: 1rem;\n    margin-top: 0;\n\n    height: calc(100vh - 58px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: calc(100% - 170px);\n    min-height: calc(100% - 170px);\n    overflow-y: scroll;\n}\n\n.scroll::-webkit-scrollbar-track\n{\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    border-radius: 4px;\n    background-color: #F5F5F5;\n}\n.scroll::-webkit-scrollbar\n{\n    width: 8px;\n    background-color: #F5F5F5;\n}\n\n.scroll::-webkit-scrollbar-thumb\n{\n    border-radius: 2px;\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    background-color: #343a40;\n}\na.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}\n.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0.25rem;\n}\n.block-message {    \n    display: block;\n    padding: .1rem 1.25rem;\n    background-color: #fff;\n}\n.block-message:last-child{\n    margin-bottom: 1em;\n}\n.message {\n    display: inline-block;\n    background: #f1f0f0;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: #212529;\n}\n.loading{\n    border: 0px;\n}\n.message-response{\n    display: inline-block;\n    background: #407fff;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: white;\n}", ""]);
 
 // exports
 
@@ -782,6 +782,7 @@ module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item h
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -791,6 +792,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var MessageComponent = (function () {
@@ -805,7 +807,8 @@ var MessageComponent = (function () {
         set: function (conversation) {
             if (conversation) {
                 this._conversation = conversation;
-                this.getMessage(conversation);
+                this.messages = { page: 0, docs: [] };
+                this.loadMessageInit();
             }
         },
         enumerable: true,
@@ -813,12 +816,25 @@ var MessageComponent = (function () {
     });
     MessageComponent.prototype.ngOnInit = function () {
     };
-    MessageComponent.prototype.getMessage = function (conversation) {
+    MessageComponent.prototype.loadMessageInit = function () {
         var _this = this;
-        this.messages = { page: 0, docs: [] };
-        this.loadMessageService.getMoreMessages(conversation, this.messages).subscribe(function (messages) {
+        this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
             _this.messages = messages;
             setTimeout(function () { return _this.scrollToBottom(); }, 300);
+            _this.checkMessages();
+        });
+    };
+    MessageComponent.prototype.loadMessage = function () {
+        var _this = this;
+        this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
+            _this.messages = messages;
+            _this.checkMessages();
+        });
+    };
+    MessageComponent.prototype.checkMessages = function () {
+        var _this = this;
+        this.timerSubscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].timer(7000).subscribe(function () {
+            _this.loadMessage();
         });
     };
     MessageComponent.prototype.scrollToBottom = function () {
@@ -832,7 +848,6 @@ var MessageComponent = (function () {
     MessageComponent.prototype.onUp = function (ev) {
         var _this = this;
         if (this.loading == false) {
-            console.log('get in');
             this.loading = true;
             this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(function (messages) {
                 _this.messages = messages;
@@ -1550,16 +1565,14 @@ var LoadMessageService = (function () {
         this.authService = authService;
     }
     LoadMessageService.prototype.getMessages = function (conversations, messages) {
+        var _this = this;
         var page = 1;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.authService.loadToken();
         headers.append('Authorization', this.authService.getToken());
         headers.append('Content-Type', 'application/json');
         return this.http.get('/api/communication/' + conversations._id + '/messages?page=' + page, { headers: headers }).map(function (data) {
-            messages = data.json();
-            messages.page = page;
-            messages.docs = messages.docs.reverse();
-            return messages;
+            return _this.updateConversations(messages, data.json());
         });
     };
     LoadMessageService.prototype.getMoreMessages = function (conversations, messages) {
@@ -1570,13 +1583,7 @@ var LoadMessageService = (function () {
         headers.append('Authorization', this.authService.getToken());
         headers.append('Content-Type', 'application/json');
         return this.http.get('/api/communication/' + conversations._id + '/messages?page=' + page, { headers: headers }).map(function (data) {
-            if (data.json().pages > messages.page) {
-                messages.page = page;
-                return _this.updateConversations(messages, data.json());
-            }
-            else {
-                return messages;
-            }
+            return _this.updateConversations(messages, data.json());
         });
     };
     LoadMessageService.prototype.updateConversations = function (messages, messagesUpdate) {

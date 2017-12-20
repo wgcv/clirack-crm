@@ -15,10 +15,8 @@ export class LoadMessageService {
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
 		return this.http.get('/api/communication/'+conversations._id+'/messages?page='+page,{headers:headers}).map(data => {
-				messages = data.json();
-				messages.page = page;
-				messages.docs = messages.docs.reverse();
-				return messages;
+				return this.updateConversations(messages,data.json());
+
 			
 		});
 
@@ -30,12 +28,9 @@ export class LoadMessageService {
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
 		return this.http.get('/api/communication/'+conversations._id+'/messages?page='+page,{headers:headers}).map(data => {
-			if(data.json().pages > messages.page){
-				messages.page = page;
+
 				return this.updateConversations(messages,data.json());
-			}else{
-				return messages;
-			}
+
 		});
 	}
 	
