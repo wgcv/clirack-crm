@@ -54,7 +54,7 @@ export class LoadConversationService {
 						exist = true;
 					}
 				}
-				if(this.dateFromISO8601(conversations.docs[0].lastTime).getTime() <= this.dateFromISO8601(conversationUpdate.docs[i].lastTime).getTime() ){
+				if(Date.parse(conversations.docs[0].lastTime)<= Date.parse(conversationUpdate.docs[i].lastTime) ){
 					if(exist){
 						conversations.docs.splice(position, 1);
 					}
@@ -85,8 +85,4 @@ export class LoadConversationService {
 		});
 	}
 
-	dateFromISO8601(isostr) {
-    var parts = isostr.match(/\d+/g);
-    return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
-	}
 }

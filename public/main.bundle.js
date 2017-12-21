@@ -820,14 +820,22 @@ var MessageComponent = (function () {
         var _this = this;
         this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
             _this.messages = messages;
-            setTimeout(function () { return _this.scrollToBottom(); }, 300);
+            setTimeout(function () { return _this.scrollToBottom(); }, 100);
             _this.checkMessages();
         });
     };
     MessageComponent.prototype.loadMessage = function () {
         var _this = this;
         this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
-            _this.messages = messages;
+            console.log(_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop);
+            console.log(_this.messageScroll.nativeElement.clientHeight);
+            if ((_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop) === _this.messageScroll.nativeElement.clientHeight) {
+                _this.messages = messages;
+                setTimeout(function () { return _this.scrollToBottom(); }, 100);
+            }
+            else {
+                _this.messages = messages;
+            }
             _this.checkMessages();
         });
     };
@@ -1283,16 +1291,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var ShowtimePipe = (function () {
     function ShowtimePipe() {
     }
-    ShowtimePipe.prototype.transform = function (date1, date2, time, args) {
+    ShowtimePipe.prototype.transform = function (date1, date2, time) {
+        if (date2 === void 0) { date2 = '1992-11-25T11:49:07.000Z'; }
         if (time === void 0) { time = 120; }
-        if (this.dateFromISO8601(date1).getTime() - this.dateFromISO8601(date2).getTime() > 300000) {
+        if ((Date.parse(date1) - Date.parse(date2)) > 300000) {
             return true;
         }
-        return false;
-    };
-    ShowtimePipe.prototype.dateFromISO8601 = function (isostr) {
-        var parts = isostr.match(/\d+/g);
-        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
+        else {
+            return false;
+        }
     };
     ShowtimePipe = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Pipe"])({
@@ -1495,7 +1502,7 @@ var LoadConversationService = (function () {
                         exist = true;
                     }
                 }
-                if (this.dateFromISO8601(conversations.docs[0].lastTime).getTime() <= this.dateFromISO8601(conversationUpdate.docs[i].lastTime).getTime()) {
+                if (Date.parse(conversations.docs[0].lastTime) <= Date.parse(conversationUpdate.docs[i].lastTime)) {
                     if (exist) {
                         conversations.docs.splice(position, 1);
                     }
@@ -1523,10 +1530,6 @@ var LoadConversationService = (function () {
         this.http.get('/api/communication/inboxes', { headers: headers }).subscribe(function (data) {
             _this.inboxes = data.json();
         });
-    };
-    LoadConversationService.prototype.dateFromISO8601 = function (isostr) {
-        var parts = isostr.match(/\d+/g);
-        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
     };
     LoadConversationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -1577,7 +1580,7 @@ var LoadMessageService = (function () {
     };
     LoadMessageService.prototype.getMoreMessages = function (conversations, messages) {
         var _this = this;
-        var page = messages.page + 1;
+        var page = parseInt(messages.page) + 1;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.authService.loadToken();
         headers.append('Authorization', this.authService.getToken());
@@ -1587,41 +1590,26 @@ var LoadMessageService = (function () {
         });
     };
     LoadMessageService.prototype.updateConversations = function (messages, messagesUpdate) {
-        for (var i = 0; i < messagesUpdate.docs.length; i++) {
-            if (messages.docs.length < 1) {
-                messages.docs.push(messagesUpdate.docs[i]);
-            }
-            else {
-                var exist = false;
-                var position = 0;
-                for (var j = 0; j < messages.docs.length; j++) {
-                    if (messagesUpdate.docs[i].id === messages.docs[j].id) {
-                        position = j;
-                        exist = true;
-                    }
-                }
-                if (this.dateFromISO8601(messages.docs[0].time).getTime() >= this.dateFromISO8601(messagesUpdate.docs[i].time).getTime()) {
-                    if (exist) {
-                        messages.docs.splice(position, 1);
-                    }
-                    messages.docs.unshift(messagesUpdate.docs[i]);
-                }
-                else {
-                    if (exist) {
-                        messages.docs.splice(position, 1);
-                    }
-                    messages.docs.push(messagesUpdate.docs[i]);
+        for (var j = 0; j < messagesUpdate.docs.length; j++) {
+            var notExist = true;
+            for (var i = 0; i < messages.docs.length; i++) {
+                if (messagesUpdate.docs[j].id === messages.docs[i].id) {
+                    console.log(messagesUpdate.docs[j]);
+                    notExist = false;
                 }
             }
+            if (notExist) {
+                messages.docs.push(messagesUpdate.docs[j]);
+            }
         }
-        if (messages.page < messagesUpdate.page) {
-            messages.page = messagesUpdate.page;
+        messages.docs.sort(function (a, b) {
+            return Date.parse(a.time) - Date.parse(b.time);
+        });
+        if (messagesUpdate.page > messages.page) {
+            messages.page = parseInt(messagesUpdate.page);
         }
+        console.log(messages);
         return messages;
-    };
-    LoadMessageService.prototype.dateFromISO8601 = function (isostr) {
-        var parts = isostr.match(/\d+/g);
-        return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
     };
     LoadMessageService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

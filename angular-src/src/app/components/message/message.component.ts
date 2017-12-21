@@ -13,6 +13,7 @@ export class MessageComponent implements OnInit {
 	private _conversation = {name:''};
 	loading = false;
 	private timerSubscription: AnonymousSubscription;
+	messages = {page:0, docs:[]};
 
 	@Input()
 	set conversation(conversation: any) { 
@@ -24,7 +25,6 @@ export class MessageComponent implements OnInit {
 		}
 	}
 	get conversation(): any { return this._conversation; }
-	messages = {page:0, docs:[]};
 	constructor(private loadMessageService:LoadMessageService) { }
 
 	ngOnInit() {
@@ -33,14 +33,22 @@ export class MessageComponent implements OnInit {
 	loadMessageInit(){
 		this.loadMessageService.getMessages(this.conversation , this.messages).subscribe(messages => {
 			this.messages = messages;
-			setTimeout(() => this.scrollToBottom(), 300)
+			setTimeout(() => this.scrollToBottom(), 100)
 			this.checkMessages();
 		});
 
 	}
 	loadMessage(){
 		this.loadMessageService.getMessages(this.conversation , this.messages).subscribe(messages => {
-			this.messages = messages;
+			console.log(this.messageScroll.nativeElement.scrollHeight - this.messageScroll.nativeElement.scrollTop);
+			console.log(this.messageScroll.nativeElement.clientHeight);
+
+			if((this.messageScroll.nativeElement.scrollHeight - this.messageScroll.nativeElement.scrollTop) === this.messageScroll.nativeElement.clientHeight) {
+				this.messages = messages;
+				setTimeout(() => this.scrollToBottom(), 100)
+			}else{
+				this.messages = messages;
+			}
 			this.checkMessages();
 
 		});
@@ -61,6 +69,7 @@ export class MessageComponent implements OnInit {
 		} catch(err) {console.log(err); }                 
 	}
 	onUp(ev) {
+
 		if(this.loading == false) {
 			this.loading = true;
 			this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(messages => {
@@ -71,5 +80,7 @@ export class MessageComponent implements OnInit {
 				console.log(err);
 			});
 		}
+
 	}
+
 }

@@ -15,62 +15,45 @@ export class LoadMessageService {
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
 		return this.http.get('/api/communication/'+conversations._id+'/messages?page='+page,{headers:headers}).map(data => {
-				return this.updateConversations(messages,data.json());
-
+			return this.updateConversations(messages,data.json());
 			
 		});
 
 	}
 	getMoreMessages(conversations, messages){
-		var page = messages.page+1;
+		var page = parseInt(messages.page)+1;
 		let headers = new Headers();
 		this.authService.loadToken();
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
 		return this.http.get('/api/communication/'+conversations._id+'/messages?page='+page,{headers:headers}).map(data => {
-
-				return this.updateConversations(messages,data.json());
+			return this.updateConversations(messages,data.json());
 
 		});
 	}
-	
 	updateConversations(messages, messagesUpdate){
-		for (var i =0; i< messagesUpdate.docs.length; i++) {
-			if(messages.docs.length < 1){
-				messages.docs.push(messagesUpdate.docs[i]);
-			}else{
-				var exist = false;
-				var position = 0;
-				for (var j = 0; j < messages.docs.length; j++) {
-					if(messagesUpdate.docs[i].id === messages.docs[j].id ){
-						position = j;
-						exist = true;
-					}
+		for (var j =0; j< messagesUpdate.docs.length; j++) {
+			var notExist = true;
+			for (var i =0; i< messages.docs.length; i++) {
+				if(messagesUpdate.docs[j].id === messages.docs[i].id ){
+					console.log(messagesUpdate.docs[j]);
+					notExist = false;
 				}
-				if(this.dateFromISO8601(messages.docs[0].time).getTime() >= this.dateFromISO8601(messagesUpdate.docs[i].time).getTime() ){
-					if(exist){
-						messages.docs.splice(position, 1);
-					}
-					messages.docs.unshift(messagesUpdate.docs[i]);
-
-				}else{
-					if(exist){
-						messages.docs.splice(position, 1);
-					}
-					messages.docs.push(messagesUpdate.docs[i]);
-
-				}
-
 			}
+			if(notExist){
+				messages.docs.push(messagesUpdate.docs[j]);
+			}	
 		}
-		if(messages.page < messagesUpdate.page ){
-			messages.page = messagesUpdate.page;
+		messages.docs.sort(function (a, b) {
+  			return Date.parse(a.time) - Date.parse(b.time);
+		});
+		if(messagesUpdate.page > messages.page){
+			messages.page = parseInt(messagesUpdate.page);
 		}
-		return messages;
+		console.log(messages);
 
+		return messages;
 	}
-	dateFromISO8601(isostr) {
-   		var parts = isostr.match(/\d+/g);
-    	return new Date(parts[0], parts[1] - 1, parts[2], parts[3], parts[4], parts[5]);
-	}
+
+
 }
