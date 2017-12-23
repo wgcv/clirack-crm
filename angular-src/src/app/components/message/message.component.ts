@@ -3,7 +3,7 @@ import { LoadMessageService } from '../../services/load-message.service';
 import {Observable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
 import {NgForm} from '@angular/forms';
-import { FlashMessagesService } from 'ngx-flash-messages';
+import { FlashMessageService } from '../../services/flash-message.service';
 import { LoadConversationService } from '../../services/load-conversation.service';
 
 @Component({
@@ -29,7 +29,7 @@ export class MessageComponent implements OnInit {
 	}
 	get conversation(): any { return this._conversation; }
 	constructor(private loadMessageService:LoadMessageService,private loadConversationService:LoadConversationService,
-		private flashMessagesService: FlashMessagesService) { }
+		private flashMessageService: FlashMessageService) { }
 
 	ngOnInit() {
 
@@ -110,10 +110,7 @@ export class MessageComponent implements OnInit {
 			this.messages = messages[0];
 		},
 		err=>{
-			this.flashMessagesService.show('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', {
-				classes: ['alert', 'alert-warning','message', 'alert-dismissible','fade','show'],
-				timeout: 2500
-			});
+			this.flashMessageService.alert('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', 2500);
 		});
 		this.newMessage = '';
 	}

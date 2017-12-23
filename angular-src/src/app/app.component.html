@@ -3,9 +3,17 @@
 	<div class="row">
 		<app-sidebar></app-sidebar>
 		<div [ngClass]="{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}">
-			<ngx-flash-messages></ngx-flash-messages>
 			<router-outlet></router-outlet>
 		</div>
 	</div>
 </div>
-<p>{{online$ | async}}</p>
+
+<div class="alert  alert-warning alert-dismissible fade show flash-message-hide"  role="alert" [ngClass]="{'flash-message': flashMessageService.showMessage}" [style.visibility]="!flashMessageService.showMessage ? 'hidden' : 'visible'"
+ >
+	<div [innerHTML] = "flashMessageService.message" >
+
+	</div>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close" *ngIf="flashMessageService.showButton">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>

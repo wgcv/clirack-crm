@@ -69,15 +69,37 @@
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
+/* Alert */
+.alert-dismissible .close{
+  outline:0;
+  padding: .5rem 1.25rem;
 
+}
 /* FlashMessage */
-.flash-message
-{
-    position: fixed;
+.flash-message {
+    top: 0 !important;
+
+}
+.flash-message-hide{
+   position: fixed;
     z-index: 10000;
-    top: 0;
     left: 10%;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     width: 80%;
-  }
+    top: -50px;
+    transition:  1s ease-in-out all;
+
+ 
+}
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes show-message {
+    0%   {top:-50px;}
+    100% {top:0px;}
+}
+
+/* Standard syntax */
+@keyframes show-message {
+    0%   {top:-50px;}
+    100% {top:0px;}
+}

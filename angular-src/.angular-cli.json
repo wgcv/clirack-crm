@@ -22,7 +22,7 @@
         "css/bootstrap.min.css",
         "styles.css"
       ],
-      "scripts": ["js/scripts.js"],
+      "scripts": ["js/jquery-3.2.1.min.js","js/tether.min.js","js/scripts.js","js/bootstrap.min.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

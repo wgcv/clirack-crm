@@ -6,7 +6,6 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 // Npm Install Modules
-import { FlashMessagesModule } from 'ngx-flash-messages';
 import { MomentModule } from 'angular2-moment';
 import { TruncatePipe } from './pipe/truncate.pipe';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
@@ -34,6 +33,7 @@ import { AuthService } from './services/auth.service';
 import { SidebarService } from './services/sidebar.service';
 import { LoadConversationService } from './services/load-conversation.service';
 import { LoadMessageService } from './services/load-message.service';
+import { FlashMessageService } from './services/flash-message.service';
 
 import { MessageComponent } from './components/message/message.component';
 import { ShowtimePipe } from './pipe/showtime.pipe';
@@ -74,7 +74,6 @@ const appRoutes: Routes = [
     FormsModule,
     HttpModule,
     RouterModule.forRoot(appRoutes),
-    FlashMessagesModule,
     MomentModule,
     InfiniteScrollModule
   ],
@@ -84,6 +83,7 @@ const appRoutes: Routes = [
     SidebarService,
     LoadConversationService,
     LoadMessageService,
+    FlashMessageService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

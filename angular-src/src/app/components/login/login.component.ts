@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router'
-import {FlashMessagesService } from 'ngx-flash-messages';
+import { FlashMessageService } from '../../services/flash-message.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,7 @@ import {FlashMessagesService } from 'ngx-flash-messages';
 export class LoginComponent implements OnInit {
 	username: String;
 	password: String;
-  constructor(private authService: AuthService, private router: Router, private flashMessages: FlashMessagesService) { }
+  constructor(private authService: AuthService, private router: Router, private flashMessageService: FlashMessageService) { }
 
   ngOnInit() {
     if(this.authService.loggedIn()){
@@ -31,11 +32,10 @@ export class LoginComponent implements OnInit {
   	this.authService.authenticateUser(user).subscribe(data => {
   		if(data.success){
   			this.authService.storeUserData(data.token, data.user);
-  			this.flashMessages.show('Welcome, you are loggin', {classes:['alert','alert-success'],timeout: 5000});
   			this.router.navigate(['/dashboard']);
 
   		}else{
-  			this.flashMessages.show(data.msg, {classes:['alert','alert-danger'],timeout: 5000});
+  			this.flashMessageService.alert(data.msg, 5000);
   			this.router.navigate(['/login']);
   		}
   	});

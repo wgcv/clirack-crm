@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar></app-sidebar>\n\t\t<div [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<ngx-flash-messages></ngx-flash-messages>\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>\n<p>{{online$ | async}}</p>\n"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar></app-sidebar>\n\t\t<div [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"alert  alert-warning alert-dismissible fade show flash-message-hide\"  role=\"alert\" [ngClass]=\"{'flash-message': flashMessageService.showMessage}\" [style.visibility]=\"!flashMessageService.showMessage ? 'hidden' : 'visible'\"\n >\n\t<div [innerHTML] = \"flashMessageService.message\" >\n\n\t</div>\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" *ngIf=\"flashMessageService.showButton\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n"
 
 /***/ }),
 
@@ -49,11 +49,7 @@ module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_mapTo__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/mapTo.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/of.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_fromEvent__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/fromEvent.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_merge__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/merge.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,16 +62,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-
 var AppComponent = (function () {
-    function AppComponent(sidebar) {
+    function AppComponent(sidebar, flashMessageService) {
         this.sidebar = sidebar;
+        this.flashMessageService = flashMessageService;
         this.title = 'Clirack';
         this.showSlidebar = true;
-        this.online$ = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].merge(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(navigator.onLine), __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(window, 'online').mapTo(true), __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(window, 'offline').mapTo(false));
     }
     AppComponent.prototype.ngOnInit = function () {
     };
@@ -85,7 +77,7 @@ var AppComponent = (function () {
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__["a" /* SidebarService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__["a" /* FlashMessageService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -104,29 +96,29 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_forms__ = __webpack_require__("../../../forms/esm5/forms.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment__ = __webpack_require__("../../../../angular2-moment/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__ = __webpack_require__("../../../../../src/app/pipe/truncate.pipe.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ngx_infinite_scroll__ = __webpack_require__("../../../../ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__ = __webpack_require__("../../../../../src/app/components/inbox/inbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__ = __webpack_require__("../../../../../src/app/components/conversation/conversation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_moment__ = __webpack_require__("../../../../angular2-moment/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_angular2_moment__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pipe_truncate_pipe__ = __webpack_require__("../../../../../src/app/pipe/truncate.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ngx_infinite_scroll__ = __webpack_require__("../../../../ngx-infinite-scroll/modules/ngx-infinite-scroll.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_navbar_navbar_component__ = __webpack_require__("../../../../../src/app/components/navbar/navbar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__ = __webpack_require__("../../../../../src/app/components/login/login.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__ = __webpack_require__("../../../../../src/app/components/register/register.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__ = __webpack_require__("../../../../../src/app/components/home/home.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/components/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__ = __webpack_require__("../../../../../src/app/components/profile/profile.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__ = __webpack_require__("../../../../../src/app/components/inbox/inbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_conversation_conversation_component__ = __webpack_require__("../../../../../src/app/components/conversation/conversation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -167,14 +159,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */] },
-    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/:slug', component: __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'register', component: __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__["a" /* RegisterComponent */] },
+    { path: 'login', component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/:slug', component: __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__["a" /* InboxComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -182,19 +174,19 @@ var AppModule = (function () {
     AppModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_10__components_navbar_navbar_component__["a" /* NavbarComponent */],
-                __WEBPACK_IMPORTED_MODULE_11__components_login_login_component__["a" /* LoginComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__components_register_register_component__["a" /* RegisterComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__components_home_home_component__["a" /* HomeComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__components_profile_profile_component__["a" /* ProfileComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */],
-                __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__["a" /* ConversationComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__pipe_truncate_pipe__["a" /* TruncatePipe */],
+                __WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__components_navbar_navbar_component__["a" /* NavbarComponent */],
+                __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */],
+                __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__["a" /* RegisterComponent */],
+                __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__["a" /* InboxComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_conversation_conversation_component__["a" /* ConversationComponent */],
+                __WEBPACK_IMPORTED_MODULE_6__pipe_truncate_pipe__["a" /* TruncatePipe */],
                 __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__["a" /* MessageComponent */],
                 __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__["a" /* ShowtimePipe */]
             ],
@@ -203,19 +195,19 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["HttpModule"],
                 __WEBPACK_IMPORTED_MODULE_4__angular_router__["c" /* RouterModule */].forRoot(appRoutes),
-                __WEBPACK_IMPORTED_MODULE_5_ngx_flash_messages__["a" /* FlashMessagesModule */],
-                __WEBPACK_IMPORTED_MODULE_6_angular2_moment__["MomentModule"],
-                __WEBPACK_IMPORTED_MODULE_8_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
+                __WEBPACK_IMPORTED_MODULE_5_angular2_moment__["MomentModule"],
+                __WEBPACK_IMPORTED_MODULE_7_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_22__services_validate_service__["a" /* ValidateService */],
-                __WEBPACK_IMPORTED_MODULE_23__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__["a" /* SidebarService */],
-                __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__["a" /* LoadConversationService */],
-                __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__["a" /* LoadMessageService */],
-                __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]
+                __WEBPACK_IMPORTED_MODULE_21__services_validate_service__["a" /* ValidateService */],
+                __WEBPACK_IMPORTED_MODULE_22__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_23__services_sidebar_service__["a" /* SidebarService */],
+                __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__["a" /* LoadConversationService */],
+                __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__["a" /* LoadMessageService */],
+                __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__["a" /* FlashMessageService */],
+                __WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]
             ],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_9__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -706,7 +698,7 @@ module.exports = "<div class=\"row align-items-center\">\n\t<div class=\"col-md-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -721,10 +713,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var LoginComponent = (function () {
-    function LoginComponent(authService, router, flashMessages) {
+    function LoginComponent(authService, router, flashMessageService) {
         this.authService = authService;
         this.router = router;
-        this.flashMessages = flashMessages;
+        this.flashMessageService = flashMessageService;
     }
     LoginComponent.prototype.ngOnInit = function () {
         if (this.authService.loggedIn()) {
@@ -743,11 +735,10 @@ var LoginComponent = (function () {
         this.authService.authenticateUser(user).subscribe(function (data) {
             if (data.success) {
                 _this.authService.storeUserData(data.token, data.user);
-                _this.flashMessages.show('Welcome, you are loggin', { classes: ['alert', 'alert-success'], timeout: 5000 });
                 _this.router.navigate(['/dashboard']);
             }
             else {
-                _this.flashMessages.show(data.msg, { classes: ['alert', 'alert-danger'], timeout: 5000 });
+                _this.flashMessageService.alert(data.msg, 5000);
                 _this.router.navigate(['/login']);
             }
         });
@@ -758,7 +749,7 @@ var LoginComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/login/login.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/login/login.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__["a" /* FlashMessageService */]])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -800,7 +791,7 @@ module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item h
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -817,10 +808,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var MessageComponent = (function () {
-    function MessageComponent(loadMessageService, loadConversationService, flashMessagesService) {
+    function MessageComponent(loadMessageService, loadConversationService, flashMessageService) {
         this.loadMessageService = loadMessageService;
         this.loadConversationService = loadConversationService;
-        this.flashMessagesService = flashMessagesService;
+        this.flashMessageService = flashMessageService;
         this._conversation = { name: '', api: { link: '' } };
         this.loading = false;
         this.messages = { page: 0, docs: [] };
@@ -914,10 +905,7 @@ var MessageComponent = (function () {
             setTimeout(function () { return _this.scrollToBottom(); }, 100);
             _this.messages = messages[0];
         }, function (err) {
-            _this.flashMessagesService.show('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', {
-                classes: ['alert', 'alert-warning', 'message', 'alert-dismissible', 'fade', 'show'],
-                timeout: 2500
-            });
+            _this.flashMessageService.alert('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', 2500);
         });
         this.newMessage = '';
     };
@@ -937,7 +925,7 @@ var MessageComponent = (function () {
             styles: [__webpack_require__("../../../../../src/app/components/message/message.component.css")]
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */], __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__["a" /* LoadConversationService */],
-            __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
+            __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__["a" /* FlashMessageService */]])
     ], MessageComponent);
     return MessageComponent;
 }());
@@ -1124,7 +1112,7 @@ module.exports = "<div class=\"row align-items-center\">\n  <div class=\"col-md-
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1141,11 +1129,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var RegisterComponent = (function () {
-    function RegisterComponent(validateService, authService, router, flashMessagesService) {
+    function RegisterComponent(validateService, authService, router, flashMessageService) {
         this.validateService = validateService;
         this.authService = authService;
         this.router = router;
-        this.flashMessagesService = flashMessagesService;
+        this.flashMessageService = flashMessageService;
     }
     RegisterComponent.prototype.onRegisterSubmit = function () {
         var _this = this;
@@ -1158,32 +1146,22 @@ var RegisterComponent = (function () {
         };
         // Requiered Fields
         if (!this.validateService.validateRegister(user)) {
-            this.flashMessagesService.show('Please fill in all fields', {
-                classes: ['alert', 'alert-danger'],
-                timeout: 5000,
-            });
+            this.flashMessageService.alert('Please fill in all fields', 3000);
             return false;
         }
         // Validate Email
         if (!this.validateService.validateEmail(user.email)) {
-            this.flashMessagesService.show('Please valid email address', {
-                classes: ['alert', 'alert-warning'],
-            });
+            this.flashMessageService.alert('Please valid email address', 3000);
             return false;
         }
         // Register User
         this.authService.registerUser(user).subscribe(function (data) {
             if (data.success) {
-                _this.flashMessagesService.show('You are now register and can log in', {
-                    classes: ['alert', 'alert-success'],
-                    timeout: 5000,
-                });
+                _this.flashMessageService.alert('You are now register and can log in', 3000);
                 _this.router.navigate(['/login']);
             }
             else {
-                _this.flashMessagesService.show('Something went wrong', {
-                    classes: ['alert', 'alert-danger'],
-                });
+                _this.flashMessageService.alert('Something went wrong', 3000);
                 _this.router.navigate(['/register']);
             }
         });
@@ -1199,7 +1177,7 @@ var RegisterComponent = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_validate_service__["a" /* ValidateService */],
             __WEBPACK_IMPORTED_MODULE_2__services_auth_service__["a" /* AuthService */],
             __WEBPACK_IMPORTED_MODULE_4__angular_router__["b" /* Router */],
-            __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
+            __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__["a" /* FlashMessageService */]])
     ], RegisterComponent);
     return RegisterComponent;
 }());
@@ -1242,7 +1220,7 @@ module.exports = "<nav class=\"col-sm-3 col-md-2 bg-light sidebar\" *ngIf=\"side
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1258,17 +1236,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var SidebarComponent = (function () {
-    function SidebarComponent(authService, router, sidebar, flashMessages) {
+    function SidebarComponent(authService, router, sidebar, flashMessageService) {
         this.authService = authService;
         this.router = router;
         this.sidebar = sidebar;
-        this.flashMessages = flashMessages;
+        this.flashMessageService = flashMessageService;
     }
     SidebarComponent.prototype.ngOnInit = function () {
     };
     SidebarComponent.prototype.onLogoutClick = function () {
         this.authService.logout();
-        this.flashMessages.show('You are logout, bye', { classes: ['alert', 'alert-success'], timeout: 3000 });
+        this.flashMessageService.alert('You are logout, bye', 3000);
         this.router.navigate(['/login']);
         return false;
     };
@@ -1278,7 +1256,7 @@ var SidebarComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4_ngx_flash_messages__["b" /* FlashMessagesService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4__services_flash_message_service__["a" /* FlashMessageService */]])
     ], SidebarComponent);
     return SidebarComponent;
 }());
@@ -1482,6 +1460,78 @@ var AuthService = (function () {
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"]])
     ], AuthService);
     return AuthService;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/services/flash-message.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return FlashMessageService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_mapTo__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/mapTo.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_fromEvent__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/fromEvent.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_merge__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/merge.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+
+var FlashMessageService = (function () {
+    function FlashMessageService() {
+        var _this = this;
+        this.showMessage = false;
+        this.message = '';
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].fromEvent(window, 'online').subscribe(function (val) {
+            _this.hidden();
+        });
+        __WEBPACK_IMPORTED_MODULE_1_rxjs_Observable__["Observable"].fromEvent(window, 'offline').subscribe(function (val) {
+            _this.alert('<b>Error de conexión</b> Verifica tu internet', -1);
+        });
+    }
+    FlashMessageService.prototype.alert = function (message, time, showButton, limit) {
+        var _this = this;
+        if (time === void 0) { time = 2500; }
+        if (showButton === void 0) { showButton = true; }
+        if (limit === void 0) { limit = false; }
+        if (message.length > 200 && limit) {
+            this.message = message.slice(0, 200) + "...";
+        }
+        else {
+            this.message = message;
+        }
+        this.show();
+        this.showButton = showButton;
+        if (time > 0) {
+            setTimeout(function () { return _this.hidden(); }, time);
+        }
+    };
+    FlashMessageService.prototype.hidden = function () {
+        this.showMessage = false;
+    };
+    FlashMessageService.prototype.show = function () {
+        this.showMessage = true;
+    };
+    FlashMessageService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [])
+    ], FlashMessageService);
+    return FlashMessageService;
 }());
 
 
