@@ -2,6 +2,9 @@ import { Component, OnInit, Input, ElementRef, ViewChild} from '@angular/core';
 import { LoadMessageService } from '../../services/load-message.service';
 import {Observable} from "rxjs/Observable";
 import {AnonymousSubscription} from "rxjs/Subscription";
+import {NgForm} from '@angular/forms';
+import { FlashMessagesService } from 'ngx-flash-messages';
+import { LoadConversationService } from '../../services/load-conversation.service';
 
 @Component({
 	selector: 'app-message',
@@ -10,11 +13,11 @@ import {AnonymousSubscription} from "rxjs/Subscription";
 })
 export class MessageComponent implements OnInit {
 	@ViewChild('messageScroll') private messageScroll: ElementRef;
-	private _conversation = {name:''};
+	private _conversation = {name:'', api:{link:''}};
 	loading = false;
 	private timerSubscription: AnonymousSubscription;
 	messages = {page:0, docs:[]};
-
+	newMessage = '';
 	@Input()
 	set conversation(conversation: any) { 
 		if(conversation){
@@ -25,14 +28,15 @@ export class MessageComponent implements OnInit {
 		}
 	}
 	get conversation(): any { return this._conversation; }
-	constructor(private loadMessageService:LoadMessageService) { }
+	constructor(private loadMessageService:LoadMessageService,private loadConversationService:LoadConversationService,
+		private flashMessagesService: FlashMessagesService) { }
 
 	ngOnInit() {
 
 	}
 	loadMessageInit(){
 		this.loadMessageService.getMessages(this.conversation , this.messages).subscribe(messages => {
-			this.messages = messages;
+			this.messages = messages[0];
 			setTimeout(() => this.scrollToBottom(), 100)
 			this.checkMessages();
 		});
@@ -40,17 +44,23 @@ export class MessageComponent implements OnInit {
 	}
 	loadMessage(){
 		this.loadMessageService.getMessages(this.conversation , this.messages).subscribe(messages => {
-			console.log(this.messageScroll.nativeElement.scrollHeight - this.messageScroll.nativeElement.scrollTop);
-			console.log(this.messageScroll.nativeElement.clientHeight);
-
 			if((this.messageScroll.nativeElement.scrollHeight - this.messageScroll.nativeElement.scrollTop) === this.messageScroll.nativeElement.clientHeight) {
-				this.messages = messages;
+				this.messages = messages[0];
+				
 				setTimeout(() => this.scrollToBottom(), 100)
 			}else{
-				this.messages = messages;
+				this.messages = messages[0];
 			}
+			if(messages[1]){
+				this.loadConversationService.readConversation({page:0, docs:[]}, this.conversation).subscribe(conversations =>{
+				});
+				}
 			this.checkMessages();
 
+		},
+		err => {
+			console.log('Can\'t load new messages');
+			this.checkMessages();
 		});
 
 	}
@@ -59,22 +69,33 @@ export class MessageComponent implements OnInit {
 			() => {
 				this.loadMessage()
 			}
-		);
+			);
 
 	}
 	scrollToBottom(): void {
 		try {
-            this.messageScroll.nativeElement.scrollTop = this.messageScroll.nativeElement.scrollHeight;
+			this.messageScroll.nativeElement.scrollTop = this.messageScroll.nativeElement.scrollHeight;
+
+		} catch(err) {console.log(err); }                 
+	}
+	scrollToStay(scrollHeight): void {
+		try {
+			this.messageScroll.nativeElement.scrollTop = this.messageScroll.nativeElement.scrollHeight - scrollHeight;
 
 		} catch(err) {console.log(err); }                 
 	}
 	onUp(ev) {
-
+		var page = this.messages.page;
+		var scrollHeight = this.messageScroll.nativeElement.scrollHeight;
 		if(this.loading == false) {
 			this.loading = true;
 			this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(messages => {
-				this.messages = messages;
+				this.messages = messages[0];
+				if(this.messageScroll.nativeElement.scrollTop == 0){
+					setTimeout(() => this.scrollToStay(scrollHeight), 100)
+				}
 				this.loading = false;
+
 			},
 			err => {
 				console.log(err);
@@ -82,5 +103,18 @@ export class MessageComponent implements OnInit {
 		}
 
 	}
-
+	send(){
+		let message = {'message':this.newMessage};
+		this.loadMessageService.sendMessage(this.messages, message, this.conversation).subscribe(messages => {
+			setTimeout(() => this.scrollToBottom(), 100)
+			this.messages = messages[0];
+		},
+		err=>{
+			this.flashMessagesService.show('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', {
+				classes: ['alert', 'alert-warning','message', 'alert-dismissible','fade','show'],
+				timeout: 2500
+			});
+		});
+		this.newMessage = '';
+	}
 }

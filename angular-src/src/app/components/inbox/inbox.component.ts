@@ -9,7 +9,6 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class InboxComponent implements OnInit {
 	slug:String;
 	conversation:any;
-
   constructor(private route: ActivatedRoute, private router: Router,) {}
 
   ngOnInit() {
@@ -17,6 +16,6 @@ export class InboxComponent implements OnInit {
 
   }
 	updateConversation(conversation) {
-		this.conversation = conversation
+		this.conversation = conversation;
 		}
 }

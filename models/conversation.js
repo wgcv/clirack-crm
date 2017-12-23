@@ -47,7 +47,15 @@ module.exports.getConversations = function(inbox,page, callback){
 	const query = {inbox: inbox};
 	Conversation.paginate(query, {sort: { lastTime: -1 }, page: page, limit: 20 },callback);
 }
-module.exports.updateConvesation = function(message, callback){
-		let query = {'api.id' : message.api.id};
-		Conversation.findOneAndUpdate(query, message, {upsert:true, new: true}, callback);  
+module.exports.updateConvesation = function(conversation, callback){
+		let query = {'api.id' : conversation.api.id};
+		Conversation.findOneAndUpdate(query, conversation, {upsert:true, new: true}, callback);  
+}
+module.exports.readConvesation = function(conversation, callback){
+		let query = {'_id' : conversation._id};
+		conversation.unread = 0;
+		Conversation.findOneAndUpdate(query, conversation, {upsert:false, new: true}, callback);  
+}
+module.exports.getConvesationById = function(id, callback){
+	Conversation.findById(id,callback);
 }

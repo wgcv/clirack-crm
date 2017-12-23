@@ -19294,6 +19294,21 @@ __WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].fromPromise = __WEBPACK_
 
 /***/ }),
 
+/***/ "../../../../rxjs/_esm5/add/observable/merge.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__observable_merge__ = __webpack_require__("../../../../rxjs/_esm5/observable/merge.js");
+/** PURE_IMPORTS_START .._.._Observable,.._.._observable_merge PURE_IMPORTS_END */
+
+
+__WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].merge = __WEBPACK_IMPORTED_MODULE_1__observable_merge__["a" /* merge */];
+//# sourceMappingURL=merge.js.map 
+
+
+/***/ }),
+
 /***/ "../../../../rxjs/_esm5/add/observable/of.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -19365,6 +19380,21 @@ __WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].prototype.filter = __WEB
 
 __WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].prototype.map = __WEBPACK_IMPORTED_MODULE_1__operator_map__["a" /* map */];
 //# sourceMappingURL=map.js.map 
+
+
+/***/ }),
+
+/***/ "../../../../rxjs/_esm5/add/operator/mapTo.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__operator_mapTo__ = __webpack_require__("../../../../rxjs/_esm5/operator/mapTo.js");
+/** PURE_IMPORTS_START .._.._Observable,.._.._operator_mapTo PURE_IMPORTS_END */
+
+
+__WEBPACK_IMPORTED_MODULE_0__Observable__["Observable"].prototype.mapTo = __WEBPACK_IMPORTED_MODULE_1__operator_mapTo__["a" /* mapTo */];
+//# sourceMappingURL=mapTo.js.map 
 
 
 /***/ }),
@@ -21773,6 +21803,48 @@ function map(project, thisArg) {
 
 /***/ }),
 
+/***/ "../../../../rxjs/_esm5/operator/mapTo.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = mapTo;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__operators_mapTo__ = __webpack_require__("../../../../rxjs/_esm5/operators/mapTo.js");
+/** PURE_IMPORTS_START .._operators_mapTo PURE_IMPORTS_END */
+
+/**
+ * Emits the given constant value on the output Observable every time the source
+ * Observable emits a value.
+ *
+ * <span class="informal">Like {@link map}, but it maps every source value to
+ * the same output value every time.</span>
+ *
+ * <img src="./img/mapTo.png" width="100%">
+ *
+ * Takes a constant `value` as argument, and emits that whenever the source
+ * Observable emits a value. In other words, ignores the actual source value,
+ * and simply uses the emission moment to know when to emit the given `value`.
+ *
+ * @example <caption>Map every click to the string 'Hi'</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var greetings = clicks.mapTo('Hi');
+ * greetings.subscribe(x => console.log(x));
+ *
+ * @see {@link map}
+ *
+ * @param {any} value The value to map each source value to.
+ * @return {Observable} An Observable that emits the given `value` every time
+ * the source Observable emits something.
+ * @method mapTo
+ * @owner Observable
+ */
+function mapTo(value) {
+    return Object(__WEBPACK_IMPORTED_MODULE_0__operators_mapTo__["a" /* mapTo */])(value)(this);
+}
+//# sourceMappingURL=mapTo.js.map 
+
+
+/***/ }),
+
 /***/ "../../../../rxjs/_esm5/operator/merge.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -23299,6 +23371,80 @@ var MapSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
     return MapSubscriber;
 }(__WEBPACK_IMPORTED_MODULE_0__Subscriber__["a" /* Subscriber */]));
 //# sourceMappingURL=map.js.map 
+
+
+/***/ }),
+
+/***/ "../../../../rxjs/_esm5/operators/mapTo.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = mapTo;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Subscriber__ = __webpack_require__("../../../../rxjs/_esm5/Subscriber.js");
+/** PURE_IMPORTS_START .._Subscriber PURE_IMPORTS_END */
+var __extends = (this && this.__extends) || function (d, b) {
+    for (var p in b)
+        if (b.hasOwnProperty(p))
+            d[p] = b[p];
+    function __() { this.constructor = d; }
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+};
+
+/**
+ * Emits the given constant value on the output Observable every time the source
+ * Observable emits a value.
+ *
+ * <span class="informal">Like {@link map}, but it maps every source value to
+ * the same output value every time.</span>
+ *
+ * <img src="./img/mapTo.png" width="100%">
+ *
+ * Takes a constant `value` as argument, and emits that whenever the source
+ * Observable emits a value. In other words, ignores the actual source value,
+ * and simply uses the emission moment to know when to emit the given `value`.
+ *
+ * @example <caption>Map every click to the string 'Hi'</caption>
+ * var clicks = Rx.Observable.fromEvent(document, 'click');
+ * var greetings = clicks.mapTo('Hi');
+ * greetings.subscribe(x => console.log(x));
+ *
+ * @see {@link map}
+ *
+ * @param {any} value The value to map each source value to.
+ * @return {Observable} An Observable that emits the given `value` every time
+ * the source Observable emits something.
+ * @method mapTo
+ * @owner Observable
+ */
+function mapTo(value) {
+    return function (source) { return source.lift(new MapToOperator(value)); };
+}
+var MapToOperator = /*@__PURE__*/ (/*@__PURE__*/ function () {
+    function MapToOperator(value) {
+        this.value = value;
+    }
+    MapToOperator.prototype.call = function (subscriber, source) {
+        return source.subscribe(new MapToSubscriber(subscriber, this.value));
+    };
+    return MapToOperator;
+}());
+/**
+ * We need this JSDoc comment for affecting ESDoc.
+ * @ignore
+ * @extends {Ignored}
+ */
+var MapToSubscriber = /*@__PURE__*/ (/*@__PURE__*/ function (_super) {
+    __extends(MapToSubscriber, _super);
+    function MapToSubscriber(destination, value) {
+        _super.call(this, destination);
+        this.value = value;
+    }
+    MapToSubscriber.prototype._next = function (x) {
+        this.destination.next(this.value);
+    };
+    return MapToSubscriber;
+}(__WEBPACK_IMPORTED_MODULE_0__Subscriber__["a" /* Subscriber */]));
+//# sourceMappingURL=mapTo.js.map 
 
 
 /***/ }),

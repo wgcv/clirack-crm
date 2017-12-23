@@ -42,7 +42,7 @@ export class ConversationComponent implements OnInit {
 			this.conversations = this.loadConversationService.updateConversations(this.conversations, conversations);
 			if(this.firstTime && (conversations.docs.length > 0)){
 				this.firstTime = false;
-				this.conversation.emit(conversations.docs[0]);
+				this.click(conversations.docs[0]);
 			}
 			this.checkConversations();
 
@@ -51,8 +51,13 @@ export class ConversationComponent implements OnInit {
 				this.checkConversations();
 			});
 	}
-	click($event, conversation){
+	click(conversation){
 		this.conversation.emit(conversation);
+		setTimeout(() => {
+		 this.loadConversationService.readConversation(this.conversations, conversation).subscribe(conversations =>{
+		 	this.conversations = conversations;
+		 });
+		}, 2000);
 	}
 	onScrollDown(ev){
 		if(this.loading == false) {

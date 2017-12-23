@@ -5,6 +5,11 @@
   	text-overflow: ellipsis;
 
 }
+.pre-scrollable {
+    min-height: 100%;
+    background: #fafafa;
+    overflow-y: scroll;
+}
 .row {
 	padding: 0;
     margin: 0;
@@ -33,6 +38,17 @@
 
 	height: calc(100vh - 60px);
 }
+.w-80{
+    width: calc(100% - 2rem);
+}
+.rm-1{
+    min-width: 1rem;
+    max-width: 1rem;
+    margin: auto 0.25rem;
+}
+.badge{
+    font-size: 0.7em;
+}
 p {
     font-size: 0.8rem;
     margin-top: 0;
@@ -45,12 +61,20 @@ p {
 .pointer {
     cursor: pointer;
 }
+.list-group-item{
+    padding: 1rem 0.1rem 1rem 0;
+}
+.list-group-item:nth-last-child(2){
+    margin-bottom: 0px;
+
+}
+
 .list-group-item:first-child{
         border-top-left-radius: 0;
     border-top-right-radius: 0;
 }
 .list-group-item:last-child {
-    margin-bottom: 0;
+    margin-top: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
 }

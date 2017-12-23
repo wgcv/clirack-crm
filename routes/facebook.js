@@ -184,6 +184,7 @@ router.get('/webhook/', function (req, res){
 });
 router.post('/webhook/', function (req, res){
 	response = req.body;
+	console.log(JSON.stringify(response));
 	if (response.hasOwnProperty('object')){
 		let object = response.object;
 		if (response.hasOwnProperty('entry')){
@@ -208,7 +209,7 @@ router.post('/webhook/', function (req, res){
 									var conversation = {
 										inbox: inbox._id,
 										name: jsonBody.participants.data[0].name,
-										unread: jsonBody.unread_count,
+										unread: jsonBody.messages.data[0].from.id==id ? 0 : jsonBody.unread_count,
 										preview: jsonBody.messages.data[0].message,
 										lastTime: jsonBody.messages.data[0].created_time,
 										api:{

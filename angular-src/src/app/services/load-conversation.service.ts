@@ -41,38 +41,37 @@ export class LoadConversationService {
 		});
 
 	}
+	readConversation(conversations, conversation){
+		let headers = new Headers();
+		this.authService.loadToken();
+		headers.append('Authorization', this.authService.getToken());
+		headers.append('Content-Type','application/json');
+		return this.http.post('/api/communication/'+conversation._id+'/read', conversation,{headers:headers}).map(data => {
+			return this.updateConversations(conversations, {page:0, docs:[data.json()]});
+		});
+	}
+
 	updateConversations(conversations, conversationUpdate){
-		for (var i =0; i< conversationUpdate.docs.length; i++) {
-			if(conversations.docs.length < 1){
-				conversations.docs.push(conversationUpdate.docs[i]);
-			}else{
-				var exist = false;
-				var position = 0;
-				for (var j = 0; j < conversations.docs.length; j++) {
-					if(conversationUpdate.docs[i].api.id === conversations.docs[j].api.id ){
-						position = j;
-						exist = true;
-					}
+		for (var j =0; j< conversationUpdate.docs.length; j++) {
+			var notExist = true;
+			for (var i =0; i< conversations.docs.length; i++) {
+				if(conversationUpdate.docs[j].api.id === conversations.docs[i].api.id ){
+					conversations.docs.splice(i, 1);
+					notExist = false;
 				}
-				if(Date.parse(conversations.docs[0].lastTime)<= Date.parse(conversationUpdate.docs[i].lastTime) ){
-					if(exist){
-						conversations.docs.splice(position, 1);
-					}
-					conversations.docs.unshift(conversationUpdate.docs[i]);
-				}else{
-					if(exist){
-						conversations.docs.splice(position, 1);
-					}
-					conversations.docs.push(conversationUpdate.docs[i]);
-				}
-
 			}
-		}
-		if(conversations.page < conversationUpdate.page ){
-			conversations.page = conversationUpdate.page;
-		}
-		return conversations;
 
+				conversations.docs.push(conversationUpdate.docs[j]);
+			
+		}
+		conversations.docs.sort(function (a, b) {
+  			return  Date.parse(b.lastTime) - Date.parse(a.lastTime);
+		});
+		if(conversationUpdate.page > conversations.page){
+			conversations.page = parseInt(conversationUpdate.page);
+		}
+
+		return conversations;
 	}
 
 	getInboxes(){

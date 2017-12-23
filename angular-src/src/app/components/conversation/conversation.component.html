@@ -1,5 +1,5 @@
 <div class="full-content">
-  <div class="list-group pre-scrollable search-results" infiniteScroll
+  <div class="list-group pre-scrollable search-results scroll" infiniteScroll
         [infiniteScrollDistance]="1"
         [infiniteScrollThrottle]="1"
         [scrollWindow]="false"
@@ -10,7 +10,16 @@
       <h5 class="mb-1">Conversaciones </h5>
     </div>
   </div>
-  <div class="list-group-item list-group-item-action flex-column align-items-start pointer" *ngFor="let conversation of conversations.docs" (click)="click($event, conversation)">
+  <div class="list-group-item list-group-item-action flex-column align-items-start pointer" *ngFor="let conversation of conversations.docs" (click)="click(conversation)">
+   <div class="row">
+    <div class="d-inline-block rm-1">
+      <div  *ngIf="conversation.unread">
+<svg height="0.6rem" width="1rem">
+<circle _ngcontent-c4="" cx="0.5rem" cy="0.3rem" fill="#407fff" r="0.3rem" ></circle>
+</svg>
+</div>
+</div>
+<div class="w-80 d-inline-block">
    <div class="d-flex w-100 justify-content-between">
     <div class="row">
       <div class="col-8 name">
@@ -21,10 +30,14 @@
       </div>
     </div>
   </div>
+  <div class="justify-content-between">
   <p class="mb-1">{{conversation.preview | truncate :75 : true}}</p>
+</div>
+</div>
   <small *ngIf="conversation.assigned">Asignado a: {{conversation.assigned}}</small>
 </div>
-   <div  [ngClass]="{ 'd-none': !loading }"  class="list-group-item flex-column align-items-start" >
+</div>
+   <div  [ngClass]="{ 'd-none': !loading }" class="list-group-item flex-column align-items-start" >
      <div class="d-flex w-100 justify-content-between">
       <img src="/assets/img/loading.svg" height="45rem" class="mx-auto d-block" />
     </div>

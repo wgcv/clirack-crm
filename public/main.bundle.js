@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar></app-sidebar>\n\t\t<div [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<ngx-flash-messages></ngx-flash-messages>\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar></app-sidebar>\n\t\t<div [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<ngx-flash-messages></ngx-flash-messages>\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>\n<p>{{online$ | async}}</p>\n"
 
 /***/ }),
 
@@ -49,6 +49,11 @@ module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_operator_mapTo__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/mapTo.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_of__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/of.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_fromEvent__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/fromEvent.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_rxjs_add_observable_merge__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/merge.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -60,11 +65,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
+
+
+
+
 var AppComponent = (function () {
     function AppComponent(sidebar) {
         this.sidebar = sidebar;
         this.title = 'Clirack';
         this.showSlidebar = true;
+        this.online$ = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].merge(__WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].of(navigator.onLine), __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(window, 'online').mapTo(true), __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].fromEvent(window, 'offline').mapTo(false));
     }
     AppComponent.prototype.ngOnInit = function () {
     };
@@ -352,7 +363,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n  \toverflow: hidden;\n  \ttext-overflow: ellipsis;\n\n}\n.row {\n\tpadding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n\tpadding: 0 0 0 0;\n\toverflow: hidden;\n\n}\n.time {\n\tpadding: 0;\n\toverflow: hidden;\n}\n.small, small {\n\tfloat: right;\n\tvertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.full-content {\n\t font-size: 1rem;\n    margin-top: 0;\n\n\theight: calc(100vh - 60px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: 100%;\n    overflow-y: scroll;\n}\n.pointer {\n    cursor: pointer;\n}\n.list-group-item:first-child{\n        border-top-left-radius: 0;\n    border-top-right-radius: 0;\n}\n.list-group-item:last-child {\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}", ""]);
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n  \toverflow: hidden;\n  \ttext-overflow: ellipsis;\n\n}\n.pre-scrollable {\n    min-height: 100%;\n    background: #fafafa;\n    overflow-y: scroll;\n}\n.row {\n\tpadding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n\tpadding: 0 0 0 0;\n\toverflow: hidden;\n\n}\n.time {\n\tpadding: 0;\n\toverflow: hidden;\n}\n.small, small {\n\tfloat: right;\n\tvertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.full-content {\n\t font-size: 1rem;\n    margin-top: 0;\n\n\theight: calc(100vh - 60px);\n}\n.w-80{\n    width: calc(100% - 2rem);\n}\n.rm-1{\n    min-width: 1rem;\n    max-width: 1rem;\n    margin: auto 0.25rem;\n}\n.badge{\n    font-size: 0.7em;\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: 100%;\n    overflow-y: scroll;\n}\n.pointer {\n    cursor: pointer;\n}\n.list-group-item{\n    padding: 1rem 0.1rem 1rem 0;\n}\n.list-group-item:nth-last-child(2){\n    margin-bottom: 0px;\n\n}\n\n.list-group-item:first-child{\n        border-top-left-radius: 0;\n    border-top-right-radius: 0;\n}\n.list-group-item:last-child {\n    margin-top: -1px;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}", ""]);
 
 // exports
 
@@ -365,7 +376,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/conversation/conversation.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-scrollable search-results\" infiniteScroll\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollThrottle]=\"1\"\n        [scrollWindow]=\"false\"\n        (scrolled)=\"onScrollDown()\"\n>\n   <div class=\"list-group-item sticky-top flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <h5 class=\"mb-1\">Conversaciones </h5>\n    </div>\n  </div>\n  <div class=\"list-group-item list-group-item-action flex-column align-items-start pointer\" *ngFor=\"let conversation of conversations.docs\" (click)=\"click($event, conversation)\">\n   <div class=\"d-flex w-100 justify-content-between\">\n    <div class=\"row\">\n      <div class=\"col-8 name\">\n        <h5 class=\"mb-1\">{{conversation.name}}</h5>\n      </div>\n      <div class=\"col-4 time\">\n        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>\n      </div>\n    </div>\n  </div>\n  <p class=\"mb-1\">{{conversation.preview | truncate :75 : true}}</p>\n  <small *ngIf=\"conversation.assigned\">Asignado a: {{conversation.assigned}}</small>\n</div>\n   <div  [ngClass]=\"{ 'd-none': !loading }\"  class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n    </div>\n  </div>\n</div>\n</div>"
+module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-scrollable search-results scroll\" infiniteScroll\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollThrottle]=\"1\"\n        [scrollWindow]=\"false\"\n        (scrolled)=\"onScrollDown()\"\n>\n   <div class=\"list-group-item sticky-top flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <h5 class=\"mb-1\">Conversaciones </h5>\n    </div>\n  </div>\n  <div class=\"list-group-item list-group-item-action flex-column align-items-start pointer\" *ngFor=\"let conversation of conversations.docs\" (click)=\"click(conversation)\">\n   <div class=\"row\">\n    <div class=\"d-inline-block rm-1\">\n      <div  *ngIf=\"conversation.unread\">\n<svg height=\"0.6rem\" width=\"1rem\">\n<circle _ngcontent-c4=\"\" cx=\"0.5rem\" cy=\"0.3rem\" fill=\"#407fff\" r=\"0.3rem\" ></circle>\n</svg>\n</div>\n</div>\n<div class=\"w-80 d-inline-block\">\n   <div class=\"d-flex w-100 justify-content-between\">\n    <div class=\"row\">\n      <div class=\"col-8 name\">\n        <h5 class=\"mb-1\">{{conversation.name}}</h5>\n      </div>\n      <div class=\"col-4 time\">\n        <small>{{ conversation.lastTime | amTimeAgo:true }}</small>\n      </div>\n    </div>\n  </div>\n  <div class=\"justify-content-between\">\n  <p class=\"mb-1\">{{conversation.preview | truncate :75 : true}}</p>\n</div>\n</div>\n  <small *ngIf=\"conversation.assigned\">Asignado a: {{conversation.assigned}}</small>\n</div>\n</div>\n   <div  [ngClass]=\"{ 'd-none': !loading }\" class=\"list-group-item flex-column align-items-start\" >\n     <div class=\"d-flex w-100 justify-content-between\">\n      <img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n    </div>\n  </div>\n</div>\n</div>"
 
 /***/ }),
 
@@ -420,15 +431,21 @@ var ConversationComponent = (function () {
             _this.conversations = _this.loadConversationService.updateConversations(_this.conversations, conversations);
             if (_this.firstTime && (conversations.docs.length > 0)) {
                 _this.firstTime = false;
-                _this.conversation.emit(conversations.docs[0]);
+                _this.click(conversations.docs[0]);
             }
             _this.checkConversations();
         }, function (error) {
             _this.checkConversations();
         });
     };
-    ConversationComponent.prototype.click = function ($event, conversation) {
+    ConversationComponent.prototype.click = function (conversation) {
+        var _this = this;
         this.conversation.emit(conversation);
+        setTimeout(function () {
+            _this.loadConversationService.readConversation(_this.conversations, conversation).subscribe(function (conversations) {
+                _this.conversations = conversations;
+            });
+        }, 2000);
     };
     ConversationComponent.prototype.onScrollDown = function (ev) {
         var _this = this;
@@ -608,7 +625,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/inbox/inbox.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"row\">\n  <div class=\"col-12 col-sm-5 col-md-4 col-xl-3 p-0\">\n\t<app-conversation  [slug]=\"slug\" (conversation)=\"updateConversation($event)\"></app-conversation>\n\t</div>\n  <div class=\"col-12 col-sm-7 col-md-8 col-xl-9 p-0\">\n  \t<app-message [conversation]=\"conversation\"></app-message>\n  </div>\n</div>"
+module.exports = "<div class=\"row\">\n  <div class=\"col-12 col-sm-5 col-md-4 col-xl-3 p-0\">\n\t<app-conversation  [slug]=\"slug\" (conversation)=\"updateConversation($event)\"></app-conversation>\n\t</div>\n  <div class=\"col-12 col-sm-7 col-md-8 col-xl-9 p-0\">\n  \t<app-message [conversation]=\"conversation\" ></app-message>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -758,7 +775,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n\n}\n.row {\n    padding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n    padding: 0 0 0 0;\n    overflow: hidden;\n\n}\n.time {\n    padding: 0;\n    overflow: hidden;\n}\n.small, small {\n    vertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.header {\n    max-height: 40px;\n    min-height: 40px;\n    z-index: 10;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0;\n\n}\n.footer {\n    max-height: 130px;\n    min-height: 130px;\n    z-index: 10;\n}\n.full-content {\n     font-size: 1rem;\n    margin-top: 0;\n\n    height: calc(100vh - 58px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: calc(100% - 170px);\n    min-height: calc(100% - 170px);\n    overflow-y: scroll;\n}\n\n.scroll::-webkit-scrollbar-track\n{\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    border-radius: 4px;\n    background-color: #F5F5F5;\n}\n.scroll::-webkit-scrollbar\n{\n    width: 8px;\n    background-color: #F5F5F5;\n}\n\n.scroll::-webkit-scrollbar-thumb\n{\n    border-radius: 2px;\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    background-color: #343a40;\n}\na.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}\n.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0.25rem;\n}\n.block-message {    \n    display: block;\n    padding: .1rem 1.25rem;\n    background-color: #fff;\n}\n.block-message:last-child{\n    margin-bottom: 1em;\n}\n.message {\n    display: inline-block;\n    background: #f1f0f0;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: #212529;\n}\n.loading{\n    border: 0px;\n}\n.message-response{\n    display: inline-block;\n    background: #407fff;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: white;\n}", ""]);
+exports.push([module.i, ".h5, h5 {\n    font-size: 1rem;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    display: inline\n}\n.row {\n    padding: 0;\n    margin: 0;\n    width: 100%;\n}\n.name {\n    padding: 0 0 0 0;\n    overflow: hidden;\n\n}\n.time {\n    padding: 0;\n    overflow: hidden;\n}\n.small, small {\n    vertical-align: top;\n    font-size: 70%;\n    font-weight: 400;\n    white-space: nowrap;\n\n}\n.header {\n    max-height: 40px;\n    min-height: 40px;\n    z-index: 10;\n    border-top-right-radius: 0;\n    border-top-left-radius: 0;\n    padding: 0 1rem;\n\n}\n\n.footer {\n    max-height: 130px;\n    min-height: 130px;\n    z-index: 10;\n}\n.full-content {\n     font-size: 1rem;\n    margin-top: 0;\n\n    height: calc(100vh - 58px);\n}\np {\n    font-size: 0.8rem;\n    margin-top: 0;\n    margin-bottom: 1rem;\n}\n.pre-scrollable {\n    max-height: calc(100% - 170px);\n    min-height: calc(100% - 170px);\n    overflow-y: scroll;\n}\n\n.scroll::-webkit-scrollbar-track\n{\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    border-radius: 4px;\n    background-color: #f9f9f9;\n}\n.scroll::-webkit-scrollbar\n{\n    width: 8px;\n    background-color: #f9f9f9;\n}\n\n.scroll::-webkit-scrollbar-thumb\n{\n    border-radius: 2px;\n    -webkit-box-shadow: inset 0 0 6px rgba(255,255,255,0.3);\n    background-color: #343a40;\n}\na.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0;\n}\n.list-group-item:last-child{\n    margin-bottom: 0;\n    border-bottom-right-radius: 0;\n    border-bottom-left-radius: 0.25rem;\n}\n.block-message {    \n    display: block;\n    padding: .1rem 1.25rem;\n    background-color: #fff;\n}\n.block-message:last-child{\n    margin-bottom: 1em;\n}\n.message {\n    display: inline-block;\n    background: #f1f0f0;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: #212529;\n}\n.loading{\n    border: 0px;\n}\n.message-response{\n    display: inline-block;\n    background: #407fff;\n    border-radius: 1em;\n    padding: 0.3em 1em;\n    color: white;\n}", ""]);
 
 // exports
 
@@ -771,7 +788,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/message/message.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item header \">\n\t\t<h5 class=\"mb-1\">{{conversation.name}}</h5>\n\t</div>\n\t<div class=\"list-group pre-scrollable scroll\" infiniteScroll\n\tdebounce\n        [infiniteScrollDistance]=\"1\"\n        [infiniteScrollUpDistance]=\"0\"\n        [infiniteScrollThrottle]=\"300\"\n        [scrollWindow]=\"false\"\n\t\t(scrolledUp)=\"onUp()\"\n\t\t#messageScroll\n\t>\n\t<div  [ngClass]=\"{ 'd-none': !loading }\"  class=\"list-group-item flex-column align-items-start loading\" >\n\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t<img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n\t\t</div>\n\t</div>\n\t<div class=\"block-message\" *ngFor=\"let message of messages.docs; let i = index;\">\n\t\t<div class=\"d-flex w-100 justify-content-between\" *ngIf=\"message.time | showtime : i>0?messages.docs[i-1].time:'1992-11-25T11:49:07.000Z'\">\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t<div class=\"col-12 time text-center\">\n\t\t\t\t\t\t<small>{{ message.time | amCalendar }}</small>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t<div  *ngIf=\"!message.response\">\n\t\t\t<div class=\"message\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t\t<div  *ngIf=\"message.response\">\n\t\t\t<div class=\"message-response float-right\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"list-group-item footer\">\n\t<textarea class=\"form-control\" placeholder=\"Escríbe un mensaje\"></textarea>\n\t<div>\n\t\t<button type=\"button\" class=\"btn btn-primary m-2\">Enviar</button>\n\t</div>\n</div>\n</div>"
+module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item header d-flex\">\n\t\t<div class=\"my-auto\">\n\t\t\t<h5 class=\"mb-1\">{{conversation.name}}</h5>\n\t\t\t<a target=\"_blank\" href=\"{{conversation.api.link}}\" *ngIf=\"conversation.api.link\">\n\t\t\t\t<img src=\"/assets/img/link.svg\" height=\"16rem\" class=\"mx-auto\" />\n\t\t\t</a>\n\t\t</div>\n\t</div>\n\t<div class=\"list-group pre-scrollable scroll\" infiniteScroll\n\tdebounce\n\t[infiniteScrollDistance]=\"1\"\n\t[infiniteScrollUpDistance]=\"2\"\n\t[infiniteScrollThrottle]=\"300\"\n\t[scrollWindow]=\"false\"\n\t(scrolledUp)=\"onUp()\"\n\t#messageScroll\n\t>\n\t<div  [ngClass]=\"{ 'invisible': !loading }\"  class=\"list-group-item flex-column align-items-start loading\" >\n\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t<img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n\t\t</div>\n\t</div>\n\t<div class=\"block-message\" *ngFor=\"let message of messages.docs; let i = index;\">\n\t\t<div class=\"d-flex w-100 justify-content-between\" *ngIf=\"message.time | showtime : i>0?messages.docs[i-1].time:'1992-11-25T11:49:07.000Z'\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-12 time text-center\">\n\t\t\t\t\t<small>{{ message.time | amCalendar }}</small>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div  *ngIf=\"!message.response\">\n\t\t\t<div class=\"message\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t\t<div  *ngIf=\"message.response\">\n\t\t\t<div class=\"message-response float-right\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"list-group-item footer\">\n\t<form (submit)=\"send()\">\n\t\t<textarea class=\"form-control\" placeholder=\"Escríbe un mensaje\"  [(ngModel)]=\"newMessage\" name=\"newMessage\" (keydown.enter)=\"$event.preventDefault();send()\"></textarea>\n\t\t<div>\n\t\t\t<input type=\"submit\" class=\"btn btn-primary m-2 float-right\" value=\"Enviar\">\n\t\t</div>\n\t</form>\n</div>\n</div>"
 
 /***/ }),
 
@@ -783,6 +800,8 @@ module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item h
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__ = __webpack_require__("../../../../ngx-flash-messages/lib-dist/flash-messages.module.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -795,12 +814,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var MessageComponent = (function () {
-    function MessageComponent(loadMessageService) {
+    function MessageComponent(loadMessageService, loadConversationService, flashMessagesService) {
         this.loadMessageService = loadMessageService;
-        this._conversation = { name: '' };
+        this.loadConversationService = loadConversationService;
+        this.flashMessagesService = flashMessagesService;
+        this._conversation = { name: '', api: { link: '' } };
         this.loading = false;
         this.messages = { page: 0, docs: [] };
+        this.newMessage = '';
     }
     Object.defineProperty(MessageComponent.prototype, "conversation", {
         get: function () { return this._conversation; },
@@ -819,7 +843,7 @@ var MessageComponent = (function () {
     MessageComponent.prototype.loadMessageInit = function () {
         var _this = this;
         this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
-            _this.messages = messages;
+            _this.messages = messages[0];
             setTimeout(function () { return _this.scrollToBottom(); }, 100);
             _this.checkMessages();
         });
@@ -827,15 +851,20 @@ var MessageComponent = (function () {
     MessageComponent.prototype.loadMessage = function () {
         var _this = this;
         this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
-            console.log(_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop);
-            console.log(_this.messageScroll.nativeElement.clientHeight);
             if ((_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop) === _this.messageScroll.nativeElement.clientHeight) {
-                _this.messages = messages;
+                _this.messages = messages[0];
                 setTimeout(function () { return _this.scrollToBottom(); }, 100);
             }
             else {
-                _this.messages = messages;
+                _this.messages = messages[0];
             }
+            if (messages[1]) {
+                _this.loadConversationService.readConversation({ page: 0, docs: [] }, _this.conversation).subscribe(function (conversations) {
+                });
+            }
+            _this.checkMessages();
+        }, function (err) {
+            console.log('Can\'t load new messages');
             _this.checkMessages();
         });
     };
@@ -853,17 +882,44 @@ var MessageComponent = (function () {
             console.log(err);
         }
     };
+    MessageComponent.prototype.scrollToStay = function (scrollHeight) {
+        try {
+            this.messageScroll.nativeElement.scrollTop = this.messageScroll.nativeElement.scrollHeight - scrollHeight;
+        }
+        catch (err) {
+            console.log(err);
+        }
+    };
     MessageComponent.prototype.onUp = function (ev) {
         var _this = this;
+        var page = this.messages.page;
+        var scrollHeight = this.messageScroll.nativeElement.scrollHeight;
         if (this.loading == false) {
             this.loading = true;
             this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(function (messages) {
-                _this.messages = messages;
+                _this.messages = messages[0];
+                if (_this.messageScroll.nativeElement.scrollTop == 0) {
+                    setTimeout(function () { return _this.scrollToStay(scrollHeight); }, 100);
+                }
                 _this.loading = false;
             }, function (err) {
                 console.log(err);
             });
         }
+    };
+    MessageComponent.prototype.send = function () {
+        var _this = this;
+        var message = { 'message': this.newMessage };
+        this.loadMessageService.sendMessage(this.messages, message, this.conversation).subscribe(function (messages) {
+            setTimeout(function () { return _this.scrollToBottom(); }, 100);
+            _this.messages = messages[0];
+        }, function (err) {
+            _this.flashMessagesService.show('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', {
+                classes: ['alert', 'alert-warning', 'message', 'alert-dismissible', 'fade', 'show'],
+                timeout: 2500
+            });
+        });
+        this.newMessage = '';
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewChild"])('messageScroll'),
@@ -880,7 +936,8 @@ var MessageComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/message/message.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/message/message.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */], __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__["a" /* LoadConversationService */],
+            __WEBPACK_IMPORTED_MODULE_3_ngx_flash_messages__["b" /* FlashMessagesService */]])
     ], MessageComponent);
     return MessageComponent;
 }());
@@ -1488,36 +1545,32 @@ var LoadConversationService = (function () {
             }
         });
     };
+    LoadConversationService.prototype.readConversation = function (conversations, conversation) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/communication/' + conversation._id + '/read', conversation, { headers: headers }).map(function (data) {
+            return _this.updateConversations(conversations, { page: 0, docs: [data.json()] });
+        });
+    };
     LoadConversationService.prototype.updateConversations = function (conversations, conversationUpdate) {
-        for (var i = 0; i < conversationUpdate.docs.length; i++) {
-            if (conversations.docs.length < 1) {
-                conversations.docs.push(conversationUpdate.docs[i]);
-            }
-            else {
-                var exist = false;
-                var position = 0;
-                for (var j = 0; j < conversations.docs.length; j++) {
-                    if (conversationUpdate.docs[i].api.id === conversations.docs[j].api.id) {
-                        position = j;
-                        exist = true;
-                    }
-                }
-                if (Date.parse(conversations.docs[0].lastTime) <= Date.parse(conversationUpdate.docs[i].lastTime)) {
-                    if (exist) {
-                        conversations.docs.splice(position, 1);
-                    }
-                    conversations.docs.unshift(conversationUpdate.docs[i]);
-                }
-                else {
-                    if (exist) {
-                        conversations.docs.splice(position, 1);
-                    }
-                    conversations.docs.push(conversationUpdate.docs[i]);
+        for (var j = 0; j < conversationUpdate.docs.length; j++) {
+            var notExist = true;
+            for (var i = 0; i < conversations.docs.length; i++) {
+                if (conversationUpdate.docs[j].api.id === conversations.docs[i].api.id) {
+                    conversations.docs.splice(i, 1);
+                    notExist = false;
                 }
             }
+            conversations.docs.push(conversationUpdate.docs[j]);
         }
-        if (conversations.page < conversationUpdate.page) {
-            conversations.page = conversationUpdate.page;
+        conversations.docs.sort(function (a, b) {
+            return Date.parse(b.lastTime) - Date.parse(a.lastTime);
+        });
+        if (conversationUpdate.page > conversations.page) {
+            conversations.page = parseInt(conversationUpdate.page);
         }
         return conversations;
     };
@@ -1590,12 +1643,13 @@ var LoadMessageService = (function () {
         });
     };
     LoadMessageService.prototype.updateConversations = function (messages, messagesUpdate) {
+        var wasUpdate = false;
         for (var j = 0; j < messagesUpdate.docs.length; j++) {
             var notExist = true;
             for (var i = 0; i < messages.docs.length; i++) {
                 if (messagesUpdate.docs[j].id === messages.docs[i].id) {
-                    console.log(messagesUpdate.docs[j]);
                     notExist = false;
+                    wasUpdate = true;
                 }
             }
             if (notExist) {
@@ -1605,11 +1659,20 @@ var LoadMessageService = (function () {
         messages.docs.sort(function (a, b) {
             return Date.parse(a.time) - Date.parse(b.time);
         });
-        if (messagesUpdate.page > messages.page) {
+        if (messagesUpdate.pages > messages.page) {
             messages.page = parseInt(messagesUpdate.page);
         }
-        console.log(messages);
-        return messages;
+        return [messages, wasUpdate];
+    };
+    LoadMessageService.prototype.sendMessage = function (messages, message, conversation) {
+        var _this = this;
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.post('/api/communication/' + conversation._id + '/messages', message, { headers: headers }).map(function (data) {
+            return _this.updateConversations(messages, { page: 0, docs: [data.json()] });
+        });
     };
     LoadMessageService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),

@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-
-
 import { AuthService } from './auth.service';
 
 @Injectable()
@@ -15,6 +13,7 @@ export class LoadMessageService {
 		headers.append('Authorization', this.authService.getToken());
 		headers.append('Content-Type','application/json');
 		return this.http.get('/api/communication/'+conversations._id+'/messages?page='+page,{headers:headers}).map(data => {
+			
 			return this.updateConversations(messages,data.json());
 			
 		});
@@ -32,12 +31,13 @@ export class LoadMessageService {
 		});
 	}
 	updateConversations(messages, messagesUpdate){
+		var wasUpdate = false;
 		for (var j =0; j< messagesUpdate.docs.length; j++) {
 			var notExist = true;
 			for (var i =0; i< messages.docs.length; i++) {
 				if(messagesUpdate.docs[j].id === messages.docs[i].id ){
-					console.log(messagesUpdate.docs[j]);
 					notExist = false;
+					wasUpdate = true;
 				}
 			}
 			if(notExist){
@@ -47,13 +47,20 @@ export class LoadMessageService {
 		messages.docs.sort(function (a, b) {
   			return Date.parse(a.time) - Date.parse(b.time);
 		});
-		if(messagesUpdate.page > messages.page){
+		if(messagesUpdate.pages > messages.page){
 			messages.page = parseInt(messagesUpdate.page);
 		}
-		console.log(messages);
 
-		return messages;
+		return [messages, wasUpdate];
 	}
-
+	sendMessage(messages, message, conversation){
+		let headers = new Headers();
+		this.authService.loadToken();
+		headers.append('Authorization', this.authService.getToken());
+		headers.append('Content-Type','application/json');
+		return this.http.post('/api/communication/'+conversation._id+'/messages', message,{headers:headers}).map(data => {
+			return this.updateConversations(messages,{page:0, docs:[data.json()]});
+		});
+	}
 
 }

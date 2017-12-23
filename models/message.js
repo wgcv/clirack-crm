@@ -48,5 +48,5 @@ module.exports.getMessage = function(conversation, page, callback){
 }
 module.exports.updateMessage = function(message, callback){
 		let query = {id:message.id};
-		Message.findOneAndUpdate(query, message, {upsert:true}, callback);  
+		Message.findOneAndUpdate(query, message, {upsert:true,new: true}, callback);  
 }
