@@ -78,7 +78,6 @@ router.get('/inbox/:slug', passport.authenticate('jwt', {session:false}), (req, 
 
 router.post('/:conversation/read/', passport.authenticate('jwt', {session:false}), (req, res, next) => {
 	let conversation = req.body;
-	console.log(conversation);
 	Conversation.readConvesation(conversation, (err, conversation)=>{
 		if(err){
 			console.log(err);
@@ -124,7 +123,6 @@ router.post('/:conversation/messages/', passport.authenticate('jwt', {session:fa
 									comment: false,
 									id: messageFb.id
 								};
-								console.log(message);
 								Message.updateMessage(message,(err,conversation)=>{
 									res.json(conversation);
 								});

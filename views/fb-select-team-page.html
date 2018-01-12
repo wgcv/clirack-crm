@@ -33,7 +33,7 @@
 
 				$.get( "https://graph.facebook.com/"+pages.data[i].id+"/?fields=about,access_token,bio,picture.width(100){url},name&access_token="+token, function( data ) {
 					$('#listOfPages').append(
-						'<li class="list-group-item"><a href="/oauth/facebook/add-team-page/?token='+data.access_token+'&id='+data.id+'&username='+jQuery.parseJSON(localStorage.getItem('user')).username+'&name='+data.name+'"><div class="row"><img src="'+data.picture.data.url+'" height="50px" width="50px" style="border-radius: 0.3em; margin-left: 0.5em;"><div class="ml-2"><span><strong>'+data.name+'</strong></span><span><small class="text-muted d-block" style="width: 70vw;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">'+data.about+'</small></span></div></div></a></li>'
+						'<li class="list-group-item"><a href="/oauth/facebook/add-team-page/?token='+data.access_token+'&id='+data.id+'&username='+jQuery.parseJSON(localStorage.getItem('user')).username+'&name='+data.name+'"><div class="row"><img src="'+data.picture.data.url+'" height="50px" width="50px" style="border-radius: 0.3em; margin-left: 0.5em;"><div class="ml-2"><span><strong>'+data.name+'</strong></span><span><small class="text-muted d-block" style="width: 68vw;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;">'+data.about+'</small></span></div></div></a></li>'
 						);
 				});
 			}

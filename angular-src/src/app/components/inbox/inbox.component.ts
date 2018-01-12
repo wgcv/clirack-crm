@@ -7,15 +7,17 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./inbox.component.css']
 })
 export class InboxComponent implements OnInit {
-	slug:String;
-	conversation:any;
-  constructor(private route: ActivatedRoute, private router: Router,) {}
+    slug: String;
+    conversation: any;
+  constructor(private route: ActivatedRoute, private router: Router) {
+    route.params.subscribe(val => {
+        this.slug = this.route.snapshot.paramMap.get('slug');
+      });
+  }
 
   ngOnInit() {
-  	  this.slug = this.route.snapshot.paramMap.get('slug');
-
   }
-	updateConversation(conversation) {
-		this.conversation = conversation;
-		}
+    updateConversation(conversation) {
+        this.conversation = conversation;
+        }
 }

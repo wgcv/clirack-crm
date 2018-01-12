@@ -1,61 +1,73 @@
 <nav class="col-sm-3 col-md-2 bg-light sidebar"  [style.visibility]="sidebar.isVisible() && authService.loggedIn() ? 'visible': 'hidden'"  [ngClass]="{'sidebar-show':sidebar.isVisible(),'sidebar-hide':!sidebar.isVisible() }">
-  <div class="p-2">
-    <a data-toggle="collapse" class="img-toogle" data-toggle="collapse" href="#myMessages" aria-expanded="true" aria-controls="myMessages">
-      <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
-      <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
-       Mis mensajes
-    </a>
-    <div class="collapse show" id="myMessages">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
-        </li>
-       
-      </ul>
+    <div class="p-2">
+        <a data-toggle="collapse" class="img-toogle" data-toggle="collapse" href="#myMessages" aria-expanded="true" aria-controls="myMessages">
+            <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
+            <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
+            Mis mensajes
+        </a>
+        <div class="collapse show" id="myMessages">
+            <ul class="nav nav-pills flex-column">
+                <li class="nav-item" *ngFor="let inbox of personalInboxes">
+                  <a class="nav-link" [routerLink]="['/inbox/'+inbox.slug]" href>{{inbox.name}}</a>
+              </li>
 
-    </div>
-    <a data-toggle="collapse" class="img-toogle" data-toggle="collapse" href="#teamMessages" aria-expanded="true" aria-controls="teamMessages">
-      <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
-      <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
-       Mensajes del equipo
+          </ul>
+
+      </div>
+      <a data-toggle="collapse" class="img-toogle" data-toggle="collapse" href="#teamMessages" aria-expanded="true" aria-controls="teamMessages">
+        <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
+        <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
+        Mensajes del equipo
     </a>
     <div class="collapse show" id="teamMessages">
-      <ul class="nav nav-pills flex-column">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Overview <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Reports</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Analytics</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-team']" href>Add facebook page team</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-personal']" href>Add facebook page personal</a>
-        </li>
-      </ul>
-
+        <ul class="nav nav-pills flex-column">
+            <li class="nav-item" *ngFor="let inbox of teamInboxes">
+                <a class="nav-link" [routerLink]="['/inbox/'+inbox.slug]" href>{{inbox.name}}</a>
+            </li>
+        </ul>
     </div>
 
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-team']" href>Add facebook page team</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-personal']" href>Add facebook page personal</a>
-      </li>
-    </ul>
-    <ul class="nav nav-pills flex-column">
-      <li class="nav-item"><span class="navbar-text">Usuario</span></li>
-      <li class="nav-item">
+    <a data-toggle="collapse" class="img-toogle" data-toggle="collapse" href="#configuration" aria-expanded="false" aria-controls="configuration">
+        <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
+        <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
+        Configuración
+    </a>
+    <div class="collapse" id="configuration">
+    <a data-toggle="collapse" class="img-toogle second-level" data-toggle="collapse" href="#personal" aria-expanded="true" aria-controls="personal">
+        <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
+        <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
+        Personal
+    </a>
+    <div class="collapse show second-level" id="personal">
+        <ul class="nav nav-pills flex-column">
+           <li class="nav-item">
         <a class="nav-link"[routerLink]="['/profile']" href>Perfil</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" (click)="onLogoutClick()" href>Salir</a>
-      </li>
+        </li>
+ <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-personal']" href>Agregar canal</a>
+        </li>
     </ul>
-  </div>
+</div>
+    <a data-toggle="collapse" class="img-toogle second-level" data-toggle="collapse" href="#company" aria-expanded="true" aria-controls="company">
+        <img src="/assets/img/down.svg" class="img-expanded" height="7rem">
+        <img src="/assets/img/rigth.svg" class="img-collapsed" height="7rem">
+        Compañía
+    </a>
+    <div class="collapse show second-level" id="company">
+        <ul class="nav nav-pills flex-column">
+           <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/inbox/add/facebook-page-team']" href>Agregar canal</a>
+        </li>
+
+    </ul>
+</div>
+</div>
+<ul class="nav nav-pills flex-column">
+    <li class="nav-item"><span class="navbar-text">Usuario</span></li>
+
+    <li class="nav-item">
+        <a class="nav-link" (click)="onLogoutClick()" href>Salir</a>
+    </li>
+</ul>
+</div>
 </nav>

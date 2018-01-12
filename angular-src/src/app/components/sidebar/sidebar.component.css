@@ -1,11 +1,17 @@
 /*
 * Sidebar
 */
+.img-toogle{
+    display: block;
+}
 .img-toogle[aria-expanded=false] .img-expanded {
-  display: none;
+    display: none;
 }
 .img-toogle[aria-expanded=true] .img-collapsed {
-  display: none;
+    display: none;
+}
+.second-level{
+        padding: 0 0.5rem;
 }
 a:hover{
     text-decoration: none;
@@ -22,7 +28,7 @@ a:hover{
     .sidebar-hide{
         left: 0;
         top: -100vh;
-    bottom: 100vh;;
+        bottom: 100vh;;
 
         transition: all 0.8s ease
 

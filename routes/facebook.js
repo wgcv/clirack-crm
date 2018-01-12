@@ -10,7 +10,7 @@ const Message = require('../models/message');
 const User = require('../models/user');
 const Company = require('../models/company');
 
-const host = 'https://2f1892be.ngrok.io';
+const host = 'https://f5acef3a.ngrok.io';
 // I need to implement JWT and Token authentication
 
 
@@ -73,6 +73,7 @@ router.get('/add-team-page/', function (req, res){
 												if(!jsonBody.success){
 													return res.json({success: false, msg:'Faild Suscribe facebook page'});
 												}else{
+													req.io.sockets.to(user._id).emit('add inbox', newPage);
 													return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 
 												}
@@ -152,6 +153,7 @@ router.get('/add-personal-page/', function (req, res){
 												if(!jsonBody.success){
 													return res.json({success: false, msg:'Faild Suscribe facebook page'});
 												}else{
+													req.io.sockets.to(user._id).emit('add inbox', newPage);
 													return res.send("<script>try {window.opener.HandlePopupResult('"+JSON.stringify(newPage)+"');}catch (err) {}window.close();</script>");
 
 												}
@@ -184,7 +186,6 @@ router.get('/webhook/', function (req, res){
 });
 router.post('/webhook/', function (req, res){
 	response = req.body;
-	console.log(JSON.stringify(response));
 	if (response.hasOwnProperty('object')){
 		let object = response.object;
 		if (response.hasOwnProperty('entry')){
@@ -206,6 +207,7 @@ router.post('/webhook/', function (req, res){
 								};
 								request(options, function (error, response, body) {
 									jsonBody = JSON.parse(body);
+									console.log(jsonBody.id);
 									var conversation = {
 										inbox: inbox._id,
 										name: jsonBody.participants.data[0].name,
@@ -232,10 +234,13 @@ router.post('/webhook/', function (req, res){
 												comment: false,
 												id: jsonMessages[i].id
 											}
-											Message.updateMessage(message,(err,conversation)=>{
+											Message.updateMessage(message,(err,message)=>{
+												req.io.sockets.to(inbox._id).emit('new conversation', conversation);
+												req.io.sockets.to(conversation._id).emit('new message', message);
 
 											});
 										}
+
 									});
 								});
 
@@ -246,7 +251,9 @@ router.post('/webhook/', function (req, res){
 			}
 		}
 	}
-	res.status(200).send('EVENT_RECEIVED');
+	//res.status(200).send('EVENT_RECEIVED');
+	res.sendStatus(200);
+	res.end();
 });
 
 

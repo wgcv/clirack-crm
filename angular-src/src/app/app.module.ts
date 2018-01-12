@@ -34,6 +34,7 @@ import { SidebarService } from './services/sidebar.service';
 import { LoadConversationService } from './services/load-conversation.service';
 import { LoadMessageService } from './services/load-message.service';
 import { FlashMessageService } from './services/flash-message.service';
+import { InboxService } from './services/inbox.service';
 
 import { MessageComponent } from './components/message/message.component';
 import { ShowtimePipe } from './pipe/showtime.pipe';
@@ -81,6 +82,7 @@ const appRoutes: Routes = [
     ValidateService,
     AuthService,
     SidebarService,
+    InboxService,
     LoadConversationService,
     LoadMessageService,
     FlashMessageService,

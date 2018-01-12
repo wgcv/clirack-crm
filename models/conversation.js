@@ -48,7 +48,7 @@ module.exports.getConversations = function(inbox,page, callback){
 	Conversation.paginate(query, {sort: { lastTime: -1 }, page: page, limit: 20 },callback);
 }
 module.exports.updateConvesation = function(conversation, callback){
-		let query = {'api.id' : conversation.api.id};
+		let query = {'api.id' : conversation.api.id, 'inbox': conversation.inbox};
 		Conversation.findOneAndUpdate(query, conversation, {upsert:true, new: true}, callback);  
 }
 module.exports.readConvesation = function(conversation, callback){

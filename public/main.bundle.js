@@ -38,7 +38,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar></app-sidebar>\n\t\t<div  class=\"content\" [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"alert  alert-warning alert-dismissible fade show flash-message-hide\"  role=\"alert\" [ngClass]=\"{'flash-message': flashMessageService.showMessage}\" [style.visibility]=\"!flashMessageService.showMessage ? 'hidden' : 'visible'\"\n >\n\t<div [innerHTML] = \"flashMessageService.message\" >\n\n\t</div>\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" *ngIf=\"flashMessageService.showButton\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n"
+module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t<div class=\"row\">\n\t\t<app-sidebar  *ngIf =\"authService.loggedIn()\"></app-sidebar>\n\t\t<div  class=\"content\" [ngClass]=\"{'col-sm-9 offset-sm-3 col-md-10 offset-md-2': sidebar.isVisible(), 'col-sm-12': !sidebar.isVisible()}\">\n\t\t\t<router-outlet></router-outlet>\n\t\t</div>\n\t</div>\n</div>\n\n<div class=\"alert  alert-warning alert-dismissible fade show flash-message-hide\"  role=\"alert\" [ngClass]=\"{'flash-message': flashMessageService.showMessage}\" [style.visibility]=\"!flashMessageService.showMessage ? 'hidden' : 'visible'\"\n >\n\t<div [innerHTML] = \"flashMessageService.message\" >\n\n\t</div>\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\" *ngIf=\"flashMessageService.showButton\">\n\t\t<span aria-hidden=\"true\">&times;</span>\n\t</button>\n</div>\n"
 
 /***/ }),
 
@@ -50,6 +50,7 @@ module.exports = "<app-navbar></app-navbar>\n<div class=\"container-fluid\">\n\t
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -62,9 +63,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = (function () {
-    function AppComponent(sidebar, flashMessageService) {
+    function AppComponent(sidebar, authService, flashMessageService) {
         this.sidebar = sidebar;
+        this.authService = authService;
         this.flashMessageService = flashMessageService;
         this.title = 'Clirack';
         this.showSlidebar = true;
@@ -77,7 +80,7 @@ var AppComponent = (function () {
             template: __webpack_require__("../../../../../src/app/app.component.html"),
             styles: [__webpack_require__("../../../../../src/app/app.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__["a" /* FlashMessageService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_3__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__["a" /* FlashMessageService */]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -119,8 +122,9 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_inbox_service__ = __webpack_require__("../../../../../src/app/services/inbox.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -134,6 +138,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 // Npm Install Modules
+
 
 
 
@@ -187,8 +192,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__["a" /* InboxComponent */],
                 __WEBPACK_IMPORTED_MODULE_19__components_conversation_conversation_component__["a" /* ConversationComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__pipe_truncate_pipe__["a" /* TruncatePipe */],
-                __WEBPACK_IMPORTED_MODULE_27__components_message_message_component__["a" /* MessageComponent */],
-                __WEBPACK_IMPORTED_MODULE_28__pipe_showtime_pipe__["a" /* ShowtimePipe */]
+                __WEBPACK_IMPORTED_MODULE_28__components_message_message_component__["a" /* MessageComponent */],
+                __WEBPACK_IMPORTED_MODULE_29__pipe_showtime_pipe__["a" /* ShowtimePipe */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -202,6 +207,7 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_21__services_validate_service__["a" /* ValidateService */],
                 __WEBPACK_IMPORTED_MODULE_22__services_auth_service__["a" /* AuthService */],
                 __WEBPACK_IMPORTED_MODULE_23__services_sidebar_service__["a" /* SidebarService */],
+                __WEBPACK_IMPORTED_MODULE_27__services_inbox_service__["a" /* InboxService */],
                 __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__["a" /* LoadConversationService */],
                 __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__["a" /* LoadMessageService */],
                 __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__["a" /* FlashMessageService */],
@@ -238,7 +244,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f5acef3a.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -303,7 +309,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://2f1892be.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f5acef3a.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -379,8 +385,10 @@ module.exports = "<div class=\"full-content\">\n  <div class=\"list-group pre-sc
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConversationComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_inbox_service__ = __webpack_require__("../../../../../src/app/services/inbox.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_add_observable_timer__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/timer.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_socket_io_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -394,28 +402,39 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var ConversationComponent = (function () {
-    function ConversationComponent(loadConversationService) {
+    function ConversationComponent(loadConversationService, inboxService) {
         this.loadConversationService = loadConversationService;
+        this.inboxService = inboxService;
+        this._slug = '';
         this.conversation = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
         this.conversations = { page: 0, docs: [] };
         this.loading = false;
         this.firstTime = true;
     }
+    Object.defineProperty(ConversationComponent.prototype, "slug", {
+        set: function (slug) {
+            var _this = this;
+            if (slug) {
+                this.firstTime = true;
+                this._slug = slug;
+                this.inboxService.getInbox(this._slug).subscribe(function (inbox) {
+                    _this.inbox = inbox;
+                    _this.loadConversations();
+                    _this.socket = __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default.a.connect();
+                    _this.socket = _this.loadConversationService.getConversationIO(_this.inbox).subscribe(function (conversation) {
+                        _this.conversations = _this.loadConversationService.updateConversations(_this.conversations, { page: 0, docs: [conversation] });
+                    });
+                }, function (err) {
+                    console.log(err);
+                });
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
     ConversationComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.loadConversationService.getInbox(this.slug).subscribe(function (inbox) {
-            _this.inbox = inbox;
-            _this.loadConversations();
-        }, function (err) {
-            console.log(err);
-        });
-    };
-    ConversationComponent.prototype.checkConversations = function () {
-        var _this = this;
-        this.timerSubscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].timer(7000).subscribe(function () {
-            _this.loadConversations();
-        });
     };
     ConversationComponent.prototype.loadConversations = function () {
         var _this = this;
@@ -423,12 +442,11 @@ var ConversationComponent = (function () {
             _this.conversations = _this.loadConversationService.updateConversations(_this.conversations, conversations);
             if (_this.firstTime && (conversations.docs.length > 0)) {
                 _this.firstTime = false;
-                _this.click(conversations.docs[0]);
+                if (conversations.docs.length > 0) {
+                    _this.click(conversations.docs[0]);
+                }
             }
-            _this.checkConversations();
-        }, function (error) {
-            _this.checkConversations();
-        });
+        }, function (error) { });
     };
     ConversationComponent.prototype.click = function (conversation) {
         var _this = this;
@@ -441,7 +459,7 @@ var ConversationComponent = (function () {
     };
     ConversationComponent.prototype.onScrollDown = function (ev) {
         var _this = this;
-        if (this.loading == false) {
+        if (this.loading === false) {
             this.loading = true;
             this.loadConversationService.getConversations(this.inbox, this.conversations).subscribe(function (conversations) {
                 _this.conversations = conversations;
@@ -453,8 +471,9 @@ var ConversationComponent = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-        __metadata("design:type", String)
-    ], ConversationComponent.prototype, "slug", void 0);
+        __metadata("design:type", Object),
+        __metadata("design:paramtypes", [Object])
+    ], ConversationComponent.prototype, "slug", null);
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
         __metadata("design:type", Object)
@@ -465,7 +484,8 @@ var ConversationComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/conversation/conversation.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/conversation/conversation.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_conversation_service__["a" /* LoadConversationService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_conversation_service__["a" /* LoadConversationService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_inbox_service__["a" /* InboxService */]])
     ], ConversationComponent);
     return ConversationComponent;
 }());
@@ -641,11 +661,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var InboxComponent = (function () {
     function InboxComponent(route, router) {
+        var _this = this;
         this.route = route;
         this.router = router;
+        route.params.subscribe(function (val) {
+            _this.slug = _this.route.snapshot.paramMap.get('slug');
+        });
     }
     InboxComponent.prototype.ngOnInit = function () {
-        this.slug = this.route.snapshot.paramMap.get('slug');
     };
     InboxComponent.prototype.updateConversation = function (conversation) {
         this.conversation = conversation;
@@ -779,7 +802,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/message/message.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item header d-flex\">\n\t\t<div class=\"my-auto\">\n\t\t\t<h5 class=\"mb-1\">{{conversation.name}}</h5>\n\t\t\t<a target=\"_blank\" href=\"{{conversation.api.link}}\" *ngIf=\"conversation.api.link\">\n\t\t\t\t<img src=\"/assets/img/link.svg\" height=\"16rem\" class=\"mx-auto\" />\n\t\t\t</a>\n\t\t</div>\n\t</div>\n\t<div class=\"list-group pre-scrollable scroll\" infiniteScroll\n\tdebounce\n\t[infiniteScrollDistance]=\"1\"\n\t[infiniteScrollUpDistance]=\"2\"\n\t[infiniteScrollThrottle]=\"300\"\n\t[scrollWindow]=\"false\"\n\t(scrolledUp)=\"onUp()\"\n\t#messageScroll\n\t>\n\t<div  [ngClass]=\"{ 'invisible': !loading }\"  class=\"list-group-item flex-column align-items-start loading\" >\n\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t<img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n\t\t</div>\n\t</div>\n\t<div class=\"block-message\" *ngFor=\"let message of messages.docs; let i = index;\">\n\t\t<div class=\"d-flex w-100 justify-content-between\" *ngIf=\"message.time | showtime : i>0?messages.docs[i-1].time:'1992-11-25T11:49:07.000Z'\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-12 time text-center\">\n\t\t\t\t\t<small>{{ message.time | amCalendar }}</small>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div  *ngIf=\"!message.response\">\n\t\t\t<div class=\"message\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t\t<div  *ngIf=\"message.response\">\n\t\t\t<div class=\"message-response float-right\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"list-group-item footer\">\n\t<form (submit)=\"send()\">\n\t\t<textarea class=\"form-control\" placeholder=\"Escríbe un mensaje\"  [(ngModel)]=\"newMessage\" name=\"newMessage\" (keydown.enter)=\"$event.preventDefault();send()\"></textarea>\n\t\t<div>\n\t\t\t<input type=\"submit\" class=\"btn btn-primary m-2 float-right\" value=\"Enviar\">\n\t\t</div>\n\t</form>\n</div>\n</div>"
+module.exports = "<div class=\"full-content\" *ngIf=\"_conversation.name!==''\">\n\t<div class=\"list-group-item header d-flex\">\n\t\t<div class=\"my-auto\">\n\t\t\t<h5 class=\"mb-1\">{{conversation.name}}</h5>\n\t\t\t<a target=\"_blank\" href=\"{{conversation.api.link}}\" *ngIf=\"conversation.api.link\">\n\t\t\t\t<img src=\"/assets/img/link.svg\" height=\"16rem\" class=\"mx-auto\" />\n\t\t\t</a>\n\t\t</div>\n\t</div>\n\t<div class=\"list-group pre-scrollable scroll\" infiniteScroll\n\tdebounce\n\t[infiniteScrollDistance]=\"1\"\n\t[infiniteScrollUpDistance]=\"2\"\n\t[infiniteScrollThrottle]=\"300\"\n\t[scrollWindow]=\"false\"\n\t(scrolledUp)=\"onUp()\"\n\t#messageScroll\n\t>\n\t<div  [ngClass]=\"{ 'invisible': !loading }\"  class=\"list-group-item flex-column align-items-start loading\" >\n\t\t<div class=\"d-flex w-100 justify-content-between\">\n\t\t\t<img src=\"/assets/img/loading.svg\" height=\"45rem\" class=\"mx-auto d-block\" />\n\t\t</div>\n\t</div>\n\t<div class=\"block-message\" *ngFor=\"let message of messages.docs; let i = index;\">\n\t\t<div class=\"d-flex w-100 justify-content-between\" *ngIf=\"message.time | showtime : i>0?messages.docs[i-1].time:'1992-11-25T11:49:07.000Z'\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-12 time text-center\">\n\t\t\t\t\t<small>{{ message.time | amCalendar }}</small>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div  *ngIf=\"!message.response\">\n\t\t\t<div class=\"message\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t\t<div  *ngIf=\"message.response\">\n\t\t\t<div class=\"message-response float-right\"><p class=\"mb-1\">{{message.message}}</p></div>\n\t\t</div>\n\t</div>\n</div>\n<div class=\"list-group-item footer\">\n\t<form (submit)=\"send()\">\n\t\t<textarea class=\"form-control\" placeholder=\"Escríbe un mensaje\"  [(ngModel)]=\"newMessage\" name=\"newMessage\" (keydown.enter)=\"$event.preventDefault();send()\"></textarea>\n\t\t<div>\n\t\t\t<input type=\"submit\" class=\"btn btn-primary m-2 float-right\" value=\"Enviar\">\n\t\t</div>\n\t</form>\n</div>\n</div>"
 
 /***/ }),
 
@@ -790,9 +813,10 @@ module.exports = "<div class=\"full-content\">\n\t<div class=\"list-group-item h
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MessageComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_socket_io_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -836,13 +860,12 @@ var MessageComponent = (function () {
         this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
             _this.messages = messages[0];
             setTimeout(function () { return _this.scrollToBottom(); }, 100);
-            _this.checkMessages();
         });
-    };
-    MessageComponent.prototype.loadMessage = function () {
-        var _this = this;
-        this.loadMessageService.getMessages(this.conversation, this.messages).subscribe(function (messages) {
-            if ((_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop) === _this.messageScroll.nativeElement.clientHeight) {
+        this.socket = __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default.a.connect();
+        this.socket = this.loadMessageService.getMessageIO(this.conversation).subscribe(function (message) {
+            var messages = _this.loadMessageService.updateConversations(_this.messages, { page: 0, docs: [message] });
+            if ((_this.messageScroll.nativeElement.scrollHeight - _this.messageScroll.nativeElement.scrollTop)
+                === _this.messageScroll.nativeElement.clientHeight) {
                 _this.messages = messages[0];
                 setTimeout(function () { return _this.scrollToBottom(); }, 100);
             }
@@ -853,16 +876,6 @@ var MessageComponent = (function () {
                 _this.loadConversationService.readConversation({ page: 0, docs: [] }, _this.conversation).subscribe(function (conversations) {
                 });
             }
-            _this.checkMessages();
-        }, function (err) {
-            console.log('Can\'t load new messages');
-            _this.checkMessages();
-        });
-    };
-    MessageComponent.prototype.checkMessages = function () {
-        var _this = this;
-        this.timerSubscription = __WEBPACK_IMPORTED_MODULE_2_rxjs_Observable__["Observable"].timer(7000).subscribe(function () {
-            _this.loadMessage();
         });
     };
     MessageComponent.prototype.scrollToBottom = function () {
@@ -885,11 +898,11 @@ var MessageComponent = (function () {
         var _this = this;
         var page = this.messages.page;
         var scrollHeight = this.messageScroll.nativeElement.scrollHeight;
-        if (this.loading == false) {
+        if (this.loading === false) {
             this.loading = true;
             this.loadMessageService.getMoreMessages(this.conversation, this.messages).subscribe(function (messages) {
                 _this.messages = messages[0];
-                if (_this.messageScroll.nativeElement.scrollTop == 0) {
+                if (_this.messageScroll.nativeElement.scrollTop === 0) {
                     setTimeout(function () { return _this.scrollToStay(scrollHeight); }, 100);
                 }
                 _this.loading = false;
@@ -905,7 +918,9 @@ var MessageComponent = (function () {
             setTimeout(function () { return _this.scrollToBottom(); }, 100);
             _this.messages = messages[0];
         }, function (err) {
-            _this.flashMessageService.alert('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>', 2500);
+            _this.flashMessageService.alert('<strong>Sin internet!</strong> Al parecer tu conexión esta fallando. ' +
+                '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">' +
+                '&times;</span></button>', 2500);
         });
         this.newMessage = '';
     };
@@ -924,8 +939,8 @@ var MessageComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/message/message.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/message/message.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */], __WEBPACK_IMPORTED_MODULE_4__services_load_conversation_service__["a" /* LoadConversationService */],
-            __WEBPACK_IMPORTED_MODULE_3__services_flash_message_service__["a" /* FlashMessageService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_load_message_service__["a" /* LoadMessageService */], __WEBPACK_IMPORTED_MODULE_3__services_load_conversation_service__["a" /* LoadConversationService */],
+            __WEBPACK_IMPORTED_MODULE_2__services_flash_message_service__["a" /* FlashMessageService */]])
     ], MessageComponent);
     return MessageComponent;
 }());
@@ -1194,7 +1209,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "/*\n* Sidebar\n*/\n.img-toogle[aria-expanded=false] .img-expanded {\n  display: none;\n}\n.img-toogle[aria-expanded=true] .img-collapsed {\n  display: none;\n}\na:hover{\n    text-decoration: none;\n}\n.sidebar {\n    position: fixed;\n    z-index: 1025;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n    border-right: 1px solid #eee;\n}\n@media only screen  and (max-device-width: 575px) {\n    .sidebar-hide{\n        left: 0;\n        top: -100vh;\n    bottom: 100vh;;\n\n        transition: all 0.8s ease\n\n    }\n}\n@media only screen and (min-device-width: 576px) and (max-device-width: 767px) {\n    .sidebar-hide{\n        left: calc(-1 * 25%);\n        top: 51px;\n        bottom: 0;\n\n        transition: all 0.8s ease\n\n    }\n}\n\n@media only screen and (min-device-width: 768px)  {\n    .sidebar-hide{\n        left: calc(-1 * 16.67%);\n        top: 51px;\n        bottom: 0;\n\n        transition: all 0.8s ease\n\n    }\n}\n.sidebar-show{\n    top: 51px;\n    bottom: 0;\n\n    left: 0;\n    transition: all 0.8s ease;\n}\n\n/* Sidebar navigation */\n.sidebar {\n    padding-left: 0;\n    padding-right: 0;\n}\n\n.sidebar .nav {\n    margin-bottom: 20px;\n}\n\n.sidebar .nav-item {\n    width: 100%;\n}\n\n.sidebar .nav-item + .nav-item {\n    margin-left: 0;\n}\n\n.sidebar .nav-link {\n    border-radius: 0;\n}", ""]);
+exports.push([module.i, "/*\n* Sidebar\n*/\n.img-toogle{\n    display: block;\n}\n.img-toogle[aria-expanded=false] .img-expanded {\n    display: none;\n}\n.img-toogle[aria-expanded=true] .img-collapsed {\n    display: none;\n}\n.second-level{\n        padding: 0 0.5rem;\n}\na:hover{\n    text-decoration: none;\n}\n.sidebar {\n    position: fixed;\n    z-index: 1025;\n    padding: 20px;\n    overflow-x: hidden;\n    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */\n    border-right: 1px solid #eee;\n}\n@media only screen  and (max-device-width: 575px) {\n    .sidebar-hide{\n        left: 0;\n        top: -100vh;\n        bottom: 100vh;;\n\n        transition: all 0.8s ease\n\n    }\n}\n@media only screen and (min-device-width: 576px) and (max-device-width: 767px) {\n    .sidebar-hide{\n        left: calc(-1 * 25%);\n        top: 51px;\n        bottom: 0;\n\n        transition: all 0.8s ease\n\n    }\n}\n\n@media only screen and (min-device-width: 768px)  {\n    .sidebar-hide{\n        left: calc(-1 * 16.67%);\n        top: 51px;\n        bottom: 0;\n\n        transition: all 0.8s ease\n\n    }\n}\n.sidebar-show{\n    top: 51px;\n    bottom: 0;\n\n    left: 0;\n    transition: all 0.8s ease;\n}\n\n/* Sidebar navigation */\n.sidebar {\n    padding-left: 0;\n    padding-right: 0;\n}\n\n.sidebar .nav {\n    margin-bottom: 20px;\n}\n\n.sidebar .nav-item {\n    width: 100%;\n}\n\n.sidebar .nav-item + .nav-item {\n    margin-left: 0;\n}\n\n.sidebar .nav-link {\n    border-radius: 0;\n}", ""]);
 
 // exports
 
@@ -1207,7 +1222,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/sidebar/sidebar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav class=\"col-sm-3 col-md-2 bg-light sidebar\"  [style.visibility]=\"sidebar.isVisible() && authService.loggedIn() ? 'visible': 'hidden'\"  [ngClass]=\"{'sidebar-show':sidebar.isVisible(),'sidebar-hide':!sidebar.isVisible() }\">\n  <div class=\"p-2\">\n    <a data-toggle=\"collapse\" class=\"img-toogle\" data-toggle=\"collapse\" href=\"#myMessages\" aria-expanded=\"true\" aria-controls=\"myMessages\">\n      <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n      <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n       Mis mensajes\n    </a>\n    <div class=\"collapse show\" id=\"myMessages\">\n      <ul class=\"nav nav-pills flex-column\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link active\" href=\"#\">Overview <span class=\"sr-only\">(current)</span></a>\n        </li>\n       \n      </ul>\n\n    </div>\n    <a data-toggle=\"collapse\" class=\"img-toogle\" data-toggle=\"collapse\" href=\"#teamMessages\" aria-expanded=\"true\" aria-controls=\"teamMessages\">\n      <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n      <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n       Mensajes del equipo\n    </a>\n    <div class=\"collapse show\" id=\"teamMessages\">\n      <ul class=\"nav nav-pills flex-column\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link active\" href=\"#\">Overview <span class=\"sr-only\">(current)</span></a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"#\">Reports</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" href=\"#\">Analytics</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-team']\" href>Add facebook page team</a>\n        </li>\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-personal']\" href>Add facebook page personal</a>\n        </li>\n      </ul>\n\n    </div>\n\n    <ul class=\"nav nav-pills flex-column\">\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-team']\" href>Add facebook page team</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-personal']\" href>Add facebook page personal</a>\n      </li>\n    </ul>\n    <ul class=\"nav nav-pills flex-column\">\n      <li class=\"nav-item\"><span class=\"navbar-text\">Usuario</span></li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\"[routerLink]=\"['/profile']\" href>Perfil</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"onLogoutClick()\" href>Salir</a>\n      </li>\n    </ul>\n  </div>\n</nav>"
+module.exports = "<nav class=\"col-sm-3 col-md-2 bg-light sidebar\"  [style.visibility]=\"sidebar.isVisible() && authService.loggedIn() ? 'visible': 'hidden'\"  [ngClass]=\"{'sidebar-show':sidebar.isVisible(),'sidebar-hide':!sidebar.isVisible() }\">\n    <div class=\"p-2\">\n        <a data-toggle=\"collapse\" class=\"img-toogle\" data-toggle=\"collapse\" href=\"#myMessages\" aria-expanded=\"true\" aria-controls=\"myMessages\">\n            <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n            <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n            Mis mensajes\n        </a>\n        <div class=\"collapse show\" id=\"myMessages\">\n            <ul class=\"nav nav-pills flex-column\">\n                <li class=\"nav-item\" *ngFor=\"let inbox of personalInboxes\">\n                  <a class=\"nav-link\" [routerLink]=\"['/inbox/'+inbox.slug]\" href>{{inbox.name}}</a>\n              </li>\n\n          </ul>\n\n      </div>\n      <a data-toggle=\"collapse\" class=\"img-toogle\" data-toggle=\"collapse\" href=\"#teamMessages\" aria-expanded=\"true\" aria-controls=\"teamMessages\">\n        <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n        <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n        Mensajes del equipo\n    </a>\n    <div class=\"collapse show\" id=\"teamMessages\">\n        <ul class=\"nav nav-pills flex-column\">\n            <li class=\"nav-item\" *ngFor=\"let inbox of teamInboxes\">\n                <a class=\"nav-link\" [routerLink]=\"['/inbox/'+inbox.slug]\" href>{{inbox.name}}</a>\n            </li>\n        </ul>\n    </div>\n\n    <a data-toggle=\"collapse\" class=\"img-toogle\" data-toggle=\"collapse\" href=\"#configuration\" aria-expanded=\"false\" aria-controls=\"configuration\">\n        <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n        <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n        Configuración\n    </a>\n    <div class=\"collapse\" id=\"configuration\">\n    <a data-toggle=\"collapse\" class=\"img-toogle second-level\" data-toggle=\"collapse\" href=\"#personal\" aria-expanded=\"true\" aria-controls=\"personal\">\n        <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n        <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n        Personal\n    </a>\n    <div class=\"collapse show second-level\" id=\"personal\">\n        <ul class=\"nav nav-pills flex-column\">\n           <li class=\"nav-item\">\n        <a class=\"nav-link\"[routerLink]=\"['/profile']\" href>Perfil</a>\n        </li>\n <li class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-personal']\" href>Agregar canal</a>\n        </li>\n    </ul>\n</div>\n    <a data-toggle=\"collapse\" class=\"img-toogle second-level\" data-toggle=\"collapse\" href=\"#company\" aria-expanded=\"true\" aria-controls=\"company\">\n        <img src=\"/assets/img/down.svg\" class=\"img-expanded\" height=\"7rem\">\n        <img src=\"/assets/img/rigth.svg\" class=\"img-collapsed\" height=\"7rem\">\n        Compañía\n    </a>\n    <div class=\"collapse show second-level\" id=\"company\">\n        <ul class=\"nav nav-pills flex-column\">\n           <li class=\"nav-item\">\n            <a class=\"nav-link\" [routerLink]=\"['/inbox/add/facebook-page-team']\" href>Agregar canal</a>\n        </li>\n\n    </ul>\n</div>\n</div>\n<ul class=\"nav nav-pills flex-column\">\n    <li class=\"nav-item\"><span class=\"navbar-text\">Usuario</span></li>\n\n    <li class=\"nav-item\">\n        <a class=\"nav-link\" (click)=\"onLogoutClick()\" href>Salir</a>\n    </li>\n</ul>\n</div>\n</nav>"
 
 /***/ }),
 
@@ -1221,6 +1236,9 @@ module.exports = "<nav class=\"col-sm-3 col-md-2 bg-light sidebar\"  [style.visi
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_router__ = __webpack_require__("../../../router/esm5/router.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services_inbox_service__ = __webpack_require__("../../../../../src/app/services/inbox.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_socket_io_client__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1235,14 +1253,40 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var SidebarComponent = (function () {
-    function SidebarComponent(authService, router, sidebar, flashMessageService) {
+    function SidebarComponent(authService, router, inboxService, sidebar, flashMessageService) {
         this.authService = authService;
         this.router = router;
+        this.inboxService = inboxService;
         this.sidebar = sidebar;
         this.flashMessageService = flashMessageService;
+        this.personalInboxes = [];
+        this.teamInboxes = [];
     }
     SidebarComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.authService.loadUser();
+        this.socket = __WEBPACK_IMPORTED_MODULE_6_socket_io_client___default.a.connect();
+        this.socket = this.inboxService.getInboxIO().subscribe(function (inbox) {
+            if (inbox['team']) {
+                _this.teamInboxes.push(inbox);
+            }
+            else {
+                _this.personalInboxes.push(inbox);
+            }
+        });
+        this.inboxService.getInboxes().subscribe(function (inboxes) {
+            for (var i = 0; i < inboxes.length; i++) {
+                if (inboxes[i].team) {
+                    _this.teamInboxes.push(inboxes[i]);
+                }
+                else {
+                    _this.personalInboxes.push(inboxes[i]);
+                }
+            }
+        });
     };
     SidebarComponent.prototype.onLogoutClick = function () {
         this.authService.logout();
@@ -1256,7 +1300,8 @@ var SidebarComponent = (function () {
             template: __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.html"),
             styles: [__webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.css")]
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4__services_flash_message_service__["a" /* FlashMessageService */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__services_auth_service__["a" /* AuthService */], __WEBPACK_IMPORTED_MODULE_3__angular_router__["b" /* Router */],
+            __WEBPACK_IMPORTED_MODULE_5__services_inbox_service__["a" /* InboxService */], __WEBPACK_IMPORTED_MODULE_2__services_sidebar_service__["a" /* SidebarService */], __WEBPACK_IMPORTED_MODULE_4__services_flash_message_service__["a" /* FlashMessageService */]])
     ], SidebarComponent);
     return SidebarComponent;
 }());
@@ -1447,6 +1492,12 @@ var AuthService = (function () {
         var token = localStorage.getItem('id_token');
         this.authToken = token;
     };
+    AuthService.prototype.loadUser = function () {
+        this.user = JSON.parse(localStorage.getItem('user'));
+    };
+    AuthService.prototype.getUser = function () {
+        return this.user;
+    };
     AuthService.prototype.getToken = function () {
         return this.authToken;
     };
@@ -1538,6 +1589,75 @@ var FlashMessageService = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/services/inbox.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InboxService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_socket_io_client__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var InboxService = (function () {
+    function InboxService(http, authService) {
+        this.http = http;
+        this.authService = authService;
+    }
+    InboxService.prototype.getInbox = function (slug) {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/inbox/' + slug.toLowerCase(), { headers: headers }).map(function (data) { return data.json()[0]; });
+    };
+    InboxService.prototype.getInboxes = function () {
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
+        this.authService.loadToken();
+        headers.append('Authorization', this.authService.getToken());
+        headers.append('Content-Type', 'application/json');
+        return this.http.get('/api/communication/inboxes/', { headers: headers }).map(function (data) { return data.json(); });
+    };
+    InboxService.prototype.getInboxIO = function () {
+        var _this = this;
+        var observable = new __WEBPACK_IMPORTED_MODULE_3_rxjs_Observable__["Observable"](function (observer) {
+            _this.socket = __WEBPACK_IMPORTED_MODULE_4_socket_io_client___default.a.connect();
+            _this.socket.emit('subscribe', _this.authService.getUser().id);
+            _this.socket.on('add inbox', function (inbox) {
+                observer.next(inbox);
+            });
+            return function () {
+                _this.socket.disconnect();
+            };
+        });
+        return observable;
+    };
+    InboxService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__angular_http__["Http"], __WEBPACK_IMPORTED_MODULE_2__auth_service__["a" /* AuthService */]])
+    ], InboxService);
+    return InboxService;
+}());
+
+
+
+/***/ }),
+
 /***/ "../../../../../src/app/services/load-conversation.service.ts":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1550,6 +1670,9 @@ var FlashMessageService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_operator_take__ = __webpack_require__("../../../../rxjs/_esm5/add/operator/take.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_observable_empty__ = __webpack_require__("../../../../rxjs/_esm5/add/observable/empty.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_socket_io_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1566,18 +1689,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var LoadConversationService = (function () {
     function LoadConversationService(http, authService) {
         this.http = http;
         this.authService = authService;
     }
-    LoadConversationService.prototype.getInbox = function (slug) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        this.authService.loadToken();
-        headers.append('Authorization', this.authService.getToken());
-        headers.append('Content-Type', 'application/json');
-        return this.http.get('/api/communication/inbox/' + slug.toLowerCase(), { headers: headers }).map(function (data) { return data.json()[0]; });
-    };
     LoadConversationService.prototype.getConversations = function (inbox, conversations) {
         var _this = this;
         var page = conversations.page + 1;
@@ -1624,15 +1742,19 @@ var LoadConversationService = (function () {
         }
         return conversations;
     };
-    LoadConversationService.prototype.getInboxes = function () {
+    LoadConversationService.prototype.getConversationIO = function (inbox) {
         var _this = this;
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
-        this.authService.loadToken();
-        headers.append('Authorization', this.authService.getToken());
-        headers.append('Content-Type', 'application/json');
-        this.http.get('/api/communication/inboxes', { headers: headers }).subscribe(function (data) {
-            _this.inboxes = data.json();
+        var observable = new __WEBPACK_IMPORTED_MODULE_8_rxjs_Observable__["Observable"](function (observer) {
+            _this.socket = __WEBPACK_IMPORTED_MODULE_7_socket_io_client___default.a.connect();
+            _this.socket.emit('subscribe', inbox._id);
+            _this.socket.on('new conversation', function (conversatiion) {
+                observer.next(conversatiion);
+            });
+            return function () {
+                _this.socket.disconnect();
+            };
         });
+        return observable;
     };
     LoadConversationService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -1653,6 +1775,9 @@ var LoadConversationService = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../http/esm5/http.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_socket_io_client__ = __webpack_require__("../../../../socket.io-client/lib/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_socket_io_client___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_socket_io_client__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__ = __webpack_require__("../../../../rxjs/_esm5/Observable.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -1662,6 +1787,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
+
 
 
 
@@ -1683,6 +1810,7 @@ var LoadMessageService = (function () {
     };
     LoadMessageService.prototype.getMoreMessages = function (conversations, messages) {
         var _this = this;
+        // tslint:disable-next-line:radix
         var page = parseInt(messages.page) + 1;
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["Headers"]();
         this.authService.loadToken();
@@ -1710,6 +1838,7 @@ var LoadMessageService = (function () {
             return Date.parse(a.time) - Date.parse(b.time);
         });
         if (messagesUpdate.pages > messages.page) {
+            // tslint:disable-next-line:radix
             messages.page = parseInt(messagesUpdate.page);
         }
         return [messages, wasUpdate];
@@ -1723,6 +1852,20 @@ var LoadMessageService = (function () {
         return this.http.post('/api/communication/' + conversation._id + '/messages', message, { headers: headers }).map(function (data) {
             return _this.updateConversations(messages, { page: 0, docs: [data.json()] });
         });
+    };
+    LoadMessageService.prototype.getMessageIO = function (conversations) {
+        var _this = this;
+        var observable = new __WEBPACK_IMPORTED_MODULE_4_rxjs_Observable__["Observable"](function (observer) {
+            _this.socket = __WEBPACK_IMPORTED_MODULE_3_socket_io_client___default.a.connect();
+            _this.socket.emit('subscribe', conversations._id);
+            _this.socket.on('new message', function (message) {
+                observer.next(message);
+            });
+            return function () {
+                _this.socket.disconnect();
+            };
+        });
+        return observable;
     };
     LoadMessageService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
@@ -2129,6 +2272,13 @@ webpackContext.id = "../../../../moment/locale recursive ^\\.\\/.*$";
 
 module.exports = __webpack_require__("../../../../../src/main.ts");
 
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+/* (ignored) */
 
 /***/ })
 
