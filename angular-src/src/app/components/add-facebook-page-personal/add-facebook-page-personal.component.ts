@@ -6,14 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-facebook-page-personal.component.css']
 })
 export class AddFacebookPagePersonalComponent implements OnInit {
-	fbPage: string;
+    fbPage: string;
   constructor() { }
 
   ngOnInit() {
   }
  update(value) {
- 	this.fbPage = value;
- 	console.log(this.fbPage);
+     this.fbPage = value;
+     console.log(this.fbPage);
   }
- 
 }

@@ -10,9 +10,10 @@ const Message = require('../models/message');
 const User = require('../models/user');
 const Company = require('../models/company');
 
-const host = 'https://f5acef3a.ngrok.io';
+const host = 'https://f2646894.ngrok.io';
 // I need to implement JWT and Token authentication
 
+// Error de seguridad cuando se pasa un username por la url puede pasar cualquiera sin confirmar que sea el de session 
 
 // Get token and Select Page for team
 router.get('/login-team-add-page/',

@@ -31,6 +31,7 @@ app.set('view engine', 'html');
 const users = require('./routes/users');
 const facebook = require('./routes/facebook');
 const twitter = require('./routes/twitter');
+const gmail = require('./routes/gmail');
 
 const communication = require('./routes/communication');
 

@@ -11,7 +11,7 @@ const User = require('../models/user');
 const Company = require('../models/company');
 const crypto = require('crypto');
 
-const host = 'https://f5acef3a.ngrok.io';
+const host = 'https://f2646894.ngrok.io';
 
 
 // For Twitter Verifcation

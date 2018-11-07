@@ -21,6 +21,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 import { AddFacebookPageTeamComponent } from './components/add-facebook-page-team/add-facebook-page-team.component';
 import { AddFacebookPagePersonalComponent } from './components/add-facebook-page-personal/add-facebook-page-personal.component';
+import { AddGmailInboxPersonalComponent } from './components/add-gmail-inbox-personal/add-gmail-inbox-personal.component';
 import { InboxComponent } from './components/inbox/inbox.component';
 import { ConversationComponent } from './components/conversation/conversation.component';
 
@@ -41,16 +42,16 @@ import { ShowtimePipe } from './pipe/showtime.pipe';
 
 
 const appRoutes: Routes = [
-{ path:'', component: HomeComponent, canActivate:[AuthGuard]},
-{ path:'register', component: RegisterComponent},
-{ path:'login', component: LoginComponent},
-{ path:'dashboard', component: DashboardComponent, canActivate:[AuthGuard]},
-{ path:'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-{ path:'inbox/add/facebook-page-team', component: AddFacebookPageTeamComponent, canActivate:[AuthGuard]},
-{ path:'inbox/add/facebook-page-personal', component: AddFacebookPagePersonalComponent, canActivate:[AuthGuard]},
-{ path:'inbox/:slug', component: InboxComponent, canActivate:[AuthGuard]},
-
-]
+    { path: '', component: HomeComponent, canActivate: [AuthGuard]},
+    { path: 'register', component: RegisterComponent},
+    { path: 'login', component: LoginComponent},
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+    { path: 'inbox/add/facebook-page-team', component: AddFacebookPageTeamComponent, canActivate: [AuthGuard]},
+    { path: 'inbox/add/facebook-page-personal', component: AddFacebookPagePersonalComponent, canActivate: [AuthGuard]},
+    { path: 'inbox/add/gmail-inbox-personal', component: AddGmailInboxPersonalComponent, canActivate: [AuthGuard]},
+    { path: 'inbox/:slug', component: InboxComponent, canActivate: [AuthGuard]},
+    ];
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ const appRoutes: Routes = [
     ConversationComponent,
     TruncatePipe,
     MessageComponent,
-    ShowtimePipe
+    ShowtimePipe,
+    AddGmailInboxPersonalComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,7 @@
+<h2>Agregar página de facebook personal</h2>
+<p>Selecciona la página de facebook que deseas agregar.</p>
+<input type="hidden" id="response" value="2" [(ngModel)]="fbPage" #response>
+<button type="submit" id="update"  (click)="update(response.value)" style="display: none;">
+</button>
+<input type="button" class="btn btn-primary" 
+onclick="return !window.open('https://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.modify&response_type=code&client_id=529458389899-bhmpe41n19e1kh4dmottps39612u680j.apps.googleusercontent.com&redirect_uri=https%3A%2F%f2646894.ngrok.io%2Foauth%2Fgmail%2Fadd-personal-inbox%2F&state='+jQuery.parseJSON(localStorage.getItem('user')).username, 'Agrega página de Gmail', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))" value="Conectarme a Gmail">

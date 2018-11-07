@@ -113,18 +113,19 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_sidebar_sidebar_component__ = __webpack_require__("../../../../../src/app/components/sidebar/sidebar.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__ = __webpack_require__("../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__ = __webpack_require__("../../../../../src/app/components/inbox/inbox.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_conversation_conversation_component__ = __webpack_require__("../../../../../src/app/components/conversation/conversation.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_inbox_service__ = __webpack_require__("../../../../../src/app/services/inbox.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_add_gmail_inbox_personal_add_gmail_inbox_personal_component__ = __webpack_require__("../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__ = __webpack_require__("../../../../../src/app/components/inbox/inbox.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__ = __webpack_require__("../../../../../src/app/components/conversation/conversation.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__ = __webpack_require__("../../../../../src/app/guards/auth.guards.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__services_validate_service__ = __webpack_require__("../../../../../src/app/services/validate.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__services_auth_service__ = __webpack_require__("../../../../../src/app/services/auth.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__ = __webpack_require__("../../../../../src/app/services/sidebar.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__ = __webpack_require__("../../../../../src/app/services/load-conversation.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__ = __webpack_require__("../../../../../src/app/services/load-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_27__services_flash_message_service__ = __webpack_require__("../../../../../src/app/services/flash-message.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_28__services_inbox_service__ = __webpack_require__("../../../../../src/app/services/inbox.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_29__components_message_message_component__ = __webpack_require__("../../../../../src/app/components/message/message.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_30__pipe_showtime_pipe__ = __webpack_require__("../../../../../src/app/pipe/showtime.pipe.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -163,15 +164,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+
 var appRoutes = [
-    { path: '', component: __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: '', component: __WEBPACK_IMPORTED_MODULE_12__components_home_home_component__["a" /* HomeComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
     { path: 'register', component: __WEBPACK_IMPORTED_MODULE_11__components_register_register_component__["a" /* RegisterComponent */] },
     { path: 'login', component: __WEBPACK_IMPORTED_MODULE_10__components_login_login_component__["a" /* LoginComponent */] },
-    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
-    { path: 'inbox/:slug', component: __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__["a" /* InboxComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'dashboard', component: __WEBPACK_IMPORTED_MODULE_13__components_dashboard_dashboard_component__["a" /* DashboardComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'profile', component: __WEBPACK_IMPORTED_MODULE_14__components_profile_profile_component__["a" /* ProfileComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-team', component: __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/facebook-page-personal', component: __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/add/gmail-inbox-personal', component: __WEBPACK_IMPORTED_MODULE_18__components_add_gmail_inbox_personal_add_gmail_inbox_personal_component__["a" /* AddGmailInboxPersonalComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
+    { path: 'inbox/:slug', component: __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */], canActivate: [__WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]] },
 ];
 var AppModule = (function () {
     function AppModule() {
@@ -189,11 +192,12 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_15__components_sidebar_sidebar_component__["a" /* SidebarComponent */],
                 __WEBPACK_IMPORTED_MODULE_16__components_add_facebook_page_team_add_facebook_page_team_component__["a" /* AddFacebookPageTeamComponent */],
                 __WEBPACK_IMPORTED_MODULE_17__components_add_facebook_page_personal_add_facebook_page_personal_component__["a" /* AddFacebookPagePersonalComponent */],
-                __WEBPACK_IMPORTED_MODULE_18__components_inbox_inbox_component__["a" /* InboxComponent */],
-                __WEBPACK_IMPORTED_MODULE_19__components_conversation_conversation_component__["a" /* ConversationComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__components_inbox_inbox_component__["a" /* InboxComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__components_conversation_conversation_component__["a" /* ConversationComponent */],
                 __WEBPACK_IMPORTED_MODULE_6__pipe_truncate_pipe__["a" /* TruncatePipe */],
-                __WEBPACK_IMPORTED_MODULE_28__components_message_message_component__["a" /* MessageComponent */],
-                __WEBPACK_IMPORTED_MODULE_29__pipe_showtime_pipe__["a" /* ShowtimePipe */]
+                __WEBPACK_IMPORTED_MODULE_29__components_message_message_component__["a" /* MessageComponent */],
+                __WEBPACK_IMPORTED_MODULE_30__pipe_showtime_pipe__["a" /* ShowtimePipe */],
+                __WEBPACK_IMPORTED_MODULE_18__components_add_gmail_inbox_personal_add_gmail_inbox_personal_component__["a" /* AddGmailInboxPersonalComponent */]
             ],
             imports: [
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["a" /* BrowserModule */],
@@ -204,14 +208,14 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_7_ngx_infinite_scroll__["a" /* InfiniteScrollModule */]
             ],
             providers: [
-                __WEBPACK_IMPORTED_MODULE_21__services_validate_service__["a" /* ValidateService */],
-                __WEBPACK_IMPORTED_MODULE_22__services_auth_service__["a" /* AuthService */],
-                __WEBPACK_IMPORTED_MODULE_23__services_sidebar_service__["a" /* SidebarService */],
-                __WEBPACK_IMPORTED_MODULE_27__services_inbox_service__["a" /* InboxService */],
-                __WEBPACK_IMPORTED_MODULE_24__services_load_conversation_service__["a" /* LoadConversationService */],
-                __WEBPACK_IMPORTED_MODULE_25__services_load_message_service__["a" /* LoadMessageService */],
-                __WEBPACK_IMPORTED_MODULE_26__services_flash_message_service__["a" /* FlashMessageService */],
-                __WEBPACK_IMPORTED_MODULE_20__guards_auth_guards__["a" /* AuthGuard */]
+                __WEBPACK_IMPORTED_MODULE_22__services_validate_service__["a" /* ValidateService */],
+                __WEBPACK_IMPORTED_MODULE_23__services_auth_service__["a" /* AuthService */],
+                __WEBPACK_IMPORTED_MODULE_24__services_sidebar_service__["a" /* SidebarService */],
+                __WEBPACK_IMPORTED_MODULE_28__services_inbox_service__["a" /* InboxService */],
+                __WEBPACK_IMPORTED_MODULE_25__services_load_conversation_service__["a" /* LoadConversationService */],
+                __WEBPACK_IMPORTED_MODULE_26__services_load_message_service__["a" /* LoadMessageService */],
+                __WEBPACK_IMPORTED_MODULE_27__services_flash_message_service__["a" /* FlashMessageService */],
+                __WEBPACK_IMPORTED_MODULE_21__guards_auth_guards__["a" /* AuthGuard */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_8__app_component__["a" /* AppComponent */]]
         })
@@ -244,7 +248,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-personal/add-facebook-page-personal.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f5acef3a.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f2646894.ngrok.io/oauth/facebook/login-personal-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -309,7 +313,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/components/add-facebook-page-team/add-facebook-page-team.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f5acef3a.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
+module.exports = "<h2>Agregar página de facebook para el equipo</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://www.facebook.com/v2.11/dialog/oauth? client_id=1559072617503035&redirect_uri=https://f2646894.ngrok.io/oauth/facebook/login-team-add-page/&display=popup&response_type=code&scope=manage_pages,ads_management,pages_show_list,business_management,read_page_mailboxes,pages_messaging,instagram_basic,instagram_manage_insights,instagram_manage_comments', 'Agrega página de Facebook', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a facebook\">\n"
 
 /***/ }),
 
@@ -347,6 +351,71 @@ var AddFacebookPageTeamComponent = (function () {
         __metadata("design:paramtypes", [])
     ], AddFacebookPageTeamComponent);
     return AddFacebookPageTeamComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.css":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<h2>Agregar página de facebook personal</h2>\n<p>Selecciona la página de facebook que deseas agregar.</p>\n<input type=\"hidden\" id=\"response\" value=\"2\" [(ngModel)]=\"fbPage\" #response>\n<button type=\"submit\" id=\"update\"  (click)=\"update(response.value)\" style=\"display: none;\">\n</button>\n<input type=\"button\" class=\"btn btn-primary\" \nonclick=\"return !window.open('https://accounts.google.com/o/oauth2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.modify&response_type=code&client_id=529458389899-bhmpe41n19e1kh4dmottps39612u680j.apps.googleusercontent.com&redirect_uri=https%3A%2F%f2646894.ngrok.io%2Foauth%2Fgmail%2Fadd-personal-inbox%2F&state='+jQuery.parseJSON(localStorage.getItem('user')).username, 'Agrega página de Gmail', 'width=500,height=500,left='+((screen.width/2)-(500/2))+', top='+((screen.height/2)-(500/2)))\" value=\"Conectarme a Gmail\">\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AddGmailInboxPersonalComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/esm5/core.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AddGmailInboxPersonalComponent = (function () {
+    function AddGmailInboxPersonalComponent() {
+    }
+    AddGmailInboxPersonalComponent.prototype.ngOnInit = function () {
+    };
+    AddGmailInboxPersonalComponent.prototype.update = function (value) {
+        this.gmail = value;
+        console.log(this.gmail);
+    };
+    AddGmailInboxPersonalComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-add-gmail-inbox-personal',
+            template: __webpack_require__("../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/components/add-gmail-inbox-personal/add-gmail-inbox-personal.component.css")]
+        }),
+        __metadata("design:paramtypes", [])
+    ], AddGmailInboxPersonalComponent);
+    return AddGmailInboxPersonalComponent;
 }());
 
 
